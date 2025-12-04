@@ -19,9 +19,9 @@ export default function RootLayout({ children }: RootLayoutProps) {
     <html lang="en">
       <body className="bg-[#FDFBF6] text-slate-900 antialiased">
 
-        {/* Top navigation */}
-        <header className="border-b border-slate-200 bg-white/80 backdrop-blur-md">
-          <div className="mx-auto flex max-w-6xl items-center justify-between gap-6 px-4 py-3 md:py-4">
+        {/* ------ Top Navigation (Cal.ai Style Transparent Header) ------ */}
+        <header className="absolute top-0 left-0 w-full z-50 bg-transparent">
+          <div className="mx-auto flex max-w-6xl items-center justify-between gap-6 px-4 py-4">
 
             {/* Logo */}
             <Link href="/" className="flex items-center">
@@ -32,7 +32,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
               />
             </Link>
 
-            {/* Navigation */}
+            {/* Center Navigation */}
             <nav className="hidden md:flex items-center gap-10 text-[15px] font-semibold text-slate-800">
               <Link href="#hero" className="hover:text-slate-900">Home</Link>
               <Link href="#how-it-works" className="hover:text-slate-900">How it works</Link>
@@ -40,38 +40,32 @@ export default function RootLayout({ children }: RootLayoutProps) {
               <Link href="#pricing" className="hover:text-slate-900">Pricing</Link>
             </nav>
 
-            {/* Equal-size App Store + Google Play buttons */}
+            {/* App Store + Google Play Badges (Unified Height) */}
             <div className="hidden md:flex items-center gap-4">
-
-              {/* Fixed-size wrapper ensures identical size regardless of aspect ratio */}
-              <div className="h-12 w-[160px] flex items-center justify-center">
-                <img
-                  src="/appstore.png"
-                  alt="Download on the App Store"
-                  className="h-full w-full object-contain select-none"
-                />
-              </div>
-
-              <div className="h-12 w-[160px] flex items-center justify-center">
-                <img
-                  src="/googleplay.png"
-                  alt="Get it on Google Play"
-                  className="h-full w-full object-contain select-none"
-                />
-              </div>
-
+              <img
+                src="/appstore.png"
+                alt="Download on the App Store"
+                className="h-11 w-auto select-none"
+              />
+              <img
+                src="/googleplay.png"
+                alt="Get it on Google Play"
+                className="h-11 w-auto select-none"
+              />
             </div>
           </div>
         </header>
 
-        {/* Main content */}
-        <main className="min-h-screen">{children}</main>
+        {/* ------ Main Content ------ */}
+        <main className="min-h-screen pt-24 md:pt-32">
+          {children}
+        </main>
 
-        {/* Footer */}
+        {/* ------ Footer ------ */}
         <footer className="border-t border-slate-200 bg-white/90">
           <div className="mx-auto flex max-w-6xl flex-col gap-6 px-4 py-8 md:flex-row md:items-center md:justify-between">
 
-            {/* Footer Left */}
+            {/* Left section */}
             <div>
               <div className="text-sm font-semibold text-slate-800">
                 Cookwise.ai
@@ -84,7 +78,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
               </div>
             </div>
 
-            {/* Footer Right */}
+            {/* Right section (links) */}
             <div className="flex flex-wrap gap-6 text-sm text-slate-600">
 
               <div className="flex flex-col gap-1">
