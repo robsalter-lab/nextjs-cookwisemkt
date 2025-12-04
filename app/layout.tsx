@@ -17,11 +17,11 @@ type RootLayoutProps = {
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en">
-      <body className="bg-[#FDFBF6] text-slate-900 antialiased min-h-screen overflow-x-hidden">
+      <body className="bg-[#FEFCF7] text-slate-900 antialiased min-h-screen overflow-x-hidden">
 
-        {/* Transparent, seamless header */}
+        {/* Transparent header overlay */}
         <header className="absolute top-0 left-0 w-full z-50">
-          <div className="mx-auto flex max-w-6xl items-center justify-between gap-6 px-4 py-4">
+          <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4">
 
             {/* Logo */}
             <Link href="/" className="flex items-center">
@@ -32,7 +32,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
               />
             </Link>
 
-            {/* Center Navigation */}
+            {/* Navigation */}
             <nav className="hidden md:flex items-center gap-10 text-[15px] font-semibold text-slate-800">
               <Link href="#hero" className="hover:text-slate-900">Home</Link>
               <Link href="#how-it-works" className="hover:text-slate-900">How it works</Link>
@@ -40,7 +40,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
               <Link href="#pricing" className="hover:text-slate-900">Pricing</Link>
             </nav>
 
-            {/* App Store Badges (same height) */}
+            {/* App Store Buttons */}
             <div className="hidden md:flex items-center gap-4">
               <img
                 src="/appstore.png"
@@ -56,8 +56,8 @@ export default function RootLayout({ children }: RootLayoutProps) {
           </div>
         </header>
 
-        {/* Main content — FIX: Remove margin/padding so background reaches top */}
-        <main className="pt-0 mt-0 min-h-screen">
+        {/* Main content (no padding so hero reaches top) */}
+        <main className="pt-0 mt-0">
           {children}
         </main>
 
