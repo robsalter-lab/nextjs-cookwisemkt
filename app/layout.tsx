@@ -22,14 +22,24 @@ export default function RootLayout({ children }: RootLayoutProps) {
         {/* Top navigation */}
         <header className="border-b border-slate-200 bg-white/80 backdrop-blur-md">
           <div className="mx-auto flex max-w-6xl items-center justify-between gap-6 px-4 py-3 md:py-4">
-
-            {/* Logo ONLY */}
-            <Link href="/" className="flex items-center gap-3">
+            
+            {/* Logo + Brand */}
+            <Link href="/" className="flex items-center gap-3 pr-2">
               <img
                 src="/logo.png"
                 alt="Cookwise.ai logo"
-                className="h-12 w-auto md:h-16"
+                className="h-14 w-auto md:h-20"
               />
+
+              {/* Brand text (hidden on mobile) */}
+              <div className="hidden sm:flex flex-col leading-tight">
+                <span className="text-lg font-semibold tracking-tight">
+                  Cookwise.ai
+                </span>
+                <span className="text-xs text-slate-500">
+                  Smarter meals, cheaper carts
+                </span>
+              </div>
             </Link>
 
             {/* Center navigation */}
@@ -62,7 +72,6 @@ export default function RootLayout({ children }: RootLayoutProps) {
                 </div>
               </div>
             </div>
-
           </div>
         </header>
 
@@ -73,7 +82,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
         <footer className="border-t border-slate-200 bg-white/90">
           <div className="mx-auto flex max-w-6xl flex-col gap-6 px-4 py-8 md:flex-row md:items-center md:justify-between">
 
-            {/* Footer left */}
+            {/* Left side */}
             <div>
               <div className="text-sm font-semibold text-slate-800">
                 Cookwise.ai
@@ -86,10 +95,9 @@ export default function RootLayout({ children }: RootLayoutProps) {
               </div>
             </div>
 
-            {/* Footer links */}
+            {/* Right side links */}
             <div className="flex flex-wrap gap-6 text-sm text-slate-600">
 
-              {/* Legal */}
               <div className="flex flex-col gap-1">
                 <div className="text-xs font-semibold uppercase tracking-wide text-slate-400">
                   Legal
@@ -101,7 +109,6 @@ export default function RootLayout({ children }: RootLayoutProps) {
                 <Link href="/api-terms" className="hover:text-slate-900">API Terms</Link>
               </div>
 
-              {/* Company */}
               <div className="flex flex-col gap-1">
                 <div className="text-xs font-semibold uppercase tracking-wide text-slate-400">
                   Company
@@ -114,7 +121,6 @@ export default function RootLayout({ children }: RootLayoutProps) {
               </div>
 
             </div>
-
           </div>
         </footer>
 
