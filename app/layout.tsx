@@ -43,29 +43,7 @@ export default function RootLayout({
 
         {/* ---------- Page Content ---------- */}
         <main className="pt-14">{children}</main>
-
-        {/* ---------- Footer (Optional — You can remove if using a custom footer on homepage) ---------- */}
-        <footer className="border-t border-slate-900/70 mt-20">
-          <div className="max-w-6xl mx-auto px-6 py-10 text-sm text-slate-400 flex flex-col md:flex-row justify-between gap-6">
-            <div className="flex flex-col gap-1 text-slate-400">
-              <span className="font-semibold text-slate-200">Cookwise.ai</span>
-              <span>AI-powered meal and grocery optimization.</span>
-            </div>
-
-            <div className="flex flex-col gap-1">
-              <Link href="/privacy" className="hover:text-slate-200 transition">
-                Privacy Policy
-              </Link>
-              <Link href="/terms" className="hover:text-slate-200 transition">
-                Terms of Service
-              </Link>
-              <Link href="/contact" className="hover:text-slate-200 transition">
-                Contact
-              </Link>
-            </div>
-          </div>
-        </footer>
-      </body>
+    </body>
     </html>
   );
 }
