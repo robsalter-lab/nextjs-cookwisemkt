@@ -22,55 +22,36 @@ export default function RootLayout({ children }: RootLayoutProps) {
         {/* Top navigation */}
         <header className="border-b border-slate-200 bg-white/80 backdrop-blur-md">
           <div className="mx-auto flex max-w-6xl items-center justify-between gap-6 px-4 py-3 md:py-4">
-            
-            {/* Logo + Brand */}
-            <Link href="/" className="flex items-center gap-3 pr-2">
+
+            {/* Logo only — no text */}
+            <Link href="/" className="flex items-center">
               <img
                 src="/logo.png"
                 alt="Cookwise.ai logo"
                 className="h-14 w-auto md:h-20"
               />
-
-              {/* Brand text (hidden on mobile) */}
-              <div className="hidden sm:flex flex-col leading-tight">
-                <span className="text-lg font-semibold tracking-tight">
-                  Cookwise.ai
-                </span>
-                <span className="text-xs text-slate-500">
-                  Smarter meals, cheaper carts
-                </span>
-              </div>
             </Link>
 
-            {/* Center navigation */}
-            <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-slate-700">
+            {/* Center navigation — now bold like screenshot */}
+            <nav className="hidden md:flex items-center gap-10 text-[15px] font-semibold text-slate-800">
               <Link href="#hero" className="hover:text-slate-900">Home</Link>
               <Link href="#how-it-works" className="hover:text-slate-900">How it works</Link>
               <Link href="#features" className="hover:text-slate-900">Features</Link>
               <Link href="#pricing" className="hover:text-slate-900">Pricing</Link>
             </nav>
 
-            {/* App badges */}
-            <div className="hidden md:flex items-center gap-3">
-              <div className="flex items-center gap-2 rounded-xl bg-slate-900 px-3 py-1.5 text-xs text-white shadow-sm select-none">
-                <span className="text-lg"></span>
-                <div className="leading-tight">
-                  <div className="text-[10px] uppercase tracking-[0.12em] text-slate-300">
-                    Coming soon on
-                  </div>
-                  <div className="text-[11px] font-semibold">App Store</div>
-                </div>
-              </div>
-
-              <div className="flex items-center gap-2 rounded-xl bg-slate-900 px-3 py-1.5 text-xs text-white shadow-sm select-none">
-                <span className="text-lg">▶︎</span>
-                <div className="leading-tight">
-                  <div className="text-[10px] uppercase tracking-[0.12em] text-slate-300">
-                    Coming soon on
-                  </div>
-                  <div className="text-[11px] font-semibold">Google Play</div>
-                </div>
-              </div>
+            {/* Real App Store + Google Play buttons */}
+            <div className="hidden md:flex items-center gap-4">
+              <img
+                src="/appstore-badge.png"
+                alt="Download on the App Store"
+                className="h-10 w-auto select-none"
+              />
+              <img
+                src="/googleplay-badge.png"
+                alt="Get it on Google Play"
+                className="h-10 w-auto select-none"
+              />
             </div>
           </div>
         </header>
