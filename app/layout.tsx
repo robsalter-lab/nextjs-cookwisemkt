@@ -17,9 +17,9 @@ type RootLayoutProps = {
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en">
-      <body className="bg-[#FDFBF6] text-slate-900 antialiased">
+      <body className="bg-[#FDFBF6] text-slate-900 antialiased min-h-screen overflow-x-hidden">
 
-        {/* Transparent header like Cal.ai */}
+        {/* Transparent, seamless header */}
         <header className="absolute top-0 left-0 w-full z-50">
           <div className="mx-auto flex max-w-6xl items-center justify-between gap-6 px-4 py-4">
 
@@ -40,7 +40,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
               <Link href="#pricing" className="hover:text-slate-900">Pricing</Link>
             </nav>
 
-            {/* App Store Badges with identical size */}
+            {/* App Store Badges (same height) */}
             <div className="hidden md:flex items-center gap-4">
               <img
                 src="/appstore.png"
@@ -56,14 +56,15 @@ export default function RootLayout({ children }: RootLayoutProps) {
           </div>
         </header>
 
-        {/* Page content */}
-        <main className="min-h-screen">{children}</main>
+        {/* Main content — FIX: Remove margin/padding so background reaches top */}
+        <main className="pt-0 mt-0 min-h-screen">
+          {children}
+        </main>
 
         {/* Footer */}
-        <footer className="border-t border-slate-200 bg-white/90">
+        <footer className="border-t border-slate-200 bg-white/90 mt-20">
           <div className="mx-auto flex max-w-6xl flex-col gap-6 px-4 py-8 md:flex-row md:items-center md:justify-between">
 
-            {/* Footer Left */}
             <div>
               <div className="text-sm font-semibold text-slate-800">
                 Cookwise.ai
@@ -76,7 +77,6 @@ export default function RootLayout({ children }: RootLayoutProps) {
               </div>
             </div>
 
-            {/* Footer Right */}
             <div className="flex flex-wrap gap-6 text-sm text-slate-600">
 
               <div className="flex flex-col gap-1">
