@@ -23,7 +23,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
         <header className="border-b border-slate-200 bg-white/80 backdrop-blur-md">
           <div className="mx-auto flex max-w-6xl items-center justify-between gap-6 px-4 py-3 md:py-4">
 
-            {/* Logo only — no text */}
+            {/* Logo only */}
             <Link href="/" className="flex items-center">
               <img
                 src="/logo.png"
@@ -32,7 +32,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
               />
             </Link>
 
-            {/* Center navigation — bold */}
+            {/* Center navigation */}
             <nav className="hidden md:flex items-center gap-10 text-[15px] font-semibold text-slate-800">
               <Link href="#hero" className="hover:text-slate-900">Home</Link>
               <Link href="#how-it-works" className="hover:text-slate-900">How it works</Link>
@@ -40,15 +40,15 @@ export default function RootLayout({ children }: RootLayoutProps) {
               <Link href="#pricing" className="hover:text-slate-900">Pricing</Link>
             </nav>
 
-            {/* App Store & Google Play buttons */}
+            {/* App badges (correct filenames) */}
             <div className="hidden md:flex items-center gap-4">
               <img
-                src="/appstore-badge.png"
+                src="/appstore.png"
                 alt="Download on the App Store"
                 className="h-10 w-auto select-none"
               />
               <img
-                src="/googleplay-badge.png"
+                src="/googleplay.png"
                 alt="Get it on Google Play"
                 className="h-10 w-auto select-none"
               />
