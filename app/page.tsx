@@ -1,322 +1,185 @@
-// app/page.tsx
-import Link from "next/link";
-
 export default function HomePage() {
   return (
-    <main className="min-h-screen bg-slate-950 text-slate-50">
-      {/* Hero */}
-      <section className="px-6 py-16 md:py-24 lg:py-28 max-w-6xl mx-auto grid gap-12 md:grid-cols-2 items-center">
-        <div>
-          <span className="inline-flex items-center rounded-full bg-emerald-500/10 text-emerald-300 px-3 py-1 text-xs font-medium mb-4">
-            AI-powered grocery optimizer
-          </span>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight">
-            Cook smarter. <br /> Spend less. <br /> Eat better.
+    <main className="w-full bg-[#FAFAF9] text-[#111]">
+      {/* ============================
+          HERO SECTION (Style A)
+      ============================= */}
+      <section className="max-w-7xl mx-auto px-6 pt-24 pb-32 flex flex-col md:flex-row items-center gap-12">
+        
+        {/* LEFT SIDE — Text */}
+        <div className="flex-1">
+          <div className="inline-flex items-center gap-2 bg-white border border-gray-200 px-3 py-1 rounded-full text-sm mb-6 shadow-sm">
+            <span className="w-2 h-2 bg-emerald-500 rounded-full"></span>
+            <span>AI-powered grocery optimization</span>
+          </div>
+
+          <h1 className="text-4xl md:text-6xl font-bold leading-tight text-[#111]">
+            Cook smarter.<br />
+            Spend less.<br />
+            Eat better.
           </h1>
-          <p className="mt-5 text-base md:text-lg text-slate-300 max-w-xl">
-            Cookwise builds meal plans from your pantry and your store&apos;s weekly
-            deals, then sends everything straight to your online cart. Less
-            scrolling, more saving.
+
+          <p className="mt-6 text-lg text-gray-600 max-w-md">
+            Cookwise builds meal plans from weekly deals and your pantry—then sends everything straight to your online cart.
           </p>
 
-          <div className="mt-8 flex flex-col sm:flex-row gap-3">
-            <a
-              href="#cta"
-              className="inline-flex justify-center items-center rounded-full bg-emerald-400 px-6 py-3 text-sm font-semibold text-slate-950 shadow-lg shadow-emerald-500/30 hover:bg-emerald-300 transition"
-            >
-              Get early access
-            </a>
-            <a
-              href="#how-it-works"
-              className="inline-flex justify-center items-center rounded-full border border-slate-700 px-6 py-3 text-sm font-semibold text-slate-100 hover:bg-slate-900/60 transition"
-            >
-              See how it works
-            </a>
-          </div>
-
-          <p className="mt-4 text-xs text-slate-400">
-            Save money on Publix, Walmart, Target, Aldi, Kroger & more.
-          </p>
+          <button className="mt-8 bg-[#00D084] text-black font-semibold px-6 py-3 rounded-full shadow hover:opacity-90 transition">
+            Join the Waitlist
+          </button>
         </div>
 
-        {/* Right column – placeholder for phone mock / screenshots */}
-        <div className="relative">
-          <div className="absolute -inset-4 bg-emerald-500/10 blur-3xl rounded-3xl" />
-          <div className="relative rounded-3xl border border-slate-800 bg-slate-900/60 p-6 shadow-2xl">
-            <p className="text-xs font-medium text-emerald-300 mb-2">
-              Weekly Spend (Est.)
-            </p>
-            <p className="text-3xl font-semibold">$52.45</p>
-            <p className="text-xs text-slate-400 mb-4">4 dinners • 3 lunches</p>
+        {/* RIGHT SIDE — Placeholder Phone Mockup */}
+        <div className="flex-1 flex justify-center">
+          <div className="w-[320px] h-[640px] bg-white rounded-[2.5rem] shadow-2xl border border-gray-300 flex items-center justify-center text-gray-400">
+            {/* Placeholder block */}
+            <span className="text-center px-4">
+              <strong>Placeholder App Screenshot</strong>
+              <br />
+              (Upload real UI later)
+            </span>
+          </div>
+        </div>
+      </section>
 
-            <div className="space-y-3 text-sm">
-              <div className="flex justify-between">
-                <span className="text-slate-200">Deals used</span>
-                <span className="text-emerald-300 font-medium">13 items</span>
-              </div>
-              <div className="flex justify-between">
-                <span className="text-slate-200">Pantry items</span>
-                <span className="text-slate-300">7 matched</span>
-              </div>
-              <div className="flex justify-between">
-                <span className="text-slate-200">Estimated savings</span>
-                <span className="text-emerald-300 font-medium">$18.60 / week</span>
-              </div>
+
+
+      {/* ============================
+          SECTION: WHAT COOKWISE INCLUDES
+      ============================= */}
+      <section className="max-w-7xl mx-auto px-6 py-24">
+        
+        <h2 className="text-3xl md:text-5xl font-bold text-center mb-4">
+          What does Cookwise include?
+        </h2>
+        <p className="text-center text-gray-600 max-w-2xl mx-auto mb-16">
+          Smart shopping automation, meal planning, pantry sync, and AI-powered cost optimization—built around real grocery deals.
+        </p>
+
+        {/* Grid of feature cards */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+          {/* Card 1 */}
+          <div className="bg-white p-6 rounded-2xl shadow hover:shadow-lg transition border border-gray-100">
+            <div className="w-12 h-12 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center mb-4">
+              📸
             </div>
-
-            <div className="mt-6 rounded-2xl bg-slate-900/80 border border-slate-800 p-4 space-y-3">
-              <div className="flex items-center justify-between text-xs">
-                <span className="text-slate-300">Strict Budget Plan</span>
-                <span className="rounded-full bg-emerald-500/15 text-emerald-300 px-3 py-1">
-                  Under $60
-                </span>
-              </div>
-              <ul className="space-y-1 text-xs text-slate-400">
-                <li>✓ Publix weekly BOGO on proteins</li>
-                <li>✓ Pantry: olive oil, salt, spices</li>
-                <li>✓ Auto-built cart for delivery</li>
-              </ul>
-            </div>
-
-            <p className="mt-4 text-[11px] text-slate-500">
-              Mock data for illustration. Actual prices and availability vary by
-              store and region.
+            <h3 className="font-semibold text-xl mb-2">Build meals from weekly deals</h3>
+            <p className="text-gray-600">
+              Cookwise scans store promotions and builds affordable meals that match your budget, preferences, and pantry.
             </p>
           </div>
+
+          {/* Card 2 */}
+          <div className="bg-white p-6 rounded-2xl shadow hover:shadow-lg transition border border-gray-100">
+            <div className="w-12 h-12 rounded-xl bg-blue-100 text-blue-700 flex items-center justify-center mb-4">
+              🧮
+            </div>
+            <h3 className="font-semibold text-xl mb-2">Smart cart builder</h3>
+            <p className="text-gray-600">
+              Turn recipes into a structured cart grouped by store & aisle, with estimated totals and swap suggestions.
+            </p>
+          </div>
+
+          {/* Card 3 */}
+          <div className="bg-white p-6 rounded-2xl shadow hover:shadow-lg transition border border-gray-100">
+            <div className="w-12 h-12 rounded-xl bg-yellow-100 text-yellow-700 flex items-center justify-center mb-4">
+              🏷️
+            </div>
+            <h3 className="font-semibold text-xl mb-2">Pantry & deal matching</h3>
+            <p className="text-gray-600">
+              Cookwise automatically subtracts pantry items and suggests recipes leaning on current promotions.
+            </p>
+          </div>
+
+          {/* Card 4 */}
+          <div className="bg-white p-6 rounded-2xl shadow hover:shadow-lg transition border border-gray-100">
+            <div className="w-12 h-12 rounded-xl bg-purple-100 text-purple-700 flex items-center justify-center mb-4">
+              🍽️
+            </div>
+            <h3 className="font-semibold text-xl mb-2">Meal planner with budgeting</h3>
+            <p className="text-gray-600">
+              See weekly cost estimates before you shop. Adjust servings or swap items to stay under your target.
+            </p>
+          </div>
+
+          {/* Card 5 */}
+          <div className="bg-white p-6 rounded-2xl shadow hover:shadow-lg transition border border-gray-100">
+            <div className="w-12 h-12 rounded-xl bg-pink-100 text-pink-700 flex items-center justify-center mb-4">
+              🔗
+            </div>
+            <h3 className="font-semibold text-xl mb-2">Deep link to store checkouts</h3>
+            <p className="text-gray-600">
+              Send your optimized cart directly into Instacart, Walmart, or Kroger with a single tap.
+            </p>
+          </div>
+
+          {/* Card 6 */}
+          <div className="bg-white p-6 rounded-2xl shadow hover:shadow-lg transition border border-gray-100">
+            <div className="w-12 h-12 rounded-xl bg-indigo-100 text-indigo-700 flex items-center justify-center mb-4">
+              🤖
+            </div>
+            <h3 className="font-semibold text-xl mb-2">AI meal + grocery engine</h3>
+            <p className="text-gray-600">
+              Understands your patterns, ignores items you already own, and optimizes for cost—not just aesthetics.
+            </p>
+          </div>
+
         </div>
       </section>
 
-      {/* How it Works */}
-      <section
-        id="how-it-works"
-        className="bg-slate-950 border-t border-slate-800/80"
-      >
-        <div className="max-w-5xl mx-auto px-6 py-14 md:py-18">
-          <h2 className="text-2xl md:text-3xl font-semibold mb-3">
-            How Cookwise works
-          </h2>
-          <p className="text-sm md:text-base text-slate-300 mb-8 max-w-2xl">
-            We connect your favorite grocery stores, weekly deals, and pantry
-            inventory into one simple flow.
+
+
+      {/* ============================
+          SECTION: PHONE SCREEN + TEXT
+          (CalAI-style alternating mockup)
+      ============================= */}
+      <section className="max-w-7xl mx-auto px-6 py-24 grid md:grid-cols-2 gap-12 items-center">
+
+        {/* Placeholder phone mockup */}
+        <div className="w-[320px] h-[640px] bg-white rounded-[2.5rem] shadow-2xl border border-gray-300 mx-auto flex items-center justify-center text-gray-400">
+          <span className="text-center px-4">
+            <strong>Placeholder Screen #2</strong>
+          </span>
+        </div>
+
+        <div>
+          <h3 className="text-3xl font-bold mb-4">Built for real households</h3>
+          <p className="text-gray-600 mb-6">
+            Cookwise eliminates unnecessary purchases, reuses pantry staples, and leans heavily on weekly promotions to build bigger baskets for less.
           </p>
 
-          <div className="grid gap-6 md:grid-cols-3 text-sm">
-            <div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-5">
-              <div className="text-xs font-semibold text-emerald-300 mb-2">
-                STEP 1
-              </div>
-              <h3 className="font-medium mb-2">Pick your store & budget</h3>
-              <p className="text-slate-300">
-                Choose Publix, Walmart, Target, Aldi, Kroger & more. Set your
-                budget, delivery or pickup, and how many meals you want.
-              </p>
-            </div>
-
-            <div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-5">
-              <div className="text-xs font-semibold text-emerald-300 mb-2">
-                STEP 2
-              </div>
-              <h3 className="font-medium mb-2">
-                Deals + pantry → smart recipes
-              </h3>
-              <p className="text-slate-300">
-                Our engine scans weekly specials and what you already have at
-                home to build affordable recipes and a combined shopping list.
-              </p>
-            </div>
-
-            <div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-5">
-              <div className="text-xs font-semibold text-emerald-300 mb-2">
-                STEP 3
-              </div>
-              <h3 className="font-medium mb-2">Review cart & checkout online</h3>
-              <p className="text-slate-300">
-                Adjust items, swap brands, then deep-link into your store&apos;s
-                online experience to add everything to cart and checkout.
-              </p>
-            </div>
-          </div>
+          <ul className="space-y-3 text-gray-700">
+            <li>• Busy families</li>
+            <li>• Budget-conscious shoppers</li>
+            <li>• Delivery-first households</li>
+            <li>• People who hate scrolling endless recipes</li>
+          </ul>
         </div>
+
       </section>
 
-      {/* Why Different */}
-      <section className="bg-slate-950 border-t border-slate-800/80">
-        <div className="max-w-5xl mx-auto px-6 py-14 md:py-18">
-          <h2 className="text-2xl md:text-3xl font-semibold mb-4">
-            Why Cookwise is different
-          </h2>
-          <div className="grid gap-6 md:grid-cols-2 text-sm md:text-base">
-            <div className="space-y-4">
-              <p className="text-slate-300">
-                Most recipe or meal-planning apps start with food photos and
-                work backwards. Cookwise starts with{" "}
-                <span className="font-semibold text-slate-100">
-                  real prices, weekly deals, and your pantry
-                </span>{" "}
-                — then builds meals that actually fit your budget.
-              </p>
-              <p className="text-slate-300">
-                It&apos;s like having a personal grocery analyst that turns store
-                circulars and receipts into an optimized meal plan every week.
-              </p>
-            </div>
-            <ul className="space-y-3 text-sm text-slate-300">
-              <li>• Built around real grocery circulars and promotions</li>
-              <li>• Understands what you already own to reduce waste</li>
-              <li>• Designed for delivery & pickup flows from day one</li>
-              <li>• AI that optimizes for cost, not just aesthetics</li>
-              <li>• Ready for partner APIs: Instacart, Walmart, Kroger & more</li>
-            </ul>
-          </div>
-        </div>
-      </section>
 
-      {/* Feature Grid */}
-      <section className="bg-slate-950 border-t border-slate-800/80">
-        <div className="max-w-5xl mx-auto px-6 py-14 md:py-18">
-          <h2 className="text-2xl md:text-3xl font-semibold mb-6">
-            Everything you need to plan, shop, and cook smarter
-          </h2>
-          <div className="grid gap-6 md:grid-cols-3 text-sm">
-            {[
-              {
-                title: "Smart cart builder",
-                body: "Turn your selected meals into a structured cart, grouped by store and aisle, with estimated totals."
-              },
-              {
-                title: "Pantry sync",
-                body: "Scan your fridge or add items manually. Cookwise subtracts what you already have from your list."
-              },
-              {
-                title: "Weekly deals engine",
-                body: "We surface recipes that lean on current promotions first, so you naturally save more each week."
-              },
-              {
-                title: "AI meal planner",
-                body: "Tell us how many people, meals, and dietary preferences. We handle the combinations and math."
-              },
-              {
-                title: "Budget tracking",
-                body: "See an estimated total before you shop. Swap meals or ingredients to stay under your target."
-              },
-              {
-                title: "Deep links to stores",
-                body: "Tap an item to jump directly into your retailer’s product search and add it to your real cart."
-              }
-            ].map((f) => (
-              <div
-                key={f.title}
-                className="rounded-2xl border border-slate-800 bg-slate-900/60 p-5"
-              >
-                <h3 className="font-medium mb-2">{f.title}</h3>
-                <p className="text-slate-300">{f.body}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
-      {/* Who it's for */}
-      <section className="bg-slate-950 border-t border-slate-800/80">
-        <div className="max-w-5xl mx-auto px-6 py-14 md:py-18">
-          <h2 className="text-2xl md:text-3xl font-semibold mb-6">
-            Built for real households and real grocery habits
-          </h2>
-          <div className="grid gap-6 md:grid-cols-3 text-sm text-slate-300">
-            <div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-5">
-              <h3 className="font-medium mb-2">Busy families</h3>
-              <p>
-                Plan a week of dinners in minutes, reuse staples in the pantry,
-                and avoid last-minute takeout.
-              </p>
-            </div>
-            <div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-5">
-              <h3 className="font-medium mb-2">Budget-conscious shoppers</h3>
-              <p>
-                Automatically lean on weekly deals instead of reading every
-                circular or clipping coupons manually.
-              </p>
-            </div>
-            <div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-5">
-              <h3 className="font-medium mb-2">Delivery-first households</h3>
-              <p>
-                Turn recipes into delivery-ready carts with a few taps using our
-                integrations with leading platforms.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* ============================
+          FOOTER
+      ============================= */}
+      <footer className="border-t border-gray-200 py-12 mt-16 text-gray-600">
+        <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between gap-8">
 
-      {/* Pricing + CTA */}
-      <section
-        id="cta"
-        className="bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 border-t border-slate-800/80"
-      >
-        <div className="max-w-5xl mx-auto px-6 py-14 md:py-18">
-          <div className="grid gap-8 md:grid-cols-[2fr,1.2fr] items-start">
-            <div>
-              <h2 className="text-2xl md:text-3xl font-semibold mb-3">
-                Start free while we&apos;re in early access
-              </h2>
-              <p className="text-slate-300 mb-4 max-w-xl">
-                We&apos;re launching Cookwise with a focus group of early users who
-                care about saving money and reducing food waste. Help shape the
-                product and lock in our lowest pricing.
-              </p>
-              <ul className="text-sm text-slate-300 space-y-2">
-                <li>• Generate meal plans from weekly deals</li>
-                <li>• Build shopping lists and smart carts</li>
-                <li>• Track your pantry, fridge, and freezer</li>
-                <li>• Deep link into supported delivery partners</li>
-              </ul>
-            </div>
-
-            <div className="rounded-3xl border border-slate-800 bg-slate-900/70 p-6">
-              <p className="text-xs font-medium text-emerald-300 mb-1">
-                Coming soon
-              </p>
-              <h3 className="text-xl font-semibold mb-1">Cookwise+</h3>
-              <p className="text-3xl font-semibold mb-4">$2.99</p>
-              <p className="text-xs text-slate-400 mb-4">per month • cancel anytime</p>
-              <ul className="text-sm text-slate-300 space-y-2 mb-6">
-                <li>• Cheapest-store optimization</li>
-                <li>• One-tap &quot;Build My Cart&quot; for delivery</li>
-                <li>• Viral recipe and social discovery feed</li>
-                <li>• Priority access to new store integrations</li>
-              </ul>
-              <button className="w-full rounded-full bg-emerald-400 text-slate-950 text-sm font-semibold py-3 hover:bg-emerald-300 transition">
-                Join the waitlist
-              </button>
-              <p className="mt-3 text-[11px] text-slate-500">
-                Pricing and features may change as we learn from early users.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Partners CTA */}
-      <section className="bg-slate-950 border-t border-slate-800/80">
-        <div className="max-w-5xl mx-auto px-6 py-10 md:py-12 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
           <div>
-            <h2 className="text-xl md:text-2xl font-semibold mb-2">
-              For retailers & platforms
-            </h2>
-            <p className="text-sm md:text-base text-slate-300 max-w-xl">
-              Cookwise drives high-intent, meal-based grocery orders into your
-              existing ecommerce flows. We start with deals, pantry, and
-              delivery preferences—so baskets are larger and more repeatable.
+            <div className="font-bold text-xl mb-2">Cookwise.ai</div>
+            <p className="text-sm text-gray-500">
+              AI-powered grocery and meal optimization.
             </p>
           </div>
-          <Link
-            href="/partners"
-            className="inline-flex items-center justify-center rounded-full border border-slate-700 px-5 py-2.5 text-sm font-semibold text-slate-100 hover:bg-slate-900/70 transition"
-          >
-            Learn about partnering →
-          </Link>
+
+          <div className="flex flex-col space-y-2 text-sm">
+            <a href="/privacy" className="hover:text-gray-800">Privacy Policy</a>
+            <a href="/terms" className="hover:text-gray-800">Terms of Service</a>
+            <a href="/contact" className="hover:text-gray-800">Contact</a>
+          </div>
         </div>
-      </section>
-      </main>
-);
+      </footer>
+    </main>
+  );
 }
