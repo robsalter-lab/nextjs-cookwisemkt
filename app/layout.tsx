@@ -18,15 +18,21 @@ export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en">
       <body className="bg-[#FDFBF6] text-slate-900 antialiased">
+
         {/* Top navigation – CalAI-style */}
         <header className="border-b border-slate-200 bg-white/80 backdrop-blur-md">
           <div className="mx-auto flex max-w-6xl items-center justify-between gap-6 px-4 py-3 md:py-4">
+            
             {/* Logo */}
-            <Link href="/" className="flex items-center gap-2">
-              <div className="flex h-8 w-8 items-center justify-center rounded-2xl bg-slate-900 text-white text-lg font-semibold">
-                🍳
-              </div>
-              <div className="flex flex-col leading-tight">
+            <Link href="/" className="flex items-center gap-3">
+              <img
+                src="/logo.png"
+                alt="Cookwise.ai logo"
+                className="h-10 w-auto md:h-12"
+              />
+
+              {/* Brand text (hidden on mobile) */}
+              <div className="flex flex-col leading-tight hidden sm:flex">
                 <span className="text-lg font-semibold tracking-tight">
                   Cookwise.ai
                 </span>
@@ -36,7 +42,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
               </div>
             </Link>
 
-            {/* Center nav */}
+            {/* Center navigation */}
             <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-slate-700">
               <Link href="#hero" className="hover:text-slate-900">
                 Home
@@ -52,7 +58,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
               </Link>
             </nav>
 
-            {/* App badges – not clickable yet */}
+            {/* App badges */}
             <div className="hidden md:flex items-center gap-3">
               <div className="flex items-center gap-2 rounded-xl bg-slate-900 px-3 py-1.5 text-xs text-white shadow-sm select-none">
                 <span className="text-lg"></span>
@@ -76,12 +82,13 @@ export default function RootLayout({ children }: RootLayoutProps) {
           </div>
         </header>
 
-        {/* Main content */}
+        {/* Main app content */}
         <main className="min-h-screen">{children}</main>
 
         {/* Global footer */}
         <footer className="border-t border-slate-200 bg-white/90">
           <div className="mx-auto flex max-w-6xl flex-col gap-6 px-4 py-8 md:flex-row md:items-center md:justify-between">
+
             <div>
               <div className="text-sm font-semibold text-slate-800">
                 Cookwise.ai
@@ -95,6 +102,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
             </div>
 
             <div className="flex flex-wrap gap-6 text-sm text-slate-600">
+
               <div className="flex flex-col gap-1">
                 <div className="text-xs font-semibold uppercase tracking-wide text-slate-400">
                   Legal
@@ -136,9 +144,11 @@ export default function RootLayout({ children }: RootLayoutProps) {
                   Branding
                 </Link>
               </div>
+
             </div>
           </div>
         </footer>
+
       </body>
     </html>
   );
