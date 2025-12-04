@@ -1,4 +1,5 @@
 import "./globals.css";
+import React from "react";
 import Link from "next/link";
 
 export const metadata = {
@@ -6,71 +7,95 @@ export const metadata = {
   description: "AI-powered grocery and meal optimization.",
 };
 
-export default function RootLayout({ children }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="en">
-      <body className="bg-white text-slate-900 antialiased">
+      <body className="bg-white text-slate-900 antialiased flex flex-col min-h-screen">
 
-        {/* ---------- TOP NAVIGATION ---------- */}
-        <header className="border-b bg-white/90 backdrop-blur-sm">
-          <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+        {/* ================================
+            TOP NAVIGATION
+        =================================== */}
+        <header className="w-full border-b border-slate-200 bg-white/80 backdrop-blur-md">
+          <nav className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
 
             {/* Logo */}
-            <Link href="/" className="text-lg font-semibold text-slate-800">
+            <Link href="/" className="text-xl font-semibold">
               Cookwise.ai
             </Link>
 
-            {/* Navigation Links */}
-            <nav className="flex items-center gap-6 text-sm text-slate-600">
-              <Link href="/partners" className="hover:text-slate-900">Partners</Link>
-              <Link href="/developers" className="hover:text-slate-900">Developers</Link>
-              <Link href="/contact" className="hover:text-slate-900">Contact</Link>
-            </nav>
-          </div>
+            {/* Nav Links */}
+            <div className="flex items-center gap-8 text-sm font-medium text-slate-600">
+              <Link href="/partners" className="hover:text-slate-900 transition">Partners</Link>
+              <Link href="/developers" className="hover:text-slate-900 transition">Developers</Link>
+              <Link href="/contact" className="hover:text-slate-900 transition">Contact</Link>
+            </div>
+          </nav>
         </header>
 
-        {/* ---------- PAGE CONTENT ---------- */}
-        <main>{children}</main>
+        {/* ================================
+            PAGE CONTENT
+        =================================== */}
+        <main className="flex-grow">
+          {children}
+        </main>
 
-        {/* ---------- CALAI-STYLE FOOTER ---------- */}
-        <footer className="border-t bg-gradient-to-b from-white to-slate-50 mt-20">
-          <div className="max-w-7xl mx-auto px-6 py-14 grid grid-cols-1 md:grid-cols-3 gap-10">
-            
-            {/* Branding */}
+        {/* ================================
+            GLOBAL FOOTER (CalAI-Style)
+        =================================== */}
+        <footer className="w-full border-t border-slate-200 bg-slate-50">
+          <div className="max-w-7xl mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-3 gap-10">
+
+            {/* Column 1 – Logo + tagline */}
             <div>
-              <h3 className="text-xl font-semibold text-slate-800">Cookwise.ai</h3>
-              <p className="text-slate-500 mt-1 text-sm">
-                AI-powered grocery and meal optimization.
+              <h3 className="text-lg font-semibold">Cookwise.ai</h3>
+              <p className="mt-2 text-sm text-slate-500">
+                AI-powered meal and grocery optimization.
               </p>
             </div>
 
-            {/* Legal Links */}
+            {/* Column 2 – Legal */}
             <div>
-              <h4 className="text-sm font-semibold text-slate-700 mb-3">Legal</h4>
-              <ul className="space-y-2 text-sm">
-                <li><Link href="/privacy" className="text-slate-500 hover:text-slate-700">Privacy Policy</Link></li>
-                <li><Link href="/terms" className="text-slate-500 hover:text-slate-700">Terms of Service</Link></li>
-                <li><Link href="/cookies" className="text-slate-500 hover:text-slate-700">Cookie Policy</Link></li>
-                <li><Link href="/dpa" className="text-slate-500 hover:text-slate-700">Data Processing Agreement</Link></li>
-                <li><Link href="/api-terms" className="text-slate-500 hover:text-slate-700">API Terms</Link></li>
+              <h4 className="text-sm font-semibold mb-3">Legal</h4>
+              <ul className="flex flex-col gap-2 text-sm text-slate-600">
+                <li><Link href="/privacy" className="hover:text-slate-900">Privacy Policy</Link></li>
+                <li><Link href="/terms" className="hover:text-slate-900">Terms of Service</Link></li>
+                <li><Link href="/cookies" className="hover:text-slate-900">Cookies</Link></li>
+                <li><Link href="/dpa" className="hover:text-slate-900">Data Processing Addendum</Link></li>
+                <li><Link href="/api-terms" className="hover:text-slate-900">API Terms</Link></li>
+                <li><Link href="/branding" className="hover:text-slate-900">Branding</Link></li>
               </ul>
             </div>
 
-            {/* Company Links */}
+            {/* Column 3 – Company */}
             <div>
-              <h4 className="text-sm font-semibold text-slate-700 mb-3">Company</h4>
-              <ul className="space-y-2 text-sm">
-                <li><Link href="/partners" className="text-slate-500 hover:text-slate-700">Partners</Link></li>
-                <li><Link href="/affiliates" className="text-slate-500 hover:text-slate-700">Affiliates</Link></li>
-                <li><Link href="/branding" className="text-slate-500 hover:text-slate-700">Branding</Link></li>
-                <li><Link href="/contact" className="text-slate-500 hover:text-slate-700">Contact</Link></li>
+              <h4 className="text-sm font-semibold mb-3">Company</h4>
+              <ul className="flex flex-col gap-2 text-sm text-slate-600">
+                <li>
+                  <Link href="/contact" className="hover:text-slate-900">
+                    Contact
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/affiliates" className="hover:text-slate-900">
+                    Affiliates
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/partners" className="hover:text-slate-900">
+                    Partners
+                  </Link>
+                </li>
               </ul>
             </div>
 
           </div>
 
           {/* Bottom bar */}
-          <div className="border-t py-4 text-center text-xs text-slate-400">
+          <div className="border-t border-slate-200 py-4 text-center text-xs text-slate-500">
             © {new Date().getFullYear()} Cookwise.ai. All rights reserved.
           </div>
         </footer>
