@@ -32,7 +32,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
               />
             </Link>
 
-            {/* Center navigation — now bold like screenshot */}
+            {/* Center navigation — bold */}
             <nav className="hidden md:flex items-center gap-10 text-[15px] font-semibold text-slate-800">
               <Link href="#hero" className="hover:text-slate-900">Home</Link>
               <Link href="#how-it-works" className="hover:text-slate-900">How it works</Link>
@@ -40,7 +40,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
               <Link href="#pricing" className="hover:text-slate-900">Pricing</Link>
             </nav>
 
-            {/* Real App Store + Google Play buttons */}
+            {/* App Store & Google Play buttons */}
             <div className="hidden md:flex items-center gap-4">
               <img
                 src="/appstore-badge.png"
@@ -59,11 +59,11 @@ export default function RootLayout({ children }: RootLayoutProps) {
         {/* Main content */}
         <main className="min-h-screen">{children}</main>
 
-        {/* Global Footer */}
+        {/* Footer */}
         <footer className="border-t border-slate-200 bg-white/90">
           <div className="mx-auto flex max-w-6xl flex-col gap-6 px-4 py-8 md:flex-row md:items-center md:justify-between">
 
-            {/* Left side */}
+            {/* Footer Left */}
             <div>
               <div className="text-sm font-semibold text-slate-800">
                 Cookwise.ai
@@ -76,7 +76,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
               </div>
             </div>
 
-            {/* Right side links */}
+            {/* Footer Right */}
             <div className="flex flex-wrap gap-6 text-sm text-slate-600">
 
               <div className="flex flex-col gap-1">
@@ -109,3 +109,4 @@ export default function RootLayout({ children }: RootLayoutProps) {
     </html>
   );
 }
+
