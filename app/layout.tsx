@@ -40,17 +40,17 @@ export default function RootLayout({ children }: RootLayoutProps) {
               <Link href="#pricing" className="hover:text-slate-900">Pricing</Link>
             </nav>
 
-            {/* App badges (correct filenames) */}
+            {/* App Store + Google Play badges (equal size) */}
             <div className="hidden md:flex items-center gap-4">
               <img
                 src="/appstore.png"
                 alt="Download on the App Store"
-                className="h-10 w-auto select-none"
+                className="h-12 w-auto object-contain select-none"
               />
               <img
                 src="/googleplay.png"
                 alt="Get it on Google Play"
-                className="h-10 w-auto select-none"
+                className="h-12 w-auto object-contain select-none"
               />
             </div>
           </div>
