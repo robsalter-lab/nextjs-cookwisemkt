@@ -1,4 +1,3 @@
-// app/page.tsx
 "use client";
 
 import Image from "next/image";
@@ -17,8 +16,8 @@ function FadeInSection({ children, delay = 0, className = "" }: FadeInProps) {
   useEffect(() => {
     if (!ref.current) return;
     const observer = new IntersectionObserver(
-      entries => {
-        entries.forEach(entry => {
+      (entries) => {
+        entries.forEach((entry) => {
           if (entry.isIntersecting) {
             setVisible(true);
             observer.disconnect();
@@ -55,11 +54,11 @@ export default function HomePage() {
         id="hero"
         className="relative overflow-hidden border-b border-slate-200/60"
       >
-        {/* 🔥 FIXED: Removed top padding so hero touches the transparent header */}
-        <div className="mx-auto flex max-w-6xl flex-col items-center gap-12 px-4 pb-16 lg:flex-row lg:items-stretch">
+        <div className="mx-auto flex max-w-6xl flex-col items-center gap-12 px-4 pb-16 pt-24 lg:flex-row lg:items-stretch">
 
-          {/* LEFT SIDE */}
+          {/* Left Side Copy */}
           <FadeInSection className="w-full lg:w-1/2">
+
             <div className="inline-flex items-center gap-2 rounded-full border border-emerald-100 bg-emerald-50 px-3 py-1 text-xs font-medium text-emerald-700 mb-4">
               <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
               Loved by busy households and deal hunters
@@ -100,6 +99,7 @@ export default function HomePage() {
                   Based on early testers using Publix / Kroger circulars.
                 </div>
               </div>
+
               <div className="rounded-2xl bg-white/70 p-3 shadow-sm shadow-slate-900/5">
                 <div className="text-[11px] font-medium text-slate-500">
                   Time saved
@@ -112,14 +112,15 @@ export default function HomePage() {
                 </div>
               </div>
             </div>
+
           </FadeInSection>
 
-          {/* RIGHT SIDE PHONES */}
-          <FadeInSection
-            delay={200}
-            className="relative w-full max-w-sm lg:w-1/2 lg:max-w-none"
-          >
+          {/* Right Side Phone Stack */}
+          <FadeInSection delay={200} className="relative w-full max-w-sm lg:w-1/2 lg:max-w-none">
+
             <div className="relative mx-auto h-[520px] w-[260px] sm:h-[560px] sm:w-[280px]">
+
+              {/* MAIN PHONE */}
               <div className="absolute inset-0 rounded-[38px] bg-gradient-to-b from-slate-900 to-slate-800 shadow-2xl shadow-slate-900/40">
                 <div className="absolute inset-[6px] rounded-[32px] bg-black/90" />
                 <div className="absolute inset-[6px] rounded-[32px] overflow-hidden">
@@ -133,6 +134,7 @@ export default function HomePage() {
                 </div>
               </div>
 
+              {/* SECONDARY PHONE LEFT */}
               <div className="absolute -left-28 bottom-10 hidden h-72 w-40 rotate-[-10deg] rounded-[32px] bg-slate-900/90 shadow-xl shadow-slate-900/40 sm:block">
                 <div className="absolute inset-[5px] rounded-[26px] overflow-hidden bg-black">
                   <Image
@@ -144,6 +146,7 @@ export default function HomePage() {
                 </div>
               </div>
 
+              {/* SECONDARY PHONE RIGHT */}
               <div className="absolute -right-24 top-10 hidden h-64 w-40 rotate-[12deg] rounded-[32px] bg-slate-900/90 shadow-xl shadow-slate-900/40 sm:block">
                 <div className="absolute inset-[5px] rounded-[26px] overflow-hidden bg-black">
                   <Image
@@ -155,17 +158,16 @@ export default function HomePage() {
                 </div>
               </div>
 
+              {/* Glow */}
               <div className="pointer-events-none absolute -inset-10 -z-10 bg-gradient-to-b from-emerald-300/40 via-emerald-200/0 to-transparent blur-2xl" />
             </div>
+
           </FadeInSection>
         </div>
       </section>
 
       {/* HOW IT WORKS */}
-      <section
-        id="how-it-works"
-        className="mx-auto max-w-6xl px-4 py-14 sm:py-16"
-      >
+      <section id="how-it-works" className="mx-auto max-w-6xl px-4 py-14 sm:py-16">
         <FadeInSection className="text-center">
           <h2 className="text-2xl font-semibold tracking-tight text-slate-900 sm:text-3xl">
             How Cookwise.ai works
@@ -180,47 +182,42 @@ export default function HomePage() {
         <div className="mt-10 grid gap-6 md:grid-cols-3">
           <FadeInSection delay={50}>
             <div className="h-full rounded-3xl bg-white/80 p-5 shadow-sm shadow-slate-900/5">
-              <div className="mb-3 inline-flex h-9 w-9 items-center justify-center rounded-2xl bg-emerald-50 text-emerald-700 text-sm font-semibold">
+              <div className="mb-3 flex h-9 w-9 items-center justify-center rounded-2xl bg-emerald-50 text-emerald-700 text-sm font-semibold">
                 1
               </div>
               <h3 className="text-sm font-semibold text-slate-900">
                 Connect your area & stores
               </h3>
               <p className="mt-2 text-sm text-slate-600">
-                Choose your region, preferred stores, and shopping mode (in-
-                store or delivery). Cookwise watches those circulars for you.
+                Choose your region, preferred stores, and shopping mode.
               </p>
             </div>
           </FadeInSection>
 
           <FadeInSection delay={120}>
             <div className="h-full rounded-3xl bg-white/80 p-5 shadow-sm shadow-slate-900/5">
-              <div className="mb-3 inline-flex h-9 w-9 items-center justify-center rounded-2xl bg-emerald-50 text-emerald-700 text-sm font-semibold">
+              <div className="mb-3 flex h-9 w-9 items-center justify-center rounded-2xl bg-emerald-50 text-emerald-700 text-sm font-semibold">
                 2
               </div>
               <h3 className="text-sm font-semibold text-slate-900">
                 Sync pantry & choose meals
               </h3>
               <p className="mt-2 text-sm text-slate-600">
-                Scan receipts or add pantry items in a couple taps. Then pick
-                dinners you actually want to cook from our deal-aware recipe
-                library.
+                Scan receipts or add pantry items in a couple taps.
               </p>
             </div>
           </FadeInSection>
 
           <FadeInSection delay={190}>
             <div className="h-full rounded-3xl bg-white/80 p-5 shadow-sm shadow-slate-900/5">
-              <div className="mb-3 inline-flex h-9 w-9 items-center justify-center rounded-2xl bg-emerald-50 text-emerald-700 text-sm font-semibold">
+              <div className="mb-3 flex h-9 w-9 items-center justify-center rounded-2xl bg-emerald-50 text-emerald-700 text-sm font-semibold">
                 3
               </div>
               <h3 className="text-sm font-semibold text-slate-900">
                 Auto-build a smart shopping list
               </h3>
               <p className="mt-2 text-sm text-slate-600">
-                Cookwise bundles overlapping ingredients, leans on weekly
-                specials, and shows the total before you ever step into the
-                store.
+                Cookwise bundles overlapping ingredients and compares deals.
               </p>
             </div>
           </FadeInSection>
@@ -242,8 +239,7 @@ export default function HomePage() {
                 Smart cart builder
               </h3>
               <p className="mt-2 text-sm text-slate-600">
-                Turn your selected meals into a structured cart grouped by
-                aisle…
+                Structured cart grouped by aisle with estimated totals.
               </p>
             </div>
           </FadeInSection>
@@ -254,7 +250,7 @@ export default function HomePage() {
                 Deal-aware recipes
               </h3>
               <p className="mt-2 text-sm text-slate-600">
-                Recipes automatically lean on items that are on sale…
+                Recipes lean on items on sale this week.
               </p>
             </div>
           </FadeInSection>
@@ -265,7 +261,40 @@ export default function HomePage() {
                 Pantry-first planning
               </h3>
               <p className="mt-2 text-sm text-slate-600">
-                Cookwise subtracts what you already own…
+                Subtracts what you already own to stop overspending.
+              </p>
+            </div>
+          </FadeInSection>
+
+          <FadeInSection delay={250}>
+            <div className="h-full rounded-3xl bg-white/80 p-5 shadow-sm shadow-slate-900/5">
+              <h3 className="text-sm font-semibold text-slate-900">
+                Weekly meal planner
+              </h3>
+              <p className="mt-2 text-sm text-slate-600">
+                Visual weekly calendar with leftovers handled automatically.
+              </p>
+            </div>
+          </FadeInSection>
+
+          <FadeInSection delay={320}>
+            <div className="h-full rounded-3xl bg-white/80 p-5 shadow-sm shadow-slate-900/5">
+              <h3 className="text-sm font-semibold text-slate-900">
+                In-store friendly mode
+              </h3>
+              <p className="mt-2 text-sm text-slate-600">
+                Large tappable checklist for easy aisle navigation.
+              </p>
+            </div>
+          </FadeInSection>
+
+          <FadeInSection delay={390}>
+            <div className="h-full rounded-3xl bg-white/80 p-5 shadow-sm shadow-slate-900/5">
+              <h3 className="text-sm font-semibold text-slate-900">
+                Ready for Instacart & partners
+              </h3>
+              <p className="mt-2 text-sm text-slate-600">
+                Deep-link into retailers as partner APIs go live.
               </p>
             </div>
           </FadeInSection>
@@ -276,11 +305,52 @@ export default function HomePage() {
       <section id="pricing" className="mx-auto max-w-6xl px-4 pb-20 sm:pb-24">
         <FadeInSection>
           <div className="overflow-hidden rounded-3xl bg-slate-900 text-slate-50 shadow-xl shadow-slate-900/40">
-            {/* content unchanged */}
+            <div className="grid gap-8 px-6 py-8 sm:px-8 sm:py-10 md:grid-cols-[1.3fr,1fr] md:items-center">
+              <div>
+                <div className="inline-flex items-center gap-2 rounded-full bg-emerald-500/15 px-3 py-1 text-[11px] font-medium text-emerald-200">
+                  Early access pricing
+                </div>
+                <h2 className="mt-4 text-2xl font-semibold tracking-tight sm:text-3xl">
+                  Start free while we&apos;re in beta
+                </h2>
+                <p className="mt-3 text-sm sm:text-base text-slate-200/90 max-w-xl">
+                  Launching with a small group of early households. Lock in
+                  discounted pricing for life and help shape our roadmap.
+                </p>
+
+                <ul className="mt-4 space-y-2 text-sm text-slate-200/90">
+                  <li>• Generate full weeks of meals from weekly deals.</li>
+                  <li>• Build optimized shopping lists in a few taps.</li>
+                  <li>• Export to Instacart as partner support rolls out.</li>
+                </ul>
+              </div>
+
+              <div className="rounded-2xl bg-slate-800/80 p-5">
+                <div className="text-xs font-medium uppercase tracking-[0.16em] text-slate-300">
+                  Beta price
+                </div>
+                <div className="mt-2 flex items-baseline gap-1 text-3xl font-semibold">
+                  <span>$2.99</span>
+                  <span className="text-xs font-normal text-slate-300">
+                    / week
+                  </span>
+                </div>
+                <p className="mt-2 text-xs text-slate-300">
+                  Or roughly one grocery-store coffee per month.
+                </p>
+
+                <button className="mt-5 inline-flex w-full items-center justify-center rounded-full bg-emerald-500 px-4 py-2.5 text-sm font-semibold text-slate-900 shadow-lg shadow-emerald-500/30 hover:bg-emerald-400">
+                  Join the waitlist
+                </button>
+
+                <p className="mt-3 text-[11px] text-slate-300">
+                  No charge until public launch. Cancel anytime.
+                </p>
+              </div>
+            </div>
           </div>
         </FadeInSection>
       </section>
-
     </div>
   );
 }
