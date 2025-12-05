@@ -3,62 +3,22 @@
 import Image from "next/image";
 import React, { useEffect, useRef, useState } from "react";
 
-// Removing external dependency to fix build error
-// import { Linkedin, Instagram, Twitter } from "lucide-react"; 
-
-// --- Inline Icons ---
+// --- Clean Social Icons (Cal.ai style) ---
 const LinkedinIcon = ({ className }: { className?: string }) => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    width="20"
-    height="20"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    className={className}
-  >
-    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
-    <rect width="4" height="12" x="2" y="9" />
-    <circle cx="4" cy="4" r="2" />
+  <svg viewBox="0 0 24 24" fill="currentColor" className={className}>
+    <path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17C2 21.328 2.671 22 3.5 22h17c.829 0 1.5-.672 1.5-1.5v-17c0-.828-.671-1.5-1.5-1.5zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93-1.07 0-1.62.76-1.62 2.22V19h-3v-9h3v1.38a3.25 3.25 0 013-1.63c2.03 0 3 1.25 3 3.5z" />
   </svg>
 );
 
 const InstagramIcon = ({ className }: { className?: string }) => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    width="20"
-    height="20"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    className={className}
-  >
-    <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
-    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
-    <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
+  <svg viewBox="0 0 24 24" fill="currentColor" className={className}>
+    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
   </svg>
 );
 
 const TwitterIcon = ({ className }: { className?: string }) => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    width="20"
-    height="20"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    className={className}
-  >
-    <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-12.7 14.6-5.5-4.6 1.1-11 3.6-12.3-1.6.4-2.8-2.3-2.3-3.7 3.2 2.7 7.6 2.5 8.3-.3.1-3.6 5.8-5.3 7-1.9 1.4-.4 2.8-1 2.8-1s-1 1.7-2.3 2.6c1.3-.1 2.5-.5 2.5-.5z" />
+  <svg viewBox="0 0 24 24" fill="currentColor" className={className}>
+    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
   </svg>
 );
 
@@ -310,38 +270,37 @@ export default function HomePage() {
         </FadeInSection>
       </section>
 
-      {/* ===== CAL.AI STYLE FOOTER ===== */}
-      <footer className="bg-[#FDFBF6] pt-20 pb-10">
+      {/* ===== CAL.AI STYLE FOOTER (COMPRESSED) ===== */}
+      <footer className="bg-[#FDFBF6] py-12">
         <div className="mx-auto max-w-7xl px-6">
           
-          {/* Top Section: Flex Container with Side-by-Side Links */}
-          <div className="flex flex-col lg:flex-row lg:justify-between gap-12 lg:gap-20">
+          {/* Top Section */}
+          <div className="flex flex-col lg:flex-row lg:justify-between gap-10 lg:gap-20">
             
             {/* Column 1: Brand & Downloads */}
             <div className="flex flex-col items-start max-w-sm">
-              <div className="flex items-center gap-2 mb-6">
+              <div className="flex items-center gap-2 mb-4">
                 <Image src="/logo.png" alt="Cookwise Logo" width={50} height={50} className="object-contain" />
                 <span className="text-xl font-bold text-slate-900">Cookwise.ai</span>
               </div>
               
-              <p className="text-sm font-medium text-slate-500 mb-4">Download Cookwise.ai</p>
+              <p className="text-sm font-medium text-slate-500 mb-3">Download Cookwise.ai</p>
               
-              <div className="flex flex-col sm:flex-row gap-3">
+              <div className="flex flex-col sm:flex-row gap-2">
                 <a href="#" className="hover:opacity-80 transition-opacity">
-                  <Image src="/appstore.png" alt="Download on App Store" width={140} height={42} className="h-[42px] w-auto" />
+                  <Image src="/appstore.png" alt="Download on App Store" width={130} height={40} className="h-[40px] w-auto" />
                 </a>
                 <a href="#" className="hover:opacity-80 transition-opacity">
-                  <Image src="/googleplay.png" alt="Get it on Google Play" width={140} height={42} className="h-[42px] w-auto" />
+                  <Image src="/googleplay.png" alt="Get it on Google Play" width={130} height={40} className="h-[40px] w-auto" />
                 </a>
               </div>
             </div>
 
-            {/* Links Columns: Grid 2 cols to save vertical space on mobile */}
-            <div className="grid grid-cols-2 gap-12 sm:gap-24 w-full lg:w-auto">
-              {/* Column 2: Legal Links */}
+            {/* Links Columns: Compact & Clean */}
+            <div className="grid grid-cols-2 gap-10 sm:gap-24 w-full lg:w-auto">
               <div>
-                <h3 className="font-bold text-slate-900 mb-6">Legal</h3>
-                <ul className="space-y-4 text-sm font-medium text-slate-500">
+                <h3 className="font-bold text-slate-900 mb-4">Legal</h3>
+                <ul className="space-y-2 text-sm font-medium text-slate-500">
                   <li><a href="/privacy" className="hover:text-emerald-600 transition-colors">Privacy Policy</a></li>
                   <li><a href="/terms" className="hover:text-emerald-600 transition-colors">Terms of use</a></li>
                   <li><a href="/cookies" className="hover:text-emerald-600 transition-colors">Cookies Policy</a></li>
@@ -350,10 +309,9 @@ export default function HomePage() {
                 </ul>
               </div>
 
-              {/* Column 3: Company Links */}
               <div>
-                <h3 className="font-bold text-slate-900 mb-6">Company</h3>
-                <ul className="space-y-4 text-sm font-medium text-slate-500">
+                <h3 className="font-bold text-slate-900 mb-4">Company</h3>
+                <ul className="space-y-2 text-sm font-medium text-slate-500">
                   <li><a href="/contact" className="hover:text-emerald-600 transition-colors">Contact</a></li>
                   <li><a href="/partners" className="hover:text-emerald-600 transition-colors">Partners</a></li>
                   <li><a href="/affiliates" className="hover:text-emerald-600 transition-colors">Affiliates</a></li>
@@ -364,21 +322,21 @@ export default function HomePage() {
             </div>
           </div>
 
-          {/* Bottom Section: Copyright & Socials */}
-          <div className="mt-20 border-t border-slate-200 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-sm text-slate-400">
+          {/* Bottom Section: Compact Divider */}
+          <div className="mt-12 border-t border-slate-200 pt-6 flex flex-col md:flex-row justify-between items-center gap-4">
+            <p className="text-xs text-slate-400">
               © Copyright {new Date().getFullYear()}, All rights reserved
             </p>
             
-            <div className="flex gap-6">
-              <a href="#" className="text-slate-900 hover:text-emerald-600 transition-colors">
-                <LinkedinIcon />
+            <div className="flex gap-4">
+              <a href="#" className="text-slate-400 hover:text-slate-900 transition-colors">
+                <LinkedinIcon className="w-5 h-5" />
               </a>
-              <a href="#" className="text-slate-900 hover:text-emerald-600 transition-colors">
-                <InstagramIcon />
+              <a href="#" className="text-slate-400 hover:text-slate-900 transition-colors">
+                <InstagramIcon className="w-5 h-5" />
               </a>
-              <a href="#" className="text-slate-900 hover:text-emerald-600 transition-colors">
-                <TwitterIcon />
+              <a href="#" className="text-slate-400 hover:text-slate-900 transition-colors">
+                <TwitterIcon className="w-5 h-5" />
               </a>
             </div>
           </div>
