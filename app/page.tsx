@@ -49,11 +49,11 @@ export default function HomePage() {
   return (
     <div className="bg-gradient-to-b from-[#FDFBF6] via-[#F7FAFF] to-[#F3F5FF] text-slate-900">
 
-      {/* HERO */}
+      {/* ===== HERO ===== */}
       <section id="hero" className="relative overflow-hidden border-b border-slate-200/60">
         <div className="mx-auto flex max-w-6xl flex-col items-center gap-12 px-4 pb-16 pt-24 lg:flex-row lg:items-stretch">
-
-          {/* Left copy */}
+          
+          {/* LEFT COPY */}
           <FadeInSection className="w-full lg:w-1/2">
             <div className="inline-flex items-center gap-2 rounded-full border border-emerald-100 bg-emerald-50 px-3 py-1 text-xs font-medium text-emerald-700 mb-4">
               <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
@@ -77,7 +77,9 @@ export default function HomePage() {
               <button className="inline-flex items-center justify-center rounded-full bg-slate-900 px-6 py-2.5 text-sm font-semibold text-white shadow-lg shadow-slate-900/15 hover:bg-slate-800">
                 Join the waitlist
               </button>
-              <div className="text-xs text-slate-500">Free while in beta. No credit card required.</div>
+              <div className="text-xs text-slate-500">
+                Free while in beta. No credit card required.
+              </div>
             </div>
 
             {/* Stats */}
@@ -96,7 +98,7 @@ export default function HomePage() {
             </div>
           </FadeInSection>
 
-          {/* Phones */}
+          {/* RIGHT PHONES */}
           <FadeInSection delay={200} className="relative w-full max-w-sm lg:w-1/2 lg:max-w-none">
             <div className="relative mx-auto h-[520px] w-[260px] sm:h-[560px] sm:w-[280px]">
 
@@ -117,7 +119,7 @@ export default function HomePage() {
               {/* Right phone */}
               <div className="absolute -right-24 top-10 hidden h-64 w-40 rotate-[12deg] rounded-[32px] bg-slate-900/90 shadow-xl sm:block">
                 <div className="absolute inset-[5px] rounded-[26px] overflow-hidden">
-                  <Image src="/screen-planner.png" alt="Meal planner" fill className="object-cover" />
+                  <Image src="/screen-planner.png" alt="Planner" fill className="object-cover" />
                 </div>
               </div>
 
@@ -127,7 +129,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* HOW IT WORKS */}
+      {/* ===== HOW IT WORKS ===== */}
       <section id="how-it-works" className="mx-auto max-w-6xl px-4 py-16">
         <FadeInSection className="text-center">
           <h2 className="text-2xl font-semibold sm:text-3xl">How Cookwise.ai works</h2>
@@ -149,7 +151,7 @@ export default function HomePage() {
                 <p className="mt-2 text-sm text-slate-600">
                   {step === 1 && "Choose your region and preferred stores."}
                   {step === 2 && "Scan receipts or add pantry items."}
-                  {step === 3 && "Cookwise bundles ingredients & compares deals."}
+                  {step === 3 && "Cookwise bundles overlapping ingredients & compares deals."}
                 </p>
               </div>
             </FadeInSection>
@@ -157,7 +159,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* FEATURES */}
+      {/* ===== FEATURES ===== */}
       <section id="features" className="mx-auto max-w-6xl px-4 pb-16">
         <FadeInSection className="mb-8 text-center">
           <h2 className="text-2xl font-semibold sm:text-3xl">Everything you need</h2>
@@ -189,13 +191,13 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* PRICING */}
+      {/* ===== PRICING ===== */}
       <section id="pricing" className="mx-auto max-w-6xl px-4 pb-24">
         <FadeInSection>
           <div className="rounded-3xl bg-slate-900 text-slate-50 shadow-xl overflow-hidden">
             <div className="grid gap-8 px-6 py-10 md:grid-cols-[1.3fr,1fr] md:items-center">
 
-              {/* Left copy */}
+              {/* LEFT COPY */}
               <div>
                 <div className="inline-flex items-center gap-2 rounded-full bg-emerald-500/20 px-3 py-1 text-[11px] font-medium text-emerald-200">
                   Early access pricing
@@ -216,7 +218,7 @@ export default function HomePage() {
                 </ul>
               </div>
 
-              {/* Pricing box */}
+              {/* PRICING CARD */}
               <div className="rounded-2xl bg-slate-800/80 p-5">
                 <div className="text-xs uppercase tracking-wider text-slate-300">Beta Price</div>
                 <div className="mt-2 flex items-baseline gap-1 text-3xl font-semibold">
@@ -234,17 +236,17 @@ export default function HomePage() {
 
                 <p className="mt-3 text-[11px] text-slate-300">Cancel anytime.</p>
               </div>
-
             </div>
           </div>
         </FadeInSection>
       </section>
 
-      {/* FOOTER — STYLE A (CAL.AI FORMAT) */}
+      {/* ===== FOOTER (UPDATED WITH FULL LEGAL SECTION) ===== */}
       <footer className="border-t border-slate-200/40 bg-white/40 backdrop-blur-sm py-16">
+        
         <div className="mx-auto max-w-6xl px-4 grid gap-12 md:grid-cols-3">
 
-          {/* Column 1 — Logo + app badges */}
+          {/* --- Column 1: Logo + Stores --- */}
           <div>
             <Image src="/logo.png" alt="Cookwise.ai" width={60} height={60} className="mb-4" />
             <p className="text-sm font-medium text-slate-700 mb-2">Download Cookwise.ai</p>
@@ -255,25 +257,33 @@ export default function HomePage() {
             </div>
           </div>
 
-          {/* Column 2 — Legal */}
+          {/* --- Column 2: LEGAL --- */}
           <div>
             <h3 className="font-semibold text-slate-900 mb-3">Legal</h3>
             <ul className="space-y-2 text-sm text-slate-600">
               <li><a href="/privacy" className="hover:text-slate-900">Privacy Policy</a></li>
               <li><a href="/terms" className="hover:text-slate-900">Terms of Use</a></li>
+              <li><a href="/cookies" className="hover:text-slate-900">Cookies Policy</a></li>
+              <li><a href="/dpa" className="hover:text-slate-900">Data Processing Addendum</a></li>
+              <li><a href="/api-terms" className="hover:text-slate-900">API Terms</a></li>
             </ul>
           </div>
 
-          {/* Column 3 — Company */}
+          {/* --- Column 3: COMPANY --- */}
           <div>
             <h3 className="font-semibold text-slate-900 mb-3">Company</h3>
             <ul className="space-y-2 text-sm text-slate-600">
               <li><a href="/contact" className="hover:text-slate-900">Contact</a></li>
+              <li><a href="/partners" className="hover:text-slate-900">Partners</a></li>
+              <li><a href="/affiliates" className="hover:text-slate-900">Affiliates</a></li>
+              <li><a href="/branding" className="hover:text-slate-900">Branding</a></li>
+              <li><a href="/developers" className="hover:text-slate-900">Developers</a></li>
             </ul>
           </div>
+
         </div>
 
-        {/* Social icons */}
+        {/* Social Icons */}
         <div className="mt-10 flex justify-center gap-6 text-xl text-slate-700">
           <a href="#" className="hover:text-slate-900">🔗</a>
           <a href="#" className="hover:text-slate-900">📸</a>
