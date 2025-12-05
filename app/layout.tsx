@@ -18,8 +18,8 @@ export default function RootLayout({
       <body className="min-h-screen bg-gradient-to-b from-[#FDFBF6] via-[#F7FAFF] to-[#F3F5FF] text-slate-900">
 
         {/* HEADER */}
-        {/* Changed from 'fixed' to 'w-full' so it stays static at the top */}
-        <header className="w-full z-50 bg-transparent">
+        {/* Added bg-[#FDFBF6] to match the body's starting gradient color exactly */}
+        <header className="w-full z-50 bg-[#FDFBF6]">
           <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-6">
 
             {/* LOGO */}
