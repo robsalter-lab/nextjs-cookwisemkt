@@ -87,7 +87,6 @@ export default function HomePage() {
             </p>
 
             <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
-              {/* UPDATED BUTTON: Removed waitlist text */}
               <button className="inline-flex items-center justify-center rounded-full bg-slate-900 px-8 py-3.5 text-sm font-semibold text-white shadow-xl shadow-emerald-500/20 hover:bg-slate-800 hover:scale-105 transition-all">
                 Get Started
               </button>
@@ -211,7 +210,6 @@ export default function HomePage() {
 
             <div className="relative z-10 flex flex-col md:flex-row md:items-center md:justify-between gap-8">
               <div className="md:w-1/2">
-                {/* REMOVED: Beta Access Badge */}
                 
                 <h2 className="text-3xl font-bold text-white sm:text-4xl">
                   Start saving today.
@@ -229,7 +227,6 @@ export default function HomePage() {
                 </div>
                 <p className="text-xs text-slate-400 mt-2 mb-6">Billed monthly. Cancel anytime.</p>
                 
-                {/* UPDATED BUTTON: Removed Waitlist */}
                 <button className="w-full rounded-xl bg-emerald-500 py-3 text-sm font-bold text-slate-900 hover:bg-emerald-400 transition-colors">
                   Subscribe Now
                 </button>
@@ -247,9 +244,9 @@ export default function HomePage() {
             
             {/* Column 1: Brand & Downloads */}
             <div className="flex flex-col items-start max-w-sm">
-              <div className="flex items-center gap-2 mb-2">
-                <Image src="/logo.png" alt="Cookwise Logo" width={40} height={40} className="object-contain h-10 w-auto" />
-                <span className="text-lg font-bold text-slate-900">Cookwise.ai</span>
+              {/* UPDATED LOGO SIZE AND REMOVED TEXT SPAN */}
+              <div className="mb-2">
+                <Image src="/logo.png" alt="Cookwise Logo" width={150} height={50} className="object-contain h-20 w-auto" />
               </div>
               
               <div className="flex flex-row gap-2 mt-2">
