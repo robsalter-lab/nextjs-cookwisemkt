@@ -18,7 +18,8 @@ export default function RootLayout({
       <body className="min-h-screen bg-gradient-to-b from-[#FDFBF6] via-[#F7FAFF] to-[#F3F5FF] text-slate-900">
 
         {/* HEADER */}
-        <header className="fixed top-0 left-0 right-0 z-50 bg-transparent backdrop-blur-[2px]">
+        {/* Changed from 'fixed' to 'w-full' so it stays static at the top */}
+        <header className="w-full z-50 bg-transparent">
           <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-6">
 
             {/* LOGO */}
@@ -40,7 +41,7 @@ export default function RootLayout({
               <Link href="#pricing" className="hover:text-slate-900 transition-colors">Pricing</Link>
             </nav>
 
-            {/* STORE BADGES (Restored) */}
+            {/* STORE BADGES */}
             <div className="hidden sm:flex items-center gap-3">
               <Link href="#" className="transition-opacity hover:opacity-80">
                 <Image
