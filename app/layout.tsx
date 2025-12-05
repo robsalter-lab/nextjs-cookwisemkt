@@ -1,3 +1,4 @@
+// app/layout.tsx
 import "./globals.css";
 import type { Metadata } from "next";
 import Image from "next/image";
@@ -8,63 +9,63 @@ export const metadata: Metadata = {
   description: "Smart grocery shopping with automatic deal-aware carts.",
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="en">
       <body className="min-h-screen bg-gradient-to-b from-[#FDFBF6] via-[#F7FAFF] to-[#F3F5FF] text-slate-900">
 
-        {/* ------------------------------------------------ */}
-        {/* TRUE TRANSPARENT FLOATING HEADER LIKE CAL.AI */}
-        {/* ------------------------------------------------ */}
-        <header className="fixed top-0 left-0 right-0 z-50 bg-transparent backdrop-blur-sm">
-          <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-5">
+        {/* -------------------------------------------------- */}
+        {/* CAL.AI STYLE TRANSPARENT FLOATING HEADER (NO WHITE) */}
+        {/* -------------------------------------------------- */}
+        <header className="fixed top-0 left-0 right-0 z-50 bg-transparent backdrop-blur-[2px]">
+          <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
 
-            {/* LOGO — MADE BIGGER */}
-            <Link href="/" className="flex items-center gap-2">
+            {/* LOGO */}
+            <Link href="/" className="flex items-center">
               <Image
                 src="/logo.png"
                 alt="Cookwise.ai"
-                width={80}
-                height={80}
+                width={64}
+                height={64}
+                className="h-14 w-auto"
                 priority
-                className="h-20 w-auto"
               />
             </Link>
 
-            {/* NAV LINKS */}
-            <nav className="hidden gap-10 text-sm font-medium text-slate-700 sm:flex">
-              <Link href="#hero" className="hover:text-slate-900">Home</Link>
-              <Link href="#how-it-works" className="hover:text-slate-900">How it works</Link>
-              <Link href="#features" className="hover:text-slate-900">Features</Link>
-              <Link href="#pricing" className="hover:text-slate-900">Pricing</Link>
+            {/* NAVIGATION (bold like Cal.ai) */}
+            <nav className="hidden sm:flex items-center gap-10 text-[15px] font-semibold text-slate-800">
+              <Link href="#hero" className="hover:text-black transition">Home</Link>
+              <Link href="#how-it-works" className="hover:text-black transition">How it works</Link>
+              <Link href="#features" className="hover:text-black transition">Features</Link>
+              <Link href="#pricing" className="hover:text-black transition">Pricing</Link>
             </nav>
 
-            {/* STORE BUTTONS */}
+            {/* STORE BADGES */}
             <div className="flex items-center gap-3">
               <Image
                 src="/appstore.png"
-                alt="App Store"
+                alt="Download on the App Store"
                 width={130}
                 height={40}
                 className="w-[130px] h-auto"
               />
               <Image
                 src="/googleplay.png"
-                alt="Google Play"
+                alt="Get it on Google Play"
                 width={130}
                 height={40}
                 className="w-[130px] h-auto"
               />
             </div>
-
           </div>
         </header>
 
-        {/* Prevent overlap */}
-        <div className="pt-28">
-          {children}
-        </div>
-
+        {/* Offsets page so hero isn't hidden behind floating nav */}
+        <main className="pt-28">{children}</main>
       </body>
     </html>
   );
