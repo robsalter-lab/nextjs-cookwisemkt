@@ -34,17 +34,32 @@ export default function RootLayout({
             </Link>
 
             {/* NAV */}
-            <nav className="hidden sm:flex items-center gap-8 text-sm font-semibold text-slate-600">
+            <nav className="hidden md:flex items-center gap-8 text-sm font-semibold text-slate-600">
               <Link href="#how-it-works" className="hover:text-slate-900 transition-colors">How it works</Link>
               <Link href="#features" className="hover:text-slate-900 transition-colors">Features</Link>
               <Link href="#pricing" className="hover:text-slate-900 transition-colors">Pricing</Link>
             </nav>
 
-            {/* ACTION */}
-            <div className="hidden sm:block">
-              <button className="rounded-full bg-slate-900 px-5 py-2 text-xs font-bold text-white hover:bg-slate-800 transition-colors shadow-lg shadow-emerald-500/10">
-                Get App
-              </button>
+            {/* STORE BADGES (Restored) */}
+            <div className="hidden sm:flex items-center gap-3">
+              <Link href="#" className="transition-opacity hover:opacity-80">
+                <Image
+                  src="/appstore.png"
+                  alt="Download on the App Store"
+                  width={130}
+                  height={40}
+                  className="h-9 w-auto"
+                />
+              </Link>
+              <Link href="#" className="transition-opacity hover:opacity-80">
+                <Image
+                  src="/googleplay.png"
+                  alt="Get it on Google Play"
+                  width={130}
+                  height={40}
+                  className="h-9 w-auto"
+                />
+              </Link>
             </div>
           </div>
         </header>
