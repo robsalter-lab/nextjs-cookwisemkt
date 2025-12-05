@@ -124,13 +124,12 @@ export default function HomePage() {
 
           {/* RIGHT SIDE - HERO IMAGE */}
           <FadeInSection delay={200} className="relative w-full lg:w-1/2 flex justify-center lg:justify-end mt-12 lg:mt-0">
-            {/* We use a container with aspect ratio constraints to ensure the image 
-              scales nicely and balances with the text on the left. 
+            {/* The container is constrained to handle both portrait and landscape images cleanly.
             */}
             <div className="relative w-full max-w-[700px] h-[500px] sm:h-[600px] lg:h-[700px]">
                 <Image
                   src="/photo1.png"
-                  alt="Cookwise app interface comparing prices and showing savings"
+                  alt="Cookwise app interface showing smart savings list"
                   fill
                   className="object-contain"
                   priority
@@ -207,6 +206,8 @@ export default function HomePage() {
           <FadeInSection delay={200} className="relative">
              <div className="aspect-square relative rounded-3xl bg-gradient-to-br from-slate-100 to-white border border-slate-200/60 p-8 shadow-sm">
                 <div className="absolute inset-8 rounded-2xl bg-white shadow-xl shadow-slate-200/50 overflow-hidden border border-slate-100">
+                   {/* Ensure "screen-recipes.png" exists in your public folder as well.
+                   */}
                    <Image src="/screen-recipes.png" alt="App Features" fill className="object-cover object-top" />
                 </div>
                 
