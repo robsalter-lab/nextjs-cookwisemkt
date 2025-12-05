@@ -350,7 +350,36 @@ export default function HomePage() {
             </div>
           </div>
         </FadeInSection>
-      </section>
+     </section>
+
+{/* FOOTER */}
+<footer className="border-t border-slate-200/40 bg-white/40 backdrop-blur-sm mt-20">
+  <div className="mx-auto max-w-6xl px-4 py-10 text-center">
+
+    <div className="mb-4 flex justify-center">
+      <Image
+        src="/logo.png"
+        alt="Cookwise.ai Logo"
+        width={48}
+        height={48}
+        className="opacity-80"
+      />
     </div>
+
+    <nav className="flex justify-center gap-8 text-sm font-medium text-slate-600 mb-6">
+      <a href="#hero" className="hover:text-slate-900 transition">Home</a>
+      <a href="#how-it-works" className="hover:text-slate-900 transition">How it works</a>
+      <a href="#features" className="hover:text-slate-900 transition">Features</a>
+      <a href="#pricing" className="hover:text-slate-900 transition">Pricing</a>
+    </nav>
+
+    <p className="text-xs text-slate-500">
+      © {new Date().getFullYear()} Cookwise.ai — All rights reserved.
+    </p>
+
+  </div>
+</footer>
+
+</div>
   );
 }
