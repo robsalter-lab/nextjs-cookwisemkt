@@ -22,14 +22,6 @@ const TwitterIcon = ({ className }: { className?: string }) => (
   </svg>
 );
 
-// --- Custom Arrow for connecting phones ---
-const ArrowIcon = ({ className }: { className?: string }) => (
-  <svg viewBox="0 0 100 50" fill="none" stroke="currentColor" strokeWidth="2" className={className}>
-    <path d="M10 25 C 30 25, 30 45, 50 45 C 70 45, 70 15, 90 15" strokeLinecap="round" strokeLinejoin="round" />
-    <path d="M85 10 L 90 15 L 85 20" strokeLinecap="round" strokeLinejoin="round" />
-  </svg>
-);
-
 type FadeInProps = {
   children: React.ReactNode;
   delay?: number;
@@ -130,63 +122,19 @@ export default function HomePage() {
             </div>
           </FadeInSection>
 
-          {/* RIGHT PHONES - UPDATED LAYOUT */}
-          <FadeInSection delay={200} className="relative w-full lg:w-1/2 flex justify-center lg:justify-end">
-            {/* Container for dual phones */}
-            <div className="relative h-[650px] w-full max-w-[600px]">
-              
-              {/* Background Glow */}
-              <div className="pointer-events-none absolute inset-0 z-0 bg-gradient-to-tr from-emerald-200/30 via-purple-100/30 to-transparent blur-3xl" />
-
-              {/* LEFT PHONE (Behind) */}
-              <div className="absolute left-4 top-24 z-10 hidden sm:block">
-                 {/* Floating Bubble - Total Saved */}
-                 <div className="absolute -left-12 top-24 z-30 animate-bounce rounded-2xl bg-white p-3 shadow-[0_8px_30px_rgb(0,0,0,0.08)]" style={{ animationDuration: '3s' }}>
-                   <div className="flex items-center gap-3">
-                     <div className="flex h-10 w-10 items-center justify-center rounded-full bg-emerald-100 text-lg">💰</div>
-                     <div>
-                       <p className="text-[10px] uppercase font-bold text-slate-400">Total Saved</p>
-                       <p className="text-sm font-bold text-slate-900">$12.50</p>
-                     </div>
-                   </div>
-                 </div>
-
-                 {/* Phone Frame */}
-                 <div className="relative h-[480px] w-[240px] -rotate-3 rounded-[32px] border-[6px] border-slate-900 bg-slate-900 shadow-2xl">
-                    <div className="absolute inset-0 overflow-hidden rounded-[26px] bg-slate-50">
-                       {/* Placeholder for "List View" - Using your generic image or a solid div if image missing */}
-                       <Image src="/screen-home.png" alt="List View" fill className="object-cover opacity-80" />
-                       {/* Overlay to simulate list view if using same image */}
-                       <div className="absolute inset-0 bg-white/40" />
-                    </div>
-                 </div>
-              </div>
-
-              {/* ARROW CONNECTOR */}
-              <div className="absolute left-[35%] top-[45%] z-20 hidden w-24 -translate-y-1/2 text-slate-400 sm:block">
-                 <ArrowIcon className="h-full w-full rotate-12" />
-              </div>
-
-              {/* RIGHT PHONE (Front) */}
-              <div className="absolute right-4 top-4 z-20 sm:right-8 sm:top-8">
-                 <div className="relative h-[540px] w-[270px] rotate-3 rounded-[40px] border-[8px] border-slate-900 bg-slate-900 shadow-2xl shadow-slate-400/30">
-                    <div className="absolute inset-0 overflow-hidden rounded-[32px] bg-white">
-                       <Image src="/screen-home.png" alt="Smart Cart" fill priority className="object-cover" />
-                    </div>
-                 </div>
-                 
-                 {/* "Save Big" Black Overlay Bubble */}
-                 <div className="absolute -left-16 bottom-24 z-40 w-[240px] rounded-2xl bg-slate-900 p-4 shadow-2xl shadow-emerald-900/20 transform transition-transform hover:scale-105 cursor-default">
-                    <div className="flex flex-col gap-1">
-                      <p className="text-xs font-semibold text-slate-300">Save Big with Cookwise.ai!</p>
-                      <div className="flex items-baseline justify-between border-t border-slate-800 pt-2 mt-1">
-                        <span className="text-[10px] text-slate-400 uppercase tracking-wider">Total Savings</span>
-                        <span className="text-lg font-bold text-emerald-400">$28.73</span>
-                      </div>
-                    </div>
-                 </div>
-              </div>
-
+          {/* RIGHT SIDE - HERO IMAGE */}
+          <FadeInSection delay={200} className="relative w-full lg:w-1/2 flex justify-center lg:justify-end mt-12 lg:mt-0">
+            {/* We use a container with aspect ratio constraints to ensure the image 
+              scales nicely and balances with the text on the left. 
+            */}
+            <div className="relative w-full max-w-[700px] h-[500px] sm:h-[600px] lg:h-[700px]">
+                <Image
+                  src="/photo1.png"
+                  alt="Cookwise app interface comparing prices and showing savings"
+                  fill
+                  className="object-contain"
+                  priority
+                />
             </div>
           </FadeInSection>
         </div>
