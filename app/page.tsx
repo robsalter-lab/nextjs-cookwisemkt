@@ -69,25 +69,13 @@ export default function HomePage() {
     <div className="bg-gradient-to-b from-[#FDFBF6] via-[#F7FAFF] to-[#F3F5FF] text-slate-900">
 
       {/* ===== HERO ===== */}
-      {/* FIXED: Changed pt-40 to pt-6 to remove the huge gap at the top */}
       <section id="hero" className="relative overflow-hidden pt-6 pb-16 scroll-mt-32">
         <div className="mx-auto flex max-w-7xl flex-col items-center gap-12 px-4 lg:flex-row lg:items-center">
           
           {/* LEFT COPY */}
           <FadeInSection className="w-full lg:w-1/2 lg:pr-8">
             
-            {/* AVATAR PILE */}
-            <div className="mb-6 flex items-center gap-4">
-              <div className="flex -space-x-3">
-                <div className="h-10 w-10 rounded-full border-[3px] border-white bg-slate-200" />
-                <div className="h-10 w-10 rounded-full border-[3px] border-white bg-slate-300" />
-                <div className="h-10 w-10 rounded-full border-[3px] border-white bg-slate-400" />
-              </div>
-              <div className="flex flex-col justify-center">
-                <div className="flex text-yellow-400 text-sm">★★★★★</div>
-                <span className="text-xs font-semibold text-slate-600">Loved by 2,000+ early testers</span>
-              </div>
-            </div>
+            {/* REMOVED: AVATAR PILE and "Loved by 2,000+ early testers" text */}
 
             <h1 className="text-4xl font-semibold tracking-tight text-slate-900 sm:text-5xl lg:text-6xl lg:leading-[1.1]">
               Track weekly deals.
