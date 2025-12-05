@@ -75,8 +75,6 @@ export default function HomePage() {
           {/* LEFT COPY */}
           <FadeInSection className="w-full lg:w-1/2 lg:pr-8">
             
-            {/* REMOVED: AVATAR PILE and "Loved by 2,000+ early testers" text */}
-
             <h1 className="text-4xl font-semibold tracking-tight text-slate-900 sm:text-5xl lg:text-6xl lg:leading-[1.1]">
               Track weekly deals.
               <br />
@@ -113,8 +111,6 @@ export default function HomePage() {
 
           {/* RIGHT SIDE - HERO IMAGE */}
           <FadeInSection delay={200} className="relative w-full lg:w-1/2 flex justify-center lg:justify-end mt-12 lg:mt-0">
-            {/* The container is constrained to handle both portrait and landscape images cleanly.
-            */}
             <div className="relative w-full max-w-[700px] h-[500px] sm:h-[600px] lg:h-[700px]">
                 <Image
                   src="/photo1.png"
@@ -246,36 +242,35 @@ export default function HomePage() {
       </section>
 
       {/* ===== FOOTER ===== */}
-      <footer className="bg-[#FDFBF6] py-12">
+      {/* Compressed padding and spacing */}
+      <footer className="bg-[#FDFBF6] py-8 border-t border-slate-200/50">
         <div className="mx-auto max-w-7xl px-6">
           
-          {/* Top Section */}
-          <div className="flex flex-col lg:flex-row lg:justify-between gap-10 lg:gap-20">
+          <div className="flex flex-col lg:flex-row lg:justify-between gap-8 lg:gap-20">
             
             {/* Column 1: Brand & Downloads */}
             <div className="flex flex-col items-start max-w-sm">
-              <div className="flex items-center gap-2 mb-4">
-                <Image src="/logo.png" alt="Cookwise Logo" width={50} height={50} className="object-contain" />
-                <span className="text-xl font-bold text-slate-900">Cookwise.ai</span>
+              <div className="flex items-center gap-2 mb-2">
+                <Image src="/logo.png" alt="Cookwise Logo" width={40} height={40} className="object-contain h-10 w-auto" />
+                <span className="text-lg font-bold text-slate-900">Cookwise.ai</span>
               </div>
               
-              <p className="text-sm font-medium text-slate-500 mb-3">Download Cookwise.ai</p>
-              
-              <div className="flex flex-col sm:flex-row gap-2">
+              <div className="flex flex-row gap-2 mt-2">
                 <a href="#" className="hover:opacity-80 transition-opacity">
-                  <Image src="/appstore.png" alt="Download on App Store" width={130} height={40} className="h-[40px] w-auto" />
+                  <Image src="/appstore.png" alt="Download on App Store" width={110} height={34} className="h-8 w-auto" />
                 </a>
                 <a href="#" className="hover:opacity-80 transition-opacity">
-                  <Image src="/googleplay.png" alt="Get it on Google Play" width={130} height={40} className="h-[40px] w-auto" />
+                  <Image src="/googleplay.png" alt="Get it on Google Play" width={110} height={34} className="h-8 w-auto" />
                 </a>
               </div>
             </div>
 
-            {/* Links Columns */}
+            {/* Links Columns - Compacted */}
             <div className="grid grid-cols-2 gap-10 sm:gap-24 w-full lg:w-auto">
               <div>
-                <h3 className="font-bold text-slate-900 mb-4">Legal</h3>
-                <ul className="space-y-2 text-sm font-medium text-slate-500">
+                <h3 className="font-bold text-slate-900 mb-3 text-sm">Legal</h3>
+                {/* Tighter spacing (space-y-1) for compact look */}
+                <ul className="space-y-1 text-xs font-medium text-slate-500">
                   <li><a href="/privacy" className="hover:text-emerald-600 transition-colors">Privacy Policy</a></li>
                   <li><a href="/terms" className="hover:text-emerald-600 transition-colors">Terms of use</a></li>
                   <li><a href="/cookies" className="hover:text-emerald-600 transition-colors">Cookies Policy</a></li>
@@ -285,8 +280,8 @@ export default function HomePage() {
               </div>
 
               <div>
-                <h3 className="font-bold text-slate-900 mb-4">Company</h3>
-                <ul className="space-y-2 text-sm font-medium text-slate-500">
+                <h3 className="font-bold text-slate-900 mb-3 text-sm">Company</h3>
+                <ul className="space-y-1 text-xs font-medium text-slate-500">
                   <li><a href="/contact" className="hover:text-emerald-600 transition-colors">Contact</a></li>
                   <li><a href="/partners" className="hover:text-emerald-600 transition-colors">Partners</a></li>
                   <li><a href="/affiliates" className="hover:text-emerald-600 transition-colors">Affiliates</a></li>
@@ -297,21 +292,21 @@ export default function HomePage() {
             </div>
           </div>
 
-          {/* Bottom Section */}
-          <div className="mt-12 border-t border-slate-200 pt-6 flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-xs text-slate-400">
-              © Copyright {new Date().getFullYear()}, All rights reserved
+          {/* Bottom Section - Compacted margin */}
+          <div className="mt-6 border-t border-slate-200 pt-4 flex flex-row justify-between items-center">
+            <p className="text-[10px] sm:text-xs text-slate-400">
+              © {new Date().getFullYear()} Cookwise.ai. All rights reserved.
             </p>
             
             <div className="flex gap-4">
               <a href="#" className="text-slate-400 hover:text-slate-900 transition-colors">
-                <LinkedinIcon className="w-5 h-5" />
+                <LinkedinIcon className="w-4 h-4" />
               </a>
               <a href="#" className="text-slate-400 hover:text-slate-900 transition-colors">
-                <InstagramIcon className="w-5 h-5" />
+                <InstagramIcon className="w-4 h-4" />
               </a>
               <a href="#" className="text-slate-400 hover:text-slate-900 transition-colors">
-                <TwitterIcon className="w-5 h-5" />
+                <TwitterIcon className="w-4 h-4" />
               </a>
             </div>
           </div>
