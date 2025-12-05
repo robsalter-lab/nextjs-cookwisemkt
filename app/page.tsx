@@ -64,25 +64,25 @@ function FadeInSection({ children, delay = 0, className = "" }: FadeInProps) {
 }
 
 // --- DATA FOR INTERACTIVE SHOWCASE ---
-// IMPORTANT: Make sure these files exist in your /public/videos folder
+// FIX: Removed "/videos/" path and changed .mp4 to .MP4 to match file structure
 const featuresData = [
   {
     id: 0,
     title: "Smart Cart Builder",
     description: "Automatically groups items by aisle and compares prices across stores to find the lowest total.",
-    videoSrc: "/videos/cart-demo.mp4", 
+    videoSrc: "/cart-demo.MP4", 
   },
   {
     id: 1,
     title: "Pantry-First Planning",
     description: "We track what you already own so you never buy duplicates. Scan receipts to update instantly.",
-    videoSrc: "/videos/pantry-demo.mp4",
+    videoSrc: "/pantry-demo.MP4",
   },
   {
     id: 2,
     title: "Deal-Aware Recipes",
     description: "Get dinner ideas based on what is on sale this week at your local supermarkets.",
-    videoSrc: "/videos/recipes-demo.mp4",
+    videoSrc: "/recipes-demo.MP4",
   },
 ];
 
@@ -107,19 +107,19 @@ function InteractiveShowcase() {
         <FadeInSection className="relative mx-auto w-full max-w-[320px] lg:max-w-[360px]">
            {/* Phone Frame styling */}
            <div className="relative rounded-[3rem] border-[8px] border-slate-900 overflow-hidden shadow-2xl bg-black aspect-[9/19.5] ring-1 ring-slate-900/5">
-              {/* Optional: Top Notch/Dynamic Island */}
-              <div className="absolute top-0 left-1/2 -translate-x-1/2 h-7 w-32 bg-black rounded-b-2xl z-20"></div>
-              
-              {/* Dynamic Video */}
-              <video
-                key={featuresData[activeFeature].videoSrc} // Forces react to re-render video element on change
-                src={featuresData[activeFeature].videoSrc}
-                autoPlay
-                loop
-                muted
-                playsInline
-                className="absolute inset-0 h-full w-full object-cover bg-slate-100"
-              />
+             {/* Optional: Top Notch/Dynamic Island */}
+             <div className="absolute top-0 left-1/2 -translate-x-1/2 h-7 w-32 bg-black rounded-b-2xl z-20"></div>
+             
+             {/* Dynamic Video */}
+             <video
+               key={featuresData[activeFeature].videoSrc} // Forces react to re-render video element on change
+               src={featuresData[activeFeature].videoSrc}
+               autoPlay
+               loop
+               muted
+               playsInline
+               className="absolute inset-0 h-full w-full object-cover bg-slate-100"
+             />
            </div>
            
            {/* Decorative Glow behind phone */}
@@ -208,12 +208,12 @@ export default function HomePage() {
           {/* RIGHT SIDE - HERO IMAGE */}
           <FadeInSection delay={200} className="relative w-full lg:w-1/2 flex justify-center lg:justify-end mt-12 lg:mt-0">
             <div className="relative w-full max-w-[700px] h-[500px] sm:h-[600px] lg:h-[700px]">
-                {/* Replaced next/image with standard img tag for compatibility */}
-                <img
-                  src="/photo1.png"
-                  alt="Cookwise app interface showing smart savings list"
-                  className="absolute inset-0 w-full h-full object-contain"
-                />
+              {/* Replaced next/image with standard img tag for compatibility */}
+              <img
+                src="/photo1.png"
+                alt="Cookwise app interface showing smart savings list"
+                className="absolute inset-0 w-full h-full object-contain"
+              />
             </div>
           </FadeInSection>
         </div>
