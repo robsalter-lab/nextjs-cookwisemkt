@@ -18,25 +18,24 @@ export default function RootLayout({
       <body className="min-h-screen bg-gradient-to-b from-[#FDFBF6] via-[#F7FAFF] to-[#F3F5FF] text-slate-900">
 
         {/* HEADER */}
-        {/* Reduced py-6 to py-4 to tighten the spacing at the top */}
         <header className="w-full z-50 bg-[#FDFBF6]">
-          <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
+          {/* Reverted py-4 back to py-6 to give the larger logo room to breathe */}
+          <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-6">
 
             {/* LOGO */}
-            {/* Reduced h-20 to h-12 so the header isn't huge */}
+            {/* Restored size: changed h-12 back to h-20 */}
             <Link href="/" className="flex items-center gap-2">
               <Image
                 src="/logo.png"
                 alt="Cookwise.ai"
                 width={150} 
                 height={50}
-                className="h-12 w-auto object-contain"
+                className="h-20 w-auto object-contain"
                 priority
               />
             </Link>
 
             {/* NAV */}
-            {/* Increased text-sm to text-base and added Manage Subscription */}
             <nav className="hidden md:flex items-center gap-8 text-base font-bold text-slate-800">
               <Link href="#how-it-works" className="hover:text-slate-600 transition-colors">How it works</Link>
               <Link href="#features" className="hover:text-slate-600 transition-colors">Features</Link>
@@ -45,7 +44,6 @@ export default function RootLayout({
             </nav>
 
             {/* STORE BADGES */}
-            {/* Increased h-9 to h-11 to match Cal.ai's larger button style */}
             <div className="hidden sm:flex items-center gap-3">
               <Link href="#" className="transition-opacity hover:opacity-80">
                 <Image
