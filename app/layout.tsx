@@ -1,61 +1,68 @@
-// app/layout.tsx
-import type { Metadata } from "next";
 import "./globals.css";
+import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Cookwise.ai – AI-powered grocery & meal optimization",
-  description:
-    "Cookwise.ai turns weekly grocery deals and your pantry into optimized meal plans, smart carts, and bigger savings.",
+  title: "Cookwise.ai",
+  description: "Smart grocery shopping with automatic deal-aware carts.",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body className="bg-[#FDFBF6] text-slate-900 antialiased">
-        
-        {/* Transparent Floating Header */}
-        <header className="fixed top-0 left-0 right-0 z-50 px-6 py-4">
-          <div className="mx-auto flex max-w-7xl items-center justify-between">
-            
-            {/* Logo */}
-            <Link href="/" className="flex items-center">
-              <img
+      <body className="min-h-screen bg-gradient-to-b from-[#FDFBF6] via-[#F7FAFF] to-[#F3F5FF] text-slate-900">
+
+        {/* ------------------------- */}
+        {/* TRANSPARENT FLOATING NAV */}
+        {/* ------------------------- */}
+        <header className="fixed top-0 left-0 right-0 z-50 backdrop-blur-sm bg-transparent">
+          <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4">
+
+            {/* ---- LOGO ---- */}
+            <Link href="/" className="flex items-center gap-2">
+              <Image
                 src="/logo.png"
-                alt="Cookwise.ai logo"
-                className="h-10 w-auto md:h-12"
+                alt="Cookwise.ai"
+                width={60}  // ⬅️ Bigger owl
+                height={60}
+                className="h-14 w-auto" // ⬅️ Bigger & responsive
+                priority
               />
             </Link>
 
-            {/* Nav */}
-            <nav className="hidden md:flex items-center gap-10 text-[15px] font-medium text-slate-900">
-              <Link href="#hero" className="hover:opacity-70">Home</Link>
-              <Link href="#how-it-works" className="hover:opacity-70">How it works</Link>
-              <Link href="#features" className="hover:opacity-70">Features</Link>
-              <Link href="#pricing" className="hover:opacity-70">Pricing</Link>
+            {/* ---- NAV LINKS ---- */}
+            <nav className="hidden gap-8 text-sm font-medium text-slate-700 sm:flex">
+              <Link href="#hero" className="hover:text-slate-900">Home</Link>
+              <Link href="#how-it-works" className="hover:text-slate-900">How it works</Link>
+              <Link href="#features" className="hover:text-slate-900">Features</Link>
+              <Link href="#pricing" className="hover:text-slate-900">Pricing</Link>
             </nav>
 
-            {/* Store Buttons */}
-            <div className="hidden md:flex items-center gap-3">
-              <img
+            {/* ---- APP BUTTONS ---- */}
+            <div className="flex items-center gap-3">
+              <Image
                 src="/appstore.png"
                 alt="Download on the App Store"
-                className="h-9 w-auto"
+                width={130}
+                height={40}
+                className="w-[130px] h-auto"
               />
-              <img
+              <Image
                 src="/googleplay.png"
                 alt="Get it on Google Play"
-                className="h-9 w-auto"
+                width={130}
+                height={40}
+                className="w-[130px] h-auto"
               />
             </div>
-
           </div>
         </header>
 
-        {/* Adds space so header doesn't overlap content */}
-        <div className="h-24"></div>
-
-        <main className="min-h-screen">{children}</main>
+        {/* Push content down so it doesn't hide under nav */}
+        <div className="pt-24">
+          {children}
+        </div>
 
       </body>
     </html>
