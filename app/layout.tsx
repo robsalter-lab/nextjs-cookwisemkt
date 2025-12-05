@@ -1,4 +1,3 @@
-// app/layout.tsx
 import "./globals.css";
 import type { Metadata } from "next";
 import Image from "next/image";
@@ -16,27 +15,30 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      {/* 1. BACKGROUND APPLIED HERE GLOBALLY 
+        This ensures the gradient is continuous behind the header 
+      */}
       <body className="min-h-screen bg-gradient-to-b from-[#FDFBF6] via-[#F7FAFF] to-[#F3F5FF] text-slate-900">
 
-        {/* -------------------------------------------------- */}
-        {/* CAL.AI STYLE TRANSPARENT FLOATING HEADER (NO WHITE) */}
-        {/* -------------------------------------------------- */}
-        <header className="fixed top-0 left-0 right-0 z-50 bg-transparent backdrop-blur-[2px]">
-          <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
+        {/* HEADER */}
+        <header className="fixed top-0 left-0 right-0 z-50 bg-transparent"> 
+          <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-6">
 
-            {/* LOGO */}
+            {/* LOGO - UPDATED SIZE */}
             <Link href="/" className="flex items-center">
               <Image
                 src="/logo.png"
                 alt="Cookwise.ai"
-                width={64}
-                height={64}
-                className="h-14 w-auto"
+                // Increased resolution width/height so it doesn't blur when resized up
+                width={120} 
+                height={120}
+                // Changed from h-14 to h-20 (approx 80px) for a larger look
+                className="h-20 w-auto object-contain"
                 priority
               />
             </Link>
 
-            {/* NAVIGATION (bold like Cal.ai) */}
+            {/* NAVIGATION */}
             <nav className="hidden sm:flex items-center gap-10 text-[15px] font-semibold text-slate-800">
               <Link href="#hero" className="hover:text-black transition">Home</Link>
               <Link href="#how-it-works" className="hover:text-black transition">How it works</Link>
@@ -51,21 +53,24 @@ export default function RootLayout({
                 alt="Download on the App Store"
                 width={130}
                 height={40}
-                className="w-[130px] h-auto"
+                className="w-[120px] lg:w-[130px] h-auto"
               />
               <Image
                 src="/googleplay.png"
                 alt="Get it on Google Play"
                 width={130}
                 height={40}
-                className="w-[130px] h-auto"
+                className="w-[120px] lg:w-[130px] h-auto"
               />
             </div>
           </div>
         </header>
 
-        {/* Offsets page so hero isn't hidden behind floating nav */}
-        <main className="pt-28">{children}</main>
+        {/* 2. REMOVED pt-28 
+           We removed the padding here. Now 'children' will start at the very top of the screen,
+           allowing the background to sit behind the header.
+        */}
+        <main>{children}</main>
       </body>
     </html>
   );
