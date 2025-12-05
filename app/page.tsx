@@ -69,7 +69,8 @@ export default function HomePage() {
     <div className="bg-gradient-to-b from-[#FDFBF6] via-[#F7FAFF] to-[#F3F5FF] text-slate-900">
 
       {/* ===== HERO ===== */}
-      <section id="hero" className="relative overflow-hidden pt-40 pb-16">
+      {/* Added scroll-mt-32 here and to all sections below to fix the anchor scroll issue */}
+      <section id="hero" className="relative overflow-hidden pt-40 pb-16 scroll-mt-32">
         <div className="mx-auto flex max-w-6xl flex-col items-center gap-12 px-4 lg:flex-row lg:items-center">
           
           {/* LEFT COPY */}
@@ -154,7 +155,7 @@ export default function HomePage() {
       </section>
 
       {/* ===== HOW IT WORKS ===== */}
-      <section id="how-it-works" className="mx-auto max-w-6xl px-4 py-24">
+      <section id="how-it-works" className="mx-auto max-w-6xl px-4 py-24 scroll-mt-32">
         <FadeInSection className="text-center mb-16">
           <h2 className="text-3xl font-bold tracking-tight text-slate-900">How Cookwise.ai works</h2>
           <p className="mt-4 text-lg text-slate-600 max-w-2xl mx-auto">
@@ -188,7 +189,7 @@ export default function HomePage() {
       </section>
 
       {/* ===== FEATURES ===== */}
-      <section id="features" className="mx-auto max-w-6xl px-4 py-24 border-t border-slate-200/50">
+      <section id="features" className="mx-auto max-w-6xl px-4 py-24 border-t border-slate-200/50 scroll-mt-32">
         <div className="grid gap-16 lg:grid-cols-2 lg:items-center">
             
           <FadeInSection>
@@ -234,7 +235,7 @@ export default function HomePage() {
       </section>
 
       {/* ===== PRICING ===== */}
-      <section id="pricing" className="mx-auto max-w-5xl px-4 py-24">
+      <section id="pricing" className="mx-auto max-w-5xl px-4 py-24 scroll-mt-32">
         <FadeInSection>
           <div className="relative rounded-[3rem] bg-slate-900 p-8 md:p-12 overflow-hidden shadow-2xl">
             <div className="absolute top-0 right-0 -mt-20 -mr-20 h-[300px] w-[300px] rounded-full bg-emerald-500/20 blur-3xl" />
