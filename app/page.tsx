@@ -22,6 +22,14 @@ const TwitterIcon = ({ className }: { className?: string }) => (
   </svg>
 );
 
+// --- Custom Arrow for connecting phones ---
+const ArrowIcon = ({ className }: { className?: string }) => (
+  <svg viewBox="0 0 100 50" fill="none" stroke="currentColor" strokeWidth="2" className={className}>
+    <path d="M10 25 C 30 25, 30 45, 50 45 C 70 45, 70 15, 90 15" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M85 10 L 90 15 L 85 20" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+);
+
 type FadeInProps = {
   children: React.ReactNode;
   delay?: number;
@@ -69,12 +77,11 @@ export default function HomePage() {
     <div className="bg-gradient-to-b from-[#FDFBF6] via-[#F7FAFF] to-[#F3F5FF] text-slate-900">
 
       {/* ===== HERO ===== */}
-      {/* Added scroll-mt-32 here and to all sections below to fix the anchor scroll issue */}
       <section id="hero" className="relative overflow-hidden pt-40 pb-16 scroll-mt-32">
-        <div className="mx-auto flex max-w-6xl flex-col items-center gap-12 px-4 lg:flex-row lg:items-center">
+        <div className="mx-auto flex max-w-7xl flex-col items-center gap-12 px-4 lg:flex-row lg:items-center">
           
           {/* LEFT COPY */}
-          <FadeInSection className="w-full lg:w-1/2">
+          <FadeInSection className="w-full lg:w-1/2 lg:pr-8">
             
             {/* AVATAR PILE */}
             <div className="mb-6 flex items-center gap-4">
@@ -123,33 +130,63 @@ export default function HomePage() {
             </div>
           </FadeInSection>
 
-          {/* RIGHT PHONES */}
-          <FadeInSection delay={200} className="relative w-full max-w-md lg:w-1/2 lg:max-w-none flex justify-center">
-            <div className="relative h-[580px] w-[300px]">
+          {/* RIGHT PHONES - UPDATED LAYOUT */}
+          <FadeInSection delay={200} className="relative w-full lg:w-1/2 flex justify-center lg:justify-end">
+            {/* Container for dual phones */}
+            <div className="relative h-[650px] w-full max-w-[600px]">
+              
+              {/* Background Glow */}
+              <div className="pointer-events-none absolute inset-0 z-0 bg-gradient-to-tr from-emerald-200/30 via-purple-100/30 to-transparent blur-3xl" />
 
-              {/* Floating Bubble */}
-              <div className="absolute -left-16 top-32 z-30 animate-bounce rounded-2xl bg-white p-3 shadow-[0_8px_30px_rgb(0,0,0,0.08)] hidden md:block" style={{ animationDuration: '3s' }}>
-                 <div className="flex items-center gap-3">
-                   <div className="flex h-10 w-10 items-center justify-center rounded-full bg-emerald-100 text-lg">💰</div>
-                   <div>
-                     <p className="text-[10px] uppercase font-bold text-slate-400">Total Saved</p>
-                     <p className="text-sm font-bold text-slate-900">$12.50</p>
+              {/* LEFT PHONE (Behind) */}
+              <div className="absolute left-4 top-24 z-10 hidden sm:block">
+                 {/* Floating Bubble - Total Saved */}
+                 <div className="absolute -left-12 top-24 z-30 animate-bounce rounded-2xl bg-white p-3 shadow-[0_8px_30px_rgb(0,0,0,0.08)]" style={{ animationDuration: '3s' }}>
+                   <div className="flex items-center gap-3">
+                     <div className="flex h-10 w-10 items-center justify-center rounded-full bg-emerald-100 text-lg">💰</div>
+                     <div>
+                       <p className="text-[10px] uppercase font-bold text-slate-400">Total Saved</p>
+                       <p className="text-sm font-bold text-slate-900">$12.50</p>
+                     </div>
                    </div>
+                 </div>
+
+                 {/* Phone Frame */}
+                 <div className="relative h-[480px] w-[240px] -rotate-3 rounded-[32px] border-[6px] border-slate-900 bg-slate-900 shadow-2xl">
+                    <div className="absolute inset-0 overflow-hidden rounded-[26px] bg-slate-50">
+                       {/* Placeholder for "List View" - Using your generic image or a solid div if image missing */}
+                       <Image src="/screen-home.png" alt="List View" fill className="object-cover opacity-80" />
+                       {/* Overlay to simulate list view if using same image */}
+                       <div className="absolute inset-0 bg-white/40" />
+                    </div>
                  </div>
               </div>
 
-              {/* Main phone */}
-              <div className="absolute inset-0 z-20 rounded-[40px] border-[8px] border-slate-900 bg-slate-900 shadow-2xl shadow-slate-400/20">
-                <div className="absolute inset-0 rounded-[32px] overflow-hidden bg-white">
-                  {/* UPDATED IMAGE SOURCE HERE */}
-                  <Image src="/photo1.png" alt="Dashboard" fill priority className="object-cover" />
-                </div>
+              {/* ARROW CONNECTOR */}
+              <div className="absolute left-[35%] top-[45%] z-20 hidden w-24 -translate-y-1/2 text-slate-400 sm:block">
+                 <ArrowIcon className="h-full w-full rotate-12" />
               </div>
 
-              {/* Back Phone */}
-              <div className="absolute -right-12 top-12 z-10 h-full w-full rotate-6 rounded-[40px] bg-slate-100/50 border border-slate-200 blur-[1px]"></div>
-              
-              <div className="pointer-events-none absolute -inset-20 -z-10 bg-gradient-to-tr from-emerald-200/30 via-purple-100/30 to-transparent blur-3xl" />
+              {/* RIGHT PHONE (Front) */}
+              <div className="absolute right-4 top-4 z-20 sm:right-8 sm:top-8">
+                 <div className="relative h-[540px] w-[270px] rotate-3 rounded-[40px] border-[8px] border-slate-900 bg-slate-900 shadow-2xl shadow-slate-400/30">
+                    <div className="absolute inset-0 overflow-hidden rounded-[32px] bg-white">
+                       <Image src="/screen-home.png" alt="Smart Cart" fill priority className="object-cover" />
+                    </div>
+                 </div>
+                 
+                 {/* "Save Big" Black Overlay Bubble */}
+                 <div className="absolute -left-16 bottom-24 z-40 w-[240px] rounded-2xl bg-slate-900 p-4 shadow-2xl shadow-emerald-900/20 transform transition-transform hover:scale-105 cursor-default">
+                    <div className="flex flex-col gap-1">
+                      <p className="text-xs font-semibold text-slate-300">Save Big with Cookwise.ai!</p>
+                      <div className="flex items-baseline justify-between border-t border-slate-800 pt-2 mt-1">
+                        <span className="text-[10px] text-slate-400 uppercase tracking-wider">Total Savings</span>
+                        <span className="text-lg font-bold text-emerald-400">$28.73</span>
+                      </div>
+                    </div>
+                 </div>
+              </div>
+
             </div>
           </FadeInSection>
         </div>
@@ -272,7 +309,7 @@ export default function HomePage() {
         </FadeInSection>
       </section>
 
-      {/* ===== CAL.AI STYLE FOOTER (COMPRESSED) ===== */}
+      {/* ===== FOOTER ===== */}
       <footer className="bg-[#FDFBF6] py-12">
         <div className="mx-auto max-w-7xl px-6">
           
@@ -298,7 +335,7 @@ export default function HomePage() {
               </div>
             </div>
 
-            {/* Links Columns: Compact & Clean */}
+            {/* Links Columns */}
             <div className="grid grid-cols-2 gap-10 sm:gap-24 w-full lg:w-auto">
               <div>
                 <h3 className="font-bold text-slate-900 mb-4">Legal</h3>
@@ -324,7 +361,7 @@ export default function HomePage() {
             </div>
           </div>
 
-          {/* Bottom Section: Compact Divider */}
+          {/* Bottom Section */}
           <div className="mt-12 border-t border-slate-200 pt-6 flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-xs text-slate-400">
               © Copyright {new Date().getFullYear()}, All rights reserved
