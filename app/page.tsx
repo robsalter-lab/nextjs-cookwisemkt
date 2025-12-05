@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import React, { useEffect, useRef, useState } from "react";
 
 // --- Clean Social Icons (Cal.ai style) ---
@@ -64,6 +63,106 @@ function FadeInSection({ children, delay = 0, className = "" }: FadeInProps) {
   );
 }
 
+// --- DATA FOR INTERACTIVE SHOWCASE ---
+// IMPORTANT: Make sure these files exist in your /public/videos folder
+const featuresData = [
+  {
+    id: 0,
+    title: "Smart Cart Builder",
+    description: "Automatically groups items by aisle and compares prices across stores to find the lowest total.",
+    videoSrc: "/videos/cart-demo.mp4", 
+  },
+  {
+    id: 1,
+    title: "Pantry-First Planning",
+    description: "We track what you already own so you never buy duplicates. Scan receipts to update instantly.",
+    videoSrc: "/videos/pantry-demo.mp4",
+  },
+  {
+    id: 2,
+    title: "Deal-Aware Recipes",
+    description: "Get dinner ideas based on what is on sale this week at your local supermarkets.",
+    videoSrc: "/videos/recipes-demo.mp4",
+  },
+];
+
+// --- INTERACTIVE SHOWCASE COMPONENT ---
+function InteractiveShowcase() {
+  const [activeFeature, setActiveFeature] = useState(0);
+
+  return (
+    <section id="features" className="mx-auto max-w-6xl px-4 py-24 border-t border-slate-200/50 scroll-mt-32">
+      <div className="mb-16 text-center">
+        <h2 className="text-3xl font-bold tracking-tight text-slate-900">
+          Everything you need to <span className="text-emerald-600">shop smarter.</span>
+        </h2>
+        <p className="mt-4 text-lg text-slate-600 max-w-2xl mx-auto">
+          See exactly how Cookwise works in action.
+        </p>
+      </div>
+
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+        
+        {/* LEFT: Phone Simulator (Video Player) */}
+        <FadeInSection className="relative mx-auto w-full max-w-[320px] lg:max-w-[360px]">
+           {/* Phone Frame styling */}
+           <div className="relative rounded-[3rem] border-[8px] border-slate-900 overflow-hidden shadow-2xl bg-black aspect-[9/19.5] ring-1 ring-slate-900/5">
+              {/* Optional: Top Notch/Dynamic Island */}
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 h-7 w-32 bg-black rounded-b-2xl z-20"></div>
+              
+              {/* Dynamic Video */}
+              <video
+                key={featuresData[activeFeature].videoSrc} // Forces react to re-render video element on change
+                src={featuresData[activeFeature].videoSrc}
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="absolute inset-0 h-full w-full object-cover bg-slate-100"
+              />
+           </div>
+           
+           {/* Decorative Glow behind phone */}
+           <div className="absolute -inset-4 bg-emerald-500/20 blur-3xl -z-10 rounded-full opacity-70"></div>
+        </FadeInSection>
+
+        {/* RIGHT: Clickable Feature List */}
+        <div className="flex flex-col gap-4">
+          {featuresData.map((feature, index) => (
+            <FadeInSection key={feature.id} delay={index * 100}>
+              <button
+                onClick={() => setActiveFeature(index)}
+                className={`w-full text-left p-6 rounded-2xl transition-all duration-300 border-2 group relative overflow-hidden ${
+                  activeFeature === index
+                    ? "bg-white border-emerald-500 shadow-xl shadow-emerald-500/10 scale-[1.02] z-10"
+                    : "bg-white/50 border-transparent hover:bg-white hover:border-slate-200"
+                }`}
+              >
+                <div className="relative z-10">
+                  <h3 className={`text-xl font-bold mb-2 transition-colors ${
+                    activeFeature === index ? "text-emerald-700" : "text-slate-900"
+                  }`}>
+                    {feature.title}
+                  </h3>
+                  <p className="text-slate-600 leading-relaxed text-sm lg:text-base">
+                    {feature.description}
+                  </p>
+                </div>
+                
+                {/* Progress bar indicator for active state (optional nice touch) */}
+                {activeFeature === index && (
+                   <div className="absolute bottom-0 left-0 h-1 bg-emerald-500 animate-pulse w-full opacity-20" />
+                )}
+              </button>
+            </FadeInSection>
+          ))}
+        </div>
+
+      </div>
+    </section>
+  );
+}
+
 export default function HomePage() {
   return (
     <div className="bg-gradient-to-b from-[#FDFBF6] via-[#F7FAFF] to-[#F3F5FF] text-slate-900">
@@ -109,12 +208,11 @@ export default function HomePage() {
           {/* RIGHT SIDE - HERO IMAGE */}
           <FadeInSection delay={200} className="relative w-full lg:w-1/2 flex justify-center lg:justify-end mt-12 lg:mt-0">
             <div className="relative w-full max-w-[700px] h-[500px] sm:h-[600px] lg:h-[700px]">
-                <Image
+                {/* Replaced next/image with standard img tag for compatibility */}
+                <img
                   src="/photo1.png"
                   alt="Cookwise app interface showing smart savings list"
-                  fill
-                  className="object-contain"
-                  priority
+                  className="absolute inset-0 w-full h-full object-contain"
                 />
             </div>
           </FadeInSection>
@@ -155,51 +253,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ===== FEATURES ===== */}
-      <section id="features" className="mx-auto max-w-6xl px-4 py-24 border-t border-slate-200/50 scroll-mt-32">
-        <div className="grid gap-16 lg:grid-cols-2 lg:items-center">
-            
-          <FadeInSection>
-             <h2 className="text-3xl font-bold tracking-tight text-slate-900 mb-6">
-               Everything you need to <br />
-               <span className="text-emerald-600">shop smarter.</span>
-             </h2>
-             
-             <div className="space-y-8">
-               {[
-                 { title: "Smart cart builder", desc: "Automatically groups items by aisle for faster shopping." },
-                 { title: "Deal-aware recipes", desc: "Suggests dinner ideas based on what's on sale this week." },
-                 { title: "Pantry-first planning", desc: "Stop buying duplicates. We track what you already own." },
-                 { title: "Cross-store comparison", desc: "See which store has the cheapest total cart price." },
-               ].map((feature, i) => (
-                 <div key={i} className="flex gap-4">
-                   <div className="flex-shrink-0 h-6 w-6 rounded-full bg-emerald-100 flex items-center justify-center mt-1">
-                     <span className="h-2 w-2 rounded-full bg-emerald-500" />
-                   </div>
-                   <div>
-                     <h3 className="font-semibold text-slate-900">{feature.title}</h3>
-                     <p className="text-sm text-slate-600 mt-1">{feature.desc}</p>
-                   </div>
-                 </div>
-               ))}
-             </div>
-          </FadeInSection>
-
-          <FadeInSection delay={200} className="relative">
-             <div className="aspect-square relative rounded-3xl bg-gradient-to-br from-slate-100 to-white border border-slate-200/60 p-8 shadow-sm">
-                <div className="absolute inset-8 rounded-2xl bg-white shadow-xl shadow-slate-200/50 overflow-hidden border border-slate-100">
-                   <Image src="/screen-recipes.png" alt="App Features" fill className="object-cover object-top" />
-                </div>
-                
-                <div className="absolute -bottom-6 -right-6 bg-slate-900 text-white p-4 rounded-2xl shadow-xl max-w-[200px]">
-                  <p className="text-xs font-medium text-slate-300 mb-1">Weekly Challenge</p>
-                  <p className="font-semibold">Under $50 budget ✅</p>
-                </div>
-             </div>
-          </FadeInSection>
-
-        </div>
-      </section>
+      {/* ===== FEATURES (INTERACTIVE) ===== */}
+      <InteractiveShowcase />
 
       {/* ===== PRICING ===== */}
       <section id="pricing" className="mx-auto max-w-5xl px-4 py-24 scroll-mt-32">
@@ -244,17 +299,16 @@ export default function HomePage() {
             
             {/* Column 1: Brand & Downloads */}
             <div className="flex flex-col items-start max-w-sm">
-              {/* UPDATED LOGO SIZE AND REMOVED TEXT SPAN */}
               <div className="mb-2">
-                <Image src="/logo.png" alt="Cookwise Logo" width={150} height={50} className="object-contain h-20 w-auto" />
+                <img src="/logo.png" alt="Cookwise Logo" width={150} height={50} className="object-contain h-20 w-auto" />
               </div>
               
               <div className="flex flex-row gap-2 mt-2">
                 <a href="#" className="hover:opacity-80 transition-opacity">
-                  <Image src="/appstore.png" alt="Download on App Store" width={110} height={34} className="h-8 w-auto" />
+                  <img src="/appstore.png" alt="Download on App Store" width={110} height={34} className="h-8 w-auto" />
                 </a>
                 <a href="#" className="hover:opacity-80 transition-opacity">
-                  <Image src="/googleplay.png" alt="Get it on Google Play" width={110} height={34} className="h-8 w-auto" />
+                  <img src="/googleplay.png" alt="Get it on Google Play" width={110} height={34} className="h-8 w-auto" />
                 </a>
               </div>
             </div>
