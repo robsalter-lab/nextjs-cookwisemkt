@@ -69,7 +69,8 @@ export default function HomePage() {
     <div className="bg-gradient-to-b from-[#FDFBF6] via-[#F7FAFF] to-[#F3F5FF] text-slate-900">
 
       {/* ===== HERO ===== */}
-      <section id="hero" className="relative overflow-hidden pt-40 pb-16 scroll-mt-32">
+      {/* FIXED: Changed pt-40 to pt-6 to remove the huge gap at the top */}
+      <section id="hero" className="relative overflow-hidden pt-6 pb-16 scroll-mt-32">
         <div className="mx-auto flex max-w-7xl flex-col items-center gap-12 px-4 lg:flex-row lg:items-center">
           
           {/* LEFT COPY */}
@@ -206,8 +207,6 @@ export default function HomePage() {
           <FadeInSection delay={200} className="relative">
              <div className="aspect-square relative rounded-3xl bg-gradient-to-br from-slate-100 to-white border border-slate-200/60 p-8 shadow-sm">
                 <div className="absolute inset-8 rounded-2xl bg-white shadow-xl shadow-slate-200/50 overflow-hidden border border-slate-100">
-                   {/* Ensure "screen-recipes.png" exists in your public folder as well.
-                   */}
                    <Image src="/screen-recipes.png" alt="App Features" fill className="object-cover object-top" />
                 </div>
                 
