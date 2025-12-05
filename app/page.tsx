@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import React, { useEffect, useRef, useState } from "react";
+import { Linkedin, Instagram, Twitter } from "lucide-react"; // Make sure to install lucide-react if needed, or remove imports if not available
 
 type FadeInProps = {
   children: React.ReactNode;
@@ -56,10 +57,9 @@ export default function HomePage() {
           {/* LEFT COPY */}
           <FadeInSection className="w-full lg:w-1/2">
             
-            {/* NEW: AVATAR PILE (Social Proof) */}
+            {/* AVATAR PILE */}
             <div className="mb-6 flex items-center gap-4">
               <div className="flex -space-x-3">
-                {/* Placeholders for user avatars - Replace with <Image> tags */}
                 <div className="h-10 w-10 rounded-full border-[3px] border-white bg-slate-200" />
                 <div className="h-10 w-10 rounded-full border-[3px] border-white bg-slate-300" />
                 <div className="h-10 w-10 rounded-full border-[3px] border-white bg-slate-400" />
@@ -82,7 +82,6 @@ export default function HomePage() {
             </p>
 
             <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
-              {/* UPDATED BUTTON: Colored Glow Shadow */}
               <button className="inline-flex items-center justify-center rounded-full bg-slate-900 px-8 py-3.5 text-sm font-semibold text-white shadow-xl shadow-emerald-500/20 hover:bg-slate-800 hover:scale-105 transition-all">
                 Join the waitlist
               </button>
@@ -91,7 +90,7 @@ export default function HomePage() {
               </div>
             </div>
 
-            {/* Stats (Simplified/Cleaner) */}
+            {/* Stats */}
             <div className="mt-10 flex gap-8 text-slate-600 border-t border-slate-200/60 pt-6">
               <div>
                 <div className="text-2xl font-bold text-emerald-600">$18.60</div>
@@ -109,8 +108,7 @@ export default function HomePage() {
           <FadeInSection delay={200} className="relative w-full max-w-md lg:w-1/2 lg:max-w-none flex justify-center">
             <div className="relative h-[580px] w-[300px]">
 
-              {/* FLOATING BUBBLE (The "Connecting Element") */}
-              {/* Simulates the pop-out tags in Cal.ai */}
+              {/* Floating Bubble */}
               <div className="absolute -left-16 top-32 z-30 animate-bounce rounded-2xl bg-white p-3 shadow-[0_8px_30px_rgb(0,0,0,0.08)] hidden md:block" style={{ animationDuration: '3s' }}>
                  <div className="flex items-center gap-3">
                     <div className="flex h-10 w-10 items-center justify-center rounded-full bg-emerald-100 text-lg">💰</div>
@@ -122,14 +120,13 @@ export default function HomePage() {
               </div>
 
               {/* Main phone */}
-              {/* TIP: Ensure the image inside is LIGHT MODE for the best effect */}
               <div className="absolute inset-0 z-20 rounded-[40px] border-[8px] border-slate-900 bg-slate-900 shadow-2xl shadow-slate-400/20">
                 <div className="absolute inset-0 rounded-[32px] overflow-hidden bg-white">
                   <Image src="/screen-home.png" alt="Dashboard" fill priority className="object-cover" />
                 </div>
               </div>
 
-              {/* Back Phone (Ghost) */}
+              {/* Back Phone */}
               <div className="absolute -right-12 top-12 z-10 h-full w-full rotate-6 rounded-[40px] bg-slate-100/50 border border-slate-200 blur-[1px]"></div>
               
               <div className="pointer-events-none absolute -inset-20 -z-10 bg-gradient-to-tr from-emerald-200/30 via-purple-100/30 to-transparent blur-3xl" />
@@ -147,12 +144,10 @@ export default function HomePage() {
           </p>
         </FadeInSection>
 
-        {/* UN-BOXED LAYOUT: Removed heavy bg-white cards */}
         <div className="grid gap-12 md:grid-cols-3">
           {[1,2,3].map((step, i) => (
             <FadeInSection delay={100 * i} key={i}>
               <div className="group relative flex flex-col items-center text-center">
-                {/* Number Circle */}
                 <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-emerald-50 to-white shadow-lg shadow-emerald-100/50 text-xl font-bold text-emerald-600 ring-1 ring-emerald-100">
                   {step}
                 </div>
@@ -184,7 +179,6 @@ export default function HomePage() {
                 <span className="text-emerald-600">shop smarter.</span>
              </h2>
              
-             {/* Feature List - Clean, no boxes, just list items */}
              <div className="space-y-8">
                {[
                  { title: "Smart cart builder", desc: "Automatically groups items by aisle for faster shopping." },
@@ -205,15 +199,12 @@ export default function HomePage() {
              </div>
           </FadeInSection>
 
-          {/* Feature Image Area */}
           <FadeInSection delay={200} className="relative">
              <div className="aspect-square relative rounded-3xl bg-gradient-to-br from-slate-100 to-white border border-slate-200/60 p-8 shadow-sm">
-                {/* Abstract representation of UI */}
                 <div className="absolute inset-8 rounded-2xl bg-white shadow-xl shadow-slate-200/50 overflow-hidden border border-slate-100">
                    <Image src="/screen-recipes.png" alt="App Features" fill className="object-cover object-top" />
                 </div>
                 
-                {/* Floating Detail Bubble */}
                 <div className="absolute -bottom-6 -right-6 bg-slate-900 text-white p-4 rounded-2xl shadow-xl max-w-[200px]">
                   <p className="text-xs font-medium text-slate-300 mb-1">Weekly Challenge</p>
                   <p className="font-semibold">Under $50 budget ✅</p>
@@ -228,7 +219,6 @@ export default function HomePage() {
       <section id="pricing" className="mx-auto max-w-5xl px-4 py-24">
         <FadeInSection>
           <div className="relative rounded-[3rem] bg-slate-900 p-8 md:p-12 overflow-hidden shadow-2xl">
-            {/* Background Glow */}
             <div className="absolute top-0 right-0 -mt-20 -mr-20 h-[300px] w-[300px] rounded-full bg-emerald-500/20 blur-3xl" />
             <div className="absolute bottom-0 left-0 -mb-20 -ml-20 h-[300px] w-[300px] rounded-full bg-purple-500/20 blur-3xl" />
 
@@ -262,22 +252,74 @@ export default function HomePage() {
         </FadeInSection>
       </section>
 
-      {/* ===== FOOTER ===== */}
-      <footer className="border-t border-slate-200/60 bg-white/30 backdrop-blur-sm py-12">
-        <div className="mx-auto max-w-6xl px-4 flex flex-col md:flex-row justify-between items-center gap-6">
-          <div className="flex items-center gap-2">
-            <div className="h-8 w-8 rounded-lg bg-emerald-100 flex items-center justify-center text-emerald-700 font-bold">C</div>
-            <span className="font-semibold text-slate-900">Cookwise.ai</span>
-          </div>
+      {/* ===== CAL.AI STYLE FOOTER ===== */}
+      <footer className="bg-[#FDFBF6] pt-20 pb-10">
+        <div className="mx-auto max-w-7xl px-6">
           
-          <div className="text-sm text-slate-500">
-            © {new Date().getFullYear()} Cookwise Inc.
+          {/* Top Section: Columns */}
+          <div className="grid gap-12 lg:grid-cols-[2fr,1fr,1fr]">
+            
+            {/* Column 1: Brand & Downloads */}
+            <div className="flex flex-col items-start">
+              <div className="flex items-center gap-2 mb-6">
+                <Image src="/logo.png" alt="Cookwise Logo" width={50} height={50} className="object-contain" />
+                <span className="text-xl font-bold text-slate-900">Cookwise.ai</span>
+              </div>
+              
+              <p className="text-sm font-medium text-slate-500 mb-4">Download Cookwise.ai</p>
+              
+              <div className="flex flex-col sm:flex-row gap-3">
+                <a href="#" className="hover:opacity-80 transition-opacity">
+                  <Image src="/appstore.png" alt="Download on App Store" width={140} height={42} className="h-[42px] w-auto" />
+                </a>
+                <a href="#" className="hover:opacity-80 transition-opacity">
+                  <Image src="/googleplay.png" alt="Get it on Google Play" width={140} height={42} className="h-[42px] w-auto" />
+                </a>
+              </div>
+            </div>
+
+            {/* Column 2: Legal Links */}
+            <div>
+              <h3 className="font-bold text-slate-900 mb-6">Legal</h3>
+              <ul className="space-y-4 text-sm font-medium text-slate-500">
+                <li><a href="/privacy" className="hover:text-emerald-600 transition-colors">Privacy Policy</a></li>
+                <li><a href="/terms" className="hover:text-emerald-600 transition-colors">Terms of use</a></li>
+                <li><a href="/cookies" className="hover:text-emerald-600 transition-colors">Cookies Policy</a></li>
+                <li><a href="/dpa" className="hover:text-emerald-600 transition-colors">DPA</a></li>
+                <li><a href="/api-terms" className="hover:text-emerald-600 transition-colors">API Terms</a></li>
+              </ul>
+            </div>
+
+            {/* Column 3: Company Links */}
+            <div>
+              <h3 className="font-bold text-slate-900 mb-6">Company</h3>
+              <ul className="space-y-4 text-sm font-medium text-slate-500">
+                <li><a href="/contact" className="hover:text-emerald-600 transition-colors">Contact</a></li>
+                <li><a href="/partners" className="hover:text-emerald-600 transition-colors">Partners</a></li>
+                <li><a href="/affiliates" className="hover:text-emerald-600 transition-colors">Affiliates</a></li>
+                <li><a href="/branding" className="hover:text-emerald-600 transition-colors">Branding</a></li>
+                <li><a href="/developers" className="hover:text-emerald-600 transition-colors">Developers</a></li>
+              </ul>
+            </div>
           </div>
 
-          <div className="flex gap-6 text-sm font-medium text-slate-600">
-            <a href="#" className="hover:text-slate-900 transition-colors">Privacy</a>
-            <a href="#" className="hover:text-slate-900 transition-colors">Terms</a>
-            <a href="#" className="hover:text-slate-900 transition-colors">Twitter</a>
+          {/* Bottom Section: Copyright & Socials */}
+          <div className="mt-20 border-t border-slate-200 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+            <p className="text-sm text-slate-400">
+              © Copyright {new Date().getFullYear()}, All rights reserved
+            </p>
+            
+            <div className="flex gap-6">
+              <a href="#" className="text-slate-900 hover:text-emerald-600 transition-colors">
+                <Linkedin size={20} />
+              </a>
+              <a href="#" className="text-slate-900 hover:text-emerald-600 transition-colors">
+                <Instagram size={20} />
+              </a>
+              <a href="#" className="text-slate-900 hover:text-emerald-600 transition-colors">
+                <Twitter size={20} />
+              </a>
+            </div>
           </div>
         </div>
       </footer>
