@@ -130,18 +130,19 @@ export default function HomePage() {
               {/* Floating Bubble */}
               <div className="absolute -left-16 top-32 z-30 animate-bounce rounded-2xl bg-white p-3 shadow-[0_8px_30px_rgb(0,0,0,0.08)] hidden md:block" style={{ animationDuration: '3s' }}>
                  <div className="flex items-center gap-3">
-                    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-emerald-100 text-lg">💰</div>
-                    <div>
-                      <p className="text-[10px] uppercase font-bold text-slate-400">Total Saved</p>
-                      <p className="text-sm font-bold text-slate-900">$12.50</p>
-                    </div>
+                   <div className="flex h-10 w-10 items-center justify-center rounded-full bg-emerald-100 text-lg">💰</div>
+                   <div>
+                     <p className="text-[10px] uppercase font-bold text-slate-400">Total Saved</p>
+                     <p className="text-sm font-bold text-slate-900">$12.50</p>
+                   </div>
                  </div>
               </div>
 
               {/* Main phone */}
               <div className="absolute inset-0 z-20 rounded-[40px] border-[8px] border-slate-900 bg-slate-900 shadow-2xl shadow-slate-400/20">
                 <div className="absolute inset-0 rounded-[32px] overflow-hidden bg-white">
-                  <Image src="/screen-home.png" alt="Dashboard" fill priority className="object-cover" />
+                  {/* UPDATED IMAGE SOURCE HERE */}
+                  <Image src="/photo1.png" alt="Dashboard" fill priority className="object-cover" />
                 </div>
               </div>
 
@@ -194,8 +195,8 @@ export default function HomePage() {
             
           <FadeInSection>
              <h2 className="text-3xl font-bold tracking-tight text-slate-900 mb-6">
-                Everything you need to <br />
-                <span className="text-emerald-600">shop smarter.</span>
+               Everything you need to <br />
+               <span className="text-emerald-600">shop smarter.</span>
              </h2>
              
              <div className="space-y-8">
