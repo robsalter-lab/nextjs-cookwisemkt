@@ -15,24 +15,23 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      {/* 1. BACKGROUND APPLIED HERE GLOBALLY 
-        This ensures the gradient is continuous behind the header 
-      */}
       <body className="min-h-screen bg-gradient-to-b from-[#FDFBF6] via-[#F7FAFF] to-[#F3F5FF] text-slate-900">
 
+        {/* -------------------------------------------------- */}
         {/* HEADER */}
-        <header className="fixed top-0 left-0 right-0 z-50 bg-transparent"> 
+        {/* -------------------------------------------------- */}
+        <header className="fixed top-0 left-0 right-0 z-50 bg-transparent">
           <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-6">
 
-            {/* LOGO - UPDATED SIZE */}
+            {/* LOGO - MADE LARGER */}
             <Link href="/" className="flex items-center">
               <Image
                 src="/logo.png"
                 alt="Cookwise.ai"
-                // Increased resolution width/height so it doesn't blur when resized up
-                width={120} 
-                height={120}
-                // Changed from h-14 to h-20 (approx 80px) for a larger look
+                // Increased width/height prop for better resolution
+                width={100} 
+                height={100}
+                // Changed from h-14 to h-20 for a bigger logo
                 className="h-20 w-auto object-contain"
                 priority
               />
@@ -66,10 +65,7 @@ export default function RootLayout({
           </div>
         </header>
 
-        {/* 2. REMOVED pt-28 
-           We removed the padding here. Now 'children' will start at the very top of the screen,
-           allowing the background to sit behind the header.
-        */}
+        {/* REMOVED the 'pt-28' here so the background flows seamlessly behind the header */}
         <main>{children}</main>
       </body>
     </html>
