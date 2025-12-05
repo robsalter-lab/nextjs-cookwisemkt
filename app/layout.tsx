@@ -19,11 +19,9 @@ export default function RootLayout({
 
         {/* HEADER */}
         <header className="w-full z-50 bg-[#FDFBF6]">
-          {/* Reverted py-4 back to py-6 to give the larger logo room to breathe */}
           <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-6">
 
             {/* LOGO */}
-            {/* Restored size: changed h-12 back to h-20 */}
             <Link href="/" className="flex items-center gap-2">
               <Image
                 src="/logo.png"
@@ -44,23 +42,24 @@ export default function RootLayout({
             </nav>
 
             {/* STORE BADGES */}
-            <div className="hidden sm:flex items-center gap-3">
+            {/* Increased spacing to gap-5 and forced explicit height of h-[42px] for perfect matching */}
+            <div className="hidden sm:flex items-center gap-5">
               <Link href="#" className="transition-opacity hover:opacity-80">
                 <Image
                   src="/appstore.png"
                   alt="Download on the App Store"
-                  width={140}
-                  height={45}
-                  className="h-11 w-auto"
+                  width={135}
+                  height={42}
+                  className="h-[42px] w-auto"
                 />
               </Link>
               <Link href="#" className="transition-opacity hover:opacity-80">
                 <Image
                   src="/googleplay.png"
                   alt="Get it on Google Play"
-                  width={140}
-                  height={45}
-                  className="h-11 w-auto"
+                  width={135}
+                  height={42}
+                  className="h-[42px] w-auto"
                 />
               </Link>
             </div>
