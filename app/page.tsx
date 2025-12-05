@@ -87,12 +87,10 @@ export default function HomePage() {
             </p>
 
             <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
+              {/* UPDATED BUTTON: Removed waitlist text */}
               <button className="inline-flex items-center justify-center rounded-full bg-slate-900 px-8 py-3.5 text-sm font-semibold text-white shadow-xl shadow-emerald-500/20 hover:bg-slate-800 hover:scale-105 transition-all">
-                Join the waitlist
+                Get Started
               </button>
-              <div className="text-sm font-medium text-slate-500 px-4">
-                Free while in beta.
-              </div>
             </div>
 
             {/* Stats */}
@@ -213,14 +211,13 @@ export default function HomePage() {
 
             <div className="relative z-10 flex flex-col md:flex-row md:items-center md:justify-between gap-8">
               <div className="md:w-1/2">
-                <div className="inline-block rounded-full bg-emerald-500/10 px-3 py-1 text-xs font-bold text-emerald-400 mb-4 border border-emerald-500/20">
-                  LIMITED BETA ACCESS
-                </div>
+                {/* REMOVED: Beta Access Badge */}
+                
                 <h2 className="text-3xl font-bold text-white sm:text-4xl">
                   Start saving today.
                 </h2>
                 <p className="mt-4 text-slate-300">
-                  Join the waitlist to lock in our early-adopter pricing for life. 
+                  Lock in our early-adopter pricing for life. 
                   Cheaper than a single fancy coffee.
                 </p>
               </div>
@@ -232,8 +229,9 @@ export default function HomePage() {
                 </div>
                 <p className="text-xs text-slate-400 mt-2 mb-6">Billed monthly. Cancel anytime.</p>
                 
+                {/* UPDATED BUTTON: Removed Waitlist */}
                 <button className="w-full rounded-xl bg-emerald-500 py-3 text-sm font-bold text-slate-900 hover:bg-emerald-400 transition-colors">
-                  Join Waitlist
+                  Subscribe Now
                 </button>
               </div>
             </div>
@@ -242,7 +240,6 @@ export default function HomePage() {
       </section>
 
       {/* ===== FOOTER ===== */}
-      {/* Compressed padding and spacing */}
       <footer className="bg-[#FDFBF6] py-8 border-t border-slate-200/50">
         <div className="mx-auto max-w-7xl px-6">
           
@@ -269,7 +266,6 @@ export default function HomePage() {
             <div className="grid grid-cols-2 gap-10 sm:gap-24 w-full lg:w-auto">
               <div>
                 <h3 className="font-bold text-slate-900 mb-3 text-sm">Legal</h3>
-                {/* Tighter spacing (space-y-1) for compact look */}
                 <ul className="space-y-1 text-xs font-medium text-slate-500">
                   <li><a href="/privacy" className="hover:text-emerald-600 transition-colors">Privacy Policy</a></li>
                   <li><a href="/terms" className="hover:text-emerald-600 transition-colors">Terms of use</a></li>
