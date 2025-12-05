@@ -314,11 +314,11 @@ export default function HomePage() {
       <footer className="bg-[#FDFBF6] pt-20 pb-10">
         <div className="mx-auto max-w-7xl px-6">
           
-          {/* Top Section: Columns */}
-          <div className="grid gap-12 lg:grid-cols-[2fr,1fr,1fr]">
+          {/* Top Section: Flex Container with Side-by-Side Links */}
+          <div className="flex flex-col lg:flex-row lg:justify-between gap-12 lg:gap-20">
             
             {/* Column 1: Brand & Downloads */}
-            <div className="flex flex-col items-start">
+            <div className="flex flex-col items-start max-w-sm">
               <div className="flex items-center gap-2 mb-6">
                 <Image src="/logo.png" alt="Cookwise Logo" width={50} height={50} className="object-contain" />
                 <span className="text-xl font-bold text-slate-900">Cookwise.ai</span>
@@ -336,28 +336,31 @@ export default function HomePage() {
               </div>
             </div>
 
-            {/* Column 2: Legal Links */}
-            <div>
-              <h3 className="font-bold text-slate-900 mb-6">Legal</h3>
-              <ul className="space-y-4 text-sm font-medium text-slate-500">
-                <li><a href="/privacy" className="hover:text-emerald-600 transition-colors">Privacy Policy</a></li>
-                <li><a href="/terms" className="hover:text-emerald-600 transition-colors">Terms of use</a></li>
-                <li><a href="/cookies" className="hover:text-emerald-600 transition-colors">Cookies Policy</a></li>
-                <li><a href="/dpa" className="hover:text-emerald-600 transition-colors">DPA</a></li>
-                <li><a href="/api-terms" className="hover:text-emerald-600 transition-colors">API Terms</a></li>
-              </ul>
-            </div>
+            {/* Links Columns: Grid 2 cols to save vertical space on mobile */}
+            <div className="grid grid-cols-2 gap-12 sm:gap-24 w-full lg:w-auto">
+              {/* Column 2: Legal Links */}
+              <div>
+                <h3 className="font-bold text-slate-900 mb-6">Legal</h3>
+                <ul className="space-y-4 text-sm font-medium text-slate-500">
+                  <li><a href="/privacy" className="hover:text-emerald-600 transition-colors">Privacy Policy</a></li>
+                  <li><a href="/terms" className="hover:text-emerald-600 transition-colors">Terms of use</a></li>
+                  <li><a href="/cookies" className="hover:text-emerald-600 transition-colors">Cookies Policy</a></li>
+                  <li><a href="/dpa" className="hover:text-emerald-600 transition-colors">DPA</a></li>
+                  <li><a href="/api-terms" className="hover:text-emerald-600 transition-colors">API Terms</a></li>
+                </ul>
+              </div>
 
-            {/* Column 3: Company Links */}
-            <div>
-              <h3 className="font-bold text-slate-900 mb-6">Company</h3>
-              <ul className="space-y-4 text-sm font-medium text-slate-500">
-                <li><a href="/contact" className="hover:text-emerald-600 transition-colors">Contact</a></li>
-                <li><a href="/partners" className="hover:text-emerald-600 transition-colors">Partners</a></li>
-                <li><a href="/affiliates" className="hover:text-emerald-600 transition-colors">Affiliates</a></li>
-                <li><a href="/branding" className="hover:text-emerald-600 transition-colors">Branding</a></li>
-                <li><a href="/developers" className="hover:text-emerald-600 transition-colors">Developers</a></li>
-              </ul>
+              {/* Column 3: Company Links */}
+              <div>
+                <h3 className="font-bold text-slate-900 mb-6">Company</h3>
+                <ul className="space-y-4 text-sm font-medium text-slate-500">
+                  <li><a href="/contact" className="hover:text-emerald-600 transition-colors">Contact</a></li>
+                  <li><a href="/partners" className="hover:text-emerald-600 transition-colors">Partners</a></li>
+                  <li><a href="/affiliates" className="hover:text-emerald-600 transition-colors">Affiliates</a></li>
+                  <li><a href="/branding" className="hover:text-emerald-600 transition-colors">Branding</a></li>
+                  <li><a href="/developers" className="hover:text-emerald-600 transition-colors">Developers</a></li>
+                </ul>
+              </div>
             </div>
           </div>
 
