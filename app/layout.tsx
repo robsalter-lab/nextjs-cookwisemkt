@@ -17,55 +17,38 @@ export default function RootLayout({
     <html lang="en">
       <body className="min-h-screen bg-gradient-to-b from-[#FDFBF6] via-[#F7FAFF] to-[#F3F5FF] text-slate-900">
 
-        {/* -------------------------------------------------- */}
         {/* HEADER */}
-        {/* -------------------------------------------------- */}
-        <header className="fixed top-0 left-0 right-0 z-50 bg-transparent">
+        <header className="fixed top-0 left-0 right-0 z-50 bg-transparent backdrop-blur-[2px]">
           <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-6">
 
-            {/* LOGO - MADE LARGER */}
-            <Link href="/" className="flex items-center">
+            {/* LOGO */}
+            <Link href="/" className="flex items-center gap-2">
               <Image
                 src="/logo.png"
                 alt="Cookwise.ai"
-                // Increased width/height prop for better resolution
                 width={100} 
                 height={100}
-                // Changed from h-14 to h-20 for a bigger logo
                 className="h-20 w-auto object-contain"
                 priority
               />
             </Link>
 
-            {/* NAVIGATION */}
-            <nav className="hidden sm:flex items-center gap-10 text-[15px] font-semibold text-slate-800">
-              <Link href="#hero" className="hover:text-black transition">Home</Link>
-              <Link href="#how-it-works" className="hover:text-black transition">How it works</Link>
-              <Link href="#features" className="hover:text-black transition">Features</Link>
-              <Link href="#pricing" className="hover:text-black transition">Pricing</Link>
+            {/* NAV */}
+            <nav className="hidden sm:flex items-center gap-8 text-sm font-semibold text-slate-600">
+              <Link href="#how-it-works" className="hover:text-slate-900 transition-colors">How it works</Link>
+              <Link href="#features" className="hover:text-slate-900 transition-colors">Features</Link>
+              <Link href="#pricing" className="hover:text-slate-900 transition-colors">Pricing</Link>
             </nav>
 
-            {/* STORE BADGES */}
-            <div className="flex items-center gap-3">
-              <Image
-                src="/appstore.png"
-                alt="Download on the App Store"
-                width={130}
-                height={40}
-                className="w-[120px] lg:w-[130px] h-auto"
-              />
-              <Image
-                src="/googleplay.png"
-                alt="Get it on Google Play"
-                width={130}
-                height={40}
-                className="w-[120px] lg:w-[130px] h-auto"
-              />
+            {/* ACTION */}
+            <div className="hidden sm:block">
+              <button className="rounded-full bg-slate-900 px-5 py-2 text-xs font-bold text-white hover:bg-slate-800 transition-colors shadow-lg shadow-emerald-500/10">
+                Get App
+              </button>
             </div>
           </div>
         </header>
 
-        {/* REMOVED the 'pt-28' here so the background flows seamlessly behind the header */}
         <main>{children}</main>
       </body>
     </html>
