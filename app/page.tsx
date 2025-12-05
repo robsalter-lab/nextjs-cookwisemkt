@@ -3,6 +3,7 @@
 import Image from "next/image";
 import React, { useEffect, useRef, useState } from "react";
 
+// ... (FadeInSection Component stays exactly the same) ...
 type FadeInProps = {
   children: React.ReactNode;
   delay?: number;
@@ -46,12 +47,15 @@ function FadeInSection({ children, delay = 0, className = "" }: FadeInProps) {
 }
 
 export default function HomePage() {
-  return (
-    <div className="bg-gradient-to-b from-[#FDFBF6] via-[#F7FAFF] to-[#F3F5FF] text-slate-900">
+  // REMOVED the outer wrapper div with the duplicate background gradient.
+  // The layout.tsx background now flows seamlessly through here.
 
+  return (
+    <>
       {/* ===== HERO ===== */}
-      <section id="hero" className="relative overflow-hidden border-b border-slate-200/60">
-        <div className="mx-auto flex max-w-6xl flex-col items-center gap-12 px-4 pb-16 pt-24 lg:flex-row lg:items-stretch">
+      {/* Added pt-40 to push the text down below the floating header */}
+      <section id="hero" className="relative overflow-hidden border-b border-slate-200/60 pt-40">
+        <div className="mx-auto flex max-w-6xl flex-col items-center gap-12 px-4 pb-16 lg:flex-row lg:items-stretch">
           
           {/* LEFT COPY */}
           <FadeInSection className="w-full lg:w-1/2">
@@ -241,7 +245,7 @@ export default function HomePage() {
         </FadeInSection>
       </section>
 
-      {/* ===== FOOTER (UPDATED WITH FULL LEGAL SECTION) ===== */}
+      {/* ===== FOOTER ===== */}
       <footer className="border-t border-slate-200/40 bg-white/40 backdrop-blur-sm py-16">
         
         <div className="mx-auto max-w-6xl px-4 grid gap-12 md:grid-cols-3">
@@ -295,7 +299,6 @@ export default function HomePage() {
           © {new Date().getFullYear()} Cookwise.ai — All rights reserved.
         </p>
       </footer>
-
-    </div>
+    </>
   );
 }
