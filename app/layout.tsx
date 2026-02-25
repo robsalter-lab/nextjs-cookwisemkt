@@ -6,6 +6,9 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Cookwise.ai",
   description: "Smart grocery shopping with automatic deal-aware carts.",
+  verification: {
+    google: "E4rZFHE35_MehzglSuMZ12oTMjEihjOnLsjhbeGmNIo",
+  },
 };
 
 export default function RootLayout({
@@ -16,17 +19,15 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="min-h-screen bg-gradient-to-b from-[#FDFBF6] via-[#F7FAFF] to-[#F3F5FF] text-slate-900">
-
         {/* HEADER */}
         <header className="w-full z-50 bg-[#FDFBF6]">
           <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-6">
-
             {/* LOGO */}
             <Link href="/" className="flex items-center gap-2">
               <Image
                 src="/logo.png"
                 alt="Cookwise.ai"
-                width={150} 
+                width={150}
                 height={50}
                 className="h-20 w-auto object-contain"
                 priority
@@ -35,10 +36,30 @@ export default function RootLayout({
 
             {/* NAV */}
             <nav className="hidden md:flex items-center gap-8 text-base font-bold text-slate-800">
-              <Link href="#how-it-works" className="hover:text-slate-600 transition-colors">How it works</Link>
-              <Link href="#features" className="hover:text-slate-600 transition-colors">Features</Link>
-              <Link href="#pricing" className="hover:text-slate-600 transition-colors">Pricing</Link>
-              <Link href="#manage" className="hover:text-slate-600 transition-colors">Manage Subscription</Link>
+              <Link
+                href="#how-it-works"
+                className="hover:text-slate-600 transition-colors"
+              >
+                How it works
+              </Link>
+              <Link
+                href="#features"
+                className="hover:text-slate-600 transition-colors"
+              >
+                Features
+              </Link>
+              <Link
+                href="#pricing"
+                className="hover:text-slate-600 transition-colors"
+              >
+                Pricing
+              </Link>
+              <Link
+                href="#manage"
+                className="hover:text-slate-600 transition-colors"
+              >
+                Manage Subscription
+              </Link>
             </nav>
 
             {/* STORE BADGES */}
