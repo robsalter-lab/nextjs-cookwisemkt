@@ -1,6 +1,6 @@
 export default function DPA() {
   return (
-    <div className="max-w-3xl mx-auto px-6 py-16 text-slate-800">
+    <div className="max-w-3xl mx-auto px-6 py-16 text-slate-200">
       <h1 className="text-3xl font-bold mb-6">Data Processing Addendum (DPA)</h1>
       <p className="text-sm text-slate-500 mb-12">GDPR Compliance Document</p>
 

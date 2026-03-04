@@ -1,6 +1,6 @@
 export default function BrandingGuidelines() {
   return (
-    <div className="max-w-3xl mx-auto px-6 py-16 text-slate-800">
+    <div className="max-w-3xl mx-auto px-6 py-16 text-slate-200">
       <h1 className="text-4xl font-bold mb-6">Branding & Attribution Guidelines</h1>
 
       <h2 className="text-2xl font-semibold my-6">1. Attribution Requirements</h2>

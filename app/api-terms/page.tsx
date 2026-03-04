@@ -1,6 +1,6 @@
 export default function APITerms() {
   return (
-    <div className="max-w-3xl mx-auto px-6 py-16 text-slate-800">
+    <div className="max-w-3xl mx-auto px-6 py-16 text-slate-200">
       <h1 className="text-4xl font-bold mb-6">API Terms of Use</h1>
 
       <h2 className="text-2xl font-semibold my-6">1. Acceptable Use</h2>

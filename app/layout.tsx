@@ -1,11 +1,19 @@
 import "./globals.css";
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Cookwise.ai",
-  description: "Smart grocery shopping with automatic deal-aware carts.",
+  title: "Cookwise — Save Money. Eat Better. Cook Smarter.",
+  description:
+    "Cookwise scans local grocery deals, matches them to 1,500+ recipes, and builds your smart shopping list — automatically. Download free on iOS.",
+  openGraph: {
+    title: "Cookwise — Save Money. Eat Better. Cook Smarter.",
+    description:
+      "Your AI-powered kitchen partner. Track deals, discover recipes, auto-build shopping lists.",
+    url: "https://www.cookwise.ai",
+    siteName: "Cookwise",
+    type: "website",
+  },
   verification: {
     google: "E4rZFHE35_MehzglSuMZ12oTMjEihjOnLsjhbeGmNIo",
   },
@@ -17,72 +25,42 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className="min-h-screen bg-gradient-to-b from-[#FDFBF6] via-[#F7FAFF] to-[#F3F5FF] text-slate-900">
-        {/* HEADER */}
-        <header className="w-full z-50 bg-[#FDFBF6]">
-          <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-6">
-            {/* LOGO */}
-            <Link href="/" className="flex items-center gap-2">
-              <Image
-                src="/logo.png"
-                alt="Cookwise.ai"
-                width={150}
-                height={50}
-                className="h-20 w-auto object-contain"
-                priority
+    <html lang="en" className="scroll-smooth">
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="anonymous"
+        />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+          rel="stylesheet"
+        />
+      </head>
+      <body>
+        {/* ===== STICKY GLASS NAV ===== */}
+        <header className="nav-glass">
+          <div style={{ maxWidth: '80rem', margin: '0 auto', display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0.75rem 1.5rem' }}>
+            <Link href="/" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+              <img
+                src="/cookwise-owl.png"
+                alt="Cookwise"
+                style={{ height: '44px', width: 'auto', objectFit: 'contain' }}
               />
+              <span style={{ fontSize: '1.25rem', fontWeight: 700, color: 'white', letterSpacing: '-0.02em' }}>Cookwise</span>
             </Link>
 
-            {/* NAV */}
-            <nav className="hidden md:flex items-center gap-8 text-base font-bold text-slate-800">
-              <Link
-                href="#how-it-works"
-                className="hover:text-slate-600 transition-colors"
-              >
-                How it works
-              </Link>
-              <Link
-                href="#features"
-                className="hover:text-slate-600 transition-colors"
-              >
-                Features
-              </Link>
-              <Link
-                href="#pricing"
-                className="hover:text-slate-600 transition-colors"
-              >
-                Pricing
-              </Link>
-              <Link
-                href="#manage"
-                className="hover:text-slate-600 transition-colors"
-              >
-                Manage Subscription
-              </Link>
+            <nav style={{ display: 'flex', alignItems: 'center', gap: '2rem' }} className="hidden md:flex">
+              <Link href="#features" style={{ fontSize: '0.875rem', fontWeight: 500, color: 'rgba(255,255,255,0.7)', transition: 'color 0.2s' }}>Features</Link>
+              <Link href="#how-it-works" style={{ fontSize: '0.875rem', fontWeight: 500, color: 'rgba(255,255,255,0.7)', transition: 'color 0.2s' }}>How It Works</Link>
+              <Link href="#recipes" style={{ fontSize: '0.875rem', fontWeight: 500, color: 'rgba(255,255,255,0.7)', transition: 'color 0.2s' }}>Recipes</Link>
+              <Link href="#pricing" style={{ fontSize: '0.875rem', fontWeight: 500, color: 'rgba(255,255,255,0.7)', transition: 'color 0.2s' }}>Pricing</Link>
             </nav>
 
-            {/* STORE BADGES */}
-            {/* Increased spacing to gap-5 and forced explicit height of h-[42px] for perfect matching */}
-            <div className="hidden sm:flex items-center gap-5">
-              <Link href="#" className="transition-opacity hover:opacity-80">
-                <Image
-                  src="/appstore.png"
-                  alt="Download on the App Store"
-                  width={135}
-                  height={42}
-                  className="h-[42px] w-auto"
-                />
-              </Link>
-              <Link href="#" className="transition-opacity hover:opacity-80">
-                <Image
-                  src="/googleplay.png"
-                  alt="Get it on Google Play"
-                  width={135}
-                  height={42}
-                  className="h-[42px] w-auto"
-                />
-              </Link>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+              <a href="#download"><img src="/appstore.png" alt="App Store" style={{ height: 36, width: 'auto' }} /></a>
+              <a href="#download"><img src="/googleplay.png" alt="Google Play" style={{ height: 36, width: 'auto' }} /></a>
             </div>
           </div>
         </header>

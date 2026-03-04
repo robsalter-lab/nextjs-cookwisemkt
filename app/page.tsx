@@ -1,365 +1,460 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import {
+  ShoppingCart,
+  UtensilsCrossed,
+  Salad,
+  ListChecks,
+  Heart,
+  ChevronRight,
+  ChevronLeft,
+  Star,
+  Flame,
+  Clock,
+  ArrowRight,
+  ChefHat,
+} from "lucide-react";
 
-// --- Clean Social Icons (Cal.ai style) ---
-const LinkedinIcon = ({ className }: { className?: string }) => (
-  <svg viewBox="0 0 24 24" fill="currentColor" className={className}>
-    <path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17C2 21.328 2.671 22 3.5 22h17c.829 0 1.5-.672 1.5-1.5v-17c0-.828-.671-1.5-1.5-1.5zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93-1.07 0-1.62.76-1.62 2.22V19h-3v-9h3v1.38a3.25 3.25 0 013-1.63c2.03 0 3 1.25 3 3.5z" />
-  </svg>
+/* ─── SHARED CONTAINER ─── */
+const C = ({ children, max = "80rem", className = "", style = {} }: { children: React.ReactNode; max?: string; className?: string; style?: React.CSSProperties }) => (
+  <div className={className} style={{ maxWidth: max, margin: "0 auto", padding: "0 1.5rem", ...style }}>{children}</div>
 );
 
-const InstagramIcon = ({ className }: { className?: string }) => (
-  <svg viewBox="0 0 24 24" fill="currentColor" className={className}>
-    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
-  </svg>
-);
+/* ─── DATA ─── */
+const features = [
+  { icon: ShoppingCart, title: "Shop Smarter", desc: "Weekly flyer scanning across 10+ stores. See every deal at a glance and never miss a sale.", color: "#34d399", bg: "rgba(16,185,129,0.06)", border: "rgba(16,185,129,0.15)" },
+  { icon: UtensilsCrossed, title: "Cook What's On Sale", desc: "1,500+ recipes ranked by savings. Every dish shows real-time deals from your local stores.", color: "#60a5fa", bg: "rgba(59,130,246,0.06)", border: "rgba(59,130,246,0.15)" },
+  { icon: Heart, title: "Swipe to Discover", desc: "Card-based recipe discovery. Swipe right to save, left to skip. Find your next favorite meal in seconds.", color: "#f472b6", bg: "rgba(236,72,153,0.06)", border: "rgba(236,72,153,0.15)" },
+  { icon: Salad, title: "Eat Healthier", desc: "Nutrition tracking, dietary filters, calorie-aware meal planning, and macro breakdowns for your family.", color: "#fbbf24", bg: "rgba(251,191,36,0.06)", border: "rgba(251,191,36,0.15)" },
+  { icon: ListChecks, title: "Auto-Build Your List", desc: "One tap: ingredients grouped by aisle, prices compared across stores, pantry items automatically excluded.", color: "#a78bfa", bg: "rgba(139,92,246,0.06)", border: "rgba(139,92,246,0.15)" },
+  { icon: ChefHat, title: "Step-by-Step Cooking", desc: "Guided cooking with built-in timers, pro tips, and portion scaling. Like having a sous chef in your pocket.", color: "#fb923c", bg: "rgba(251,146,60,0.06)", border: "rgba(251,146,60,0.15)" },
+];
 
-const TwitterIcon = ({ className }: { className?: string }) => (
-  <svg viewBox="0 0 24 24" fill="currentColor" className={className}>
-    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-  </svg>
-);
+const showcaseItems = [
+  { title: "Swipe & Discover", desc: "Browse recipes with intuitive swipe cards. Each card shows savings, nutrition, cook time, and what's already in your pantry.", videoSrc: "/Swipe.MP4", badge: "Most Popular", badgeColor: "rgba(236,72,153,0.15)", badgeText: "#f9a8d4", badgeBorder: "rgba(236,72,153,0.3)" },
+  { title: "Smart Shopping List", desc: "Auto-generated from your meal plan. Grouped by aisle, prices compared across stores, pantry items excluded.", videoSrc: "/Smartshoppinglist.MP4", badge: "Save Money", badgeColor: "rgba(16,185,129,0.15)", badgeText: "#6ee7b7", badgeBorder: "rgba(16,185,129,0.3)" },
+  { title: "Pantry Tracking", desc: "Know exactly what you have. Scan receipts to update instantly. Never buy duplicates or let food go to waste.", videoSrc: "/Pantry%20Tracking.MP4", badge: "Zero Waste", badgeColor: "rgba(59,130,246,0.15)", badgeText: "#93c5fd", badgeBorder: "rgba(59,130,246,0.3)" },
+];
 
-type FadeInProps = {
-  children: React.ReactNode;
-  delay?: number;
-  className?: string;
-};
+const recipeCards = [
+  { title: "Tandoori Chicken", cuisine: "Indian", time: "25 min", cal: 597, savings: "72%", img: "/recipes/tandoori-chicken.webp" },
+  { title: "Thai Green Curry", cuisine: "Thai", time: "30 min", cal: 520, savings: "68%", img: "/recipes/thai-green-curry.webp" },
+  { title: "Korean Bibimbap", cuisine: "Korean", time: "20 min", cal: 490, savings: "70%", img: "/recipes/korean-bibimbap.webp" },
+  { title: "Mediterranean Bowl", cuisine: "Greek", time: "15 min", cal: 410, savings: "78%", img: "/recipes/mediterranean-bowl.webp" },
+  { title: "Avocado Toast", cuisine: "American", time: "6 min", cal: 376, savings: "80%", img: "/recipes/avocado-toast.webp" },
+];
 
-function FadeInSection({ children, delay = 0, className = "" }: FadeInProps) {
-  const ref = useRef<HTMLDivElement | null>(null);
-  const [visible, setVisible] = useState(false);
+const testimonials = [
+  { text: "Cookwise has saved us over $80/month on groceries. The deal-aware recipes are genius — we eat better AND spend less.", author: "Sarah M.", role: "Mom of 3" },
+  { text: "I used to spend hours planning meals and comparing flyers. Now it takes 5 minutes. Absolute game changer.", author: "David R.", role: "Home Cook" },
+  { text: "The swipe feature is addictive! I discover new recipes every week that I'd never have found on my own.", author: "Jessica L.", role: "Food Enthusiast" },
+  { text: "Finally an app that actually understands grocery deals. The smart shopping list alone is worth every penny.", author: "Marcus T.", role: "Budget Saver" },
+  { text: "My family loves the meal planner. Everyone picks their recipes and Cookwise builds one unified shopping list.", author: "Priya K.", role: "Family Planner" },
+  { text: "The cooking steps with tips and timers are incredible. Like having a professional chef guiding you in real time.", author: "Alex W.", role: "Aspiring Chef" },
+];
+
+/* ─── PAGE ─── */
+export default function HomePage() {
+  const [activeShowcase, setActiveShowcase] = useState(0);
+  const [activeRecipe, setActiveRecipe] = useState(0);
 
   useEffect(() => {
-    if (!ref.current) return;
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setVisible(true);
-            observer.disconnect();
-          }
-        });
-      },
-      { threshold: 0.2 }
-    );
-    observer.observe(ref.current);
-    return () => observer.disconnect();
+    const t = setInterval(() => setActiveShowcase((p) => (p + 1) % showcaseItems.length), 5000);
+    return () => clearInterval(t);
+  }, []);
+
+  useEffect(() => {
+    const t = setInterval(() => setActiveRecipe((p) => (p + 1) % recipeCards.length), 4000);
+    return () => clearInterval(t);
   }, []);
 
   return (
-    <div
-      ref={ref}
-      style={{ transitionDelay: `${delay}ms` }}
-      className={[
-        "transform-gpu transition-all duration-700 ease-out",
-        visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6",
-        className,
-      ].join(" ")}
-    >
-      {children}
-    </div>
-  );
-}
+    <div style={{ overflow: "hidden" }}>
 
-// --- DATA FOR INTERACTIVE SHOWCASE ---
-// FIX: Removed "/videos/" path and changed .mp4 to .MP4 to match file structure
-const featuresData = [
-  {
-    id: 0,
-    title: "Smart Cart Builder",
-    description: "Automatically groups items by aisle and compares prices across stores to find the lowest total.",
-    videoSrc: "/cart-demo.MP4", 
-  },
-  {
-    id: 1,
-    title: "Pantry-First Planning",
-    description: "We track what you already own so you never buy duplicates. Scan receipts to update instantly.",
-    videoSrc: "/pantry-demo.MP4",
-  },
-  {
-    id: 2,
-    title: "Deal-Aware Recipes",
-    description: "Get dinner ideas based on what is on sale this week at your local supermarkets.",
-    videoSrc: "/recipes-demo.MP4",
-  },
-];
+      {/* ═══════════ HERO ═══════════ */}
+      <section className="hero-gradient" style={{ paddingTop: "6rem", paddingBottom: "3rem" }}>
+        <C>
+          <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", gap: "2.5rem" }}>
+            {/* Left — copy */}
+            <div style={{ flex: "1 1 480px", minWidth: 0 }}>
 
-// --- INTERACTIVE SHOWCASE COMPONENT ---
-function InteractiveShowcase() {
-  const [activeFeature, setActiveFeature] = useState(0);
+              <h1 style={{ fontSize: "clamp(2.25rem, 5vw, 3.75rem)", fontWeight: 800, lineHeight: 1.08, letterSpacing: "-0.025em", color: "white" }}>
+                Save Money.<br />Eat Better.<br />
+                <span className="gradient-text-emerald">Cook Smarter.</span>
+              </h1>
 
-  return (
-    <section id="features" className="mx-auto max-w-6xl px-4 py-24 border-t border-slate-200/50 scroll-mt-32">
-      <div className="mb-16 text-center">
-        <h2 className="text-3xl font-bold tracking-tight text-slate-900">
-          Everything you need to <span className="text-emerald-600">shop smarter.</span>
-        </h2>
-        <p className="mt-4 text-lg text-slate-600 max-w-2xl mx-auto">
-          See exactly how Cookwise works in action.
-        </p>
-      </div>
+              <p style={{ marginTop: "1.25rem", fontSize: "1.125rem", lineHeight: 1.7, color: "rgba(255,255,255,0.75)", maxWidth: "32rem" }}>
+                Cookwise scans local grocery deals, matches them to 1,500+ chef-quality recipes, and auto-builds your shopping list — saving you time and money every week.
+              </p>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-        
-        {/* LEFT: Phone Simulator (Video Player) */}
-        <FadeInSection className="relative mx-auto w-full max-w-[320px] lg:max-w-[360px]">
-           {/* Phone Frame styling */}
-           <div className="relative rounded-[3rem] border-[8px] border-slate-900 overflow-hidden shadow-2xl bg-black aspect-[9/19.5] ring-1 ring-slate-900/5">
-             {/* Optional: Top Notch/Dynamic Island */}
-             <div className="absolute top-0 left-1/2 -translate-x-1/2 h-7 w-32 bg-black rounded-b-2xl z-20"></div>
-             
-             {/* Dynamic Video */}
-             <video
-               key={featuresData[activeFeature].videoSrc} // Forces react to re-render video element on change
-               src={featuresData[activeFeature].videoSrc}
-               autoPlay
-               loop
-               muted
-               playsInline
-               className="absolute inset-0 h-full w-full object-cover bg-slate-100"
-             />
-           </div>
-           
-           {/* Decorative Glow behind phone */}
-           <div className="absolute -inset-4 bg-emerald-500/20 blur-3xl -z-10 rounded-full opacity-70"></div>
-        </FadeInSection>
+              <div style={{ marginTop: "1.75rem", display: "flex", flexWrap: "wrap", gap: "0.75rem", alignItems: "center" }}>
+                <a href="#download" style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", borderRadius: "9999px", background: "#10b981", padding: "0.875rem 2rem", fontSize: "0.875rem", fontWeight: 600, color: "white", boxShadow: "0 8px 30px rgba(16,185,129,0.3)", transition: "all 0.2s", textDecoration: "none" }}>
+                  Download Free <ArrowRight style={{ width: 16, height: 16 }} />
+                </a>
+                <a href="#features" style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", borderRadius: "9999px", border: "1px solid rgba(255,255,255,0.12)", background: "rgba(255,255,255,0.04)", padding: "0.875rem 2rem", fontSize: "0.875rem", fontWeight: 500, color: "rgba(255,255,255,0.7)", textDecoration: "none", transition: "all 0.2s" }}>
+                  See How It Works
+                </a>
+              </div>
 
-        {/* RIGHT: Clickable Feature List */}
-        <div className="flex flex-col gap-4">
-          {featuresData.map((feature, index) => (
-            <FadeInSection key={feature.id} delay={index * 100}>
-              <button
-                onClick={() => setActiveFeature(index)}
-                className={`w-full text-left p-6 rounded-2xl transition-all duration-300 border-2 group relative overflow-hidden ${
-                  activeFeature === index
-                    ? "bg-white border-emerald-500 shadow-xl shadow-emerald-500/10 scale-[1.02] z-10"
-                    : "bg-white/50 border-transparent hover:bg-white hover:border-slate-200"
-                }`}
-              >
-                <div className="relative z-10">
-                  <h3 className={`text-xl font-bold mb-2 transition-colors ${
-                    activeFeature === index ? "text-emerald-700" : "text-slate-900"
-                  }`}>
-                    {feature.title}
-                  </h3>
-                  <p className="text-slate-600 leading-relaxed text-sm lg:text-base">
-                    {feature.description}
-                  </p>
+              <div style={{ marginTop: "2rem", paddingTop: "1.25rem", borderTop: "1px solid rgba(255,255,255,0.06)", display: "flex", gap: "2rem", flexWrap: "wrap" }}>
+                {[
+                  { val: "$18.60", label: "Avg. Weekly Savings", accent: true },
+                  { val: "1,500+", label: "Chef Recipes" },
+                  { val: "10+", label: "Stores Tracked" },
+                ].map((s, i) => (
+                  <React.Fragment key={s.label}>
+                    {i > 0 && <div className="stat-divider" style={{ height: 36 }} />}
+                    <div>
+                      <div style={{ fontSize: "1.375rem", fontWeight: 700, color: s.accent ? "#34d399" : "white" }}>{s.val}</div>
+                      <div style={{ fontSize: "0.6875rem", fontWeight: 500, textTransform: "uppercase", letterSpacing: "0.06em", color: "rgba(255,255,255,0.3)" }}>{s.label}</div>
+                    </div>
+                  </React.Fragment>
+                ))}
+              </div>
+            </div>
+
+            {/* Right — dual phone mockup */}
+            <div style={{ flex: "1 1 420px", display: "flex", justifyContent: "center", alignItems: "center", minWidth: 0 }}>
+              <div style={{ position: "relative", width: 360, height: 620 }}>
+                {/* Primary phone — Swipe Discovery */}
+                <div style={{
+                  position: "absolute", left: 0, top: 40, width: 250, height: 560, zIndex: 2,
+                  borderRadius: "2.25rem", overflow: "hidden",
+                  border: "3px solid rgba(255,255,255,0.12)",
+                  background: "#0a0a0a",
+                  boxShadow: "0 30px 80px rgba(0,0,0,0.6), 0 0 40px rgba(16,185,129,0.08)"
+                }}>
+                  <img src="/app-screenshot.png" alt="Cookwise recipe discovery" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top center" }} />
                 </div>
-                
-                {/* Progress bar indicator for active state (optional nice touch) */}
-                {activeFeature === index && (
-                   <div className="absolute bottom-0 left-0 h-1 bg-emerald-500 animate-pulse w-full opacity-20" />
-                )}
-              </button>
-            </FadeInSection>
-          ))}
-        </div>
 
-      </div>
-    </section>
-  );
-}
+                {/* Secondary phone — Recipe Detail */}
+                <div style={{
+                  position: "absolute", right: -10, top: 0, width: 220, height: 460, zIndex: 1,
+                  borderRadius: "2rem", overflow: "hidden",
+                  border: "3px solid rgba(255,255,255,0.08)",
+                  background: "#0a0a0a",
+                  transform: "rotate(6deg)",
+                  boxShadow: "0 20px 60px rgba(0,0,0,0.5)"
+                }}>
+                  <img src="/app-screenshot1.png" alt="Cookwise recipe details" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center 30%" }} />
+                </div>
 
-export default function HomePage() {
-  return (
-    <div className="bg-gradient-to-b from-[#FDFBF6] via-[#F7FAFF] to-[#F3F5FF] text-slate-900">
+                {/* Glow effect behind phones */}
+                <div style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%)", width: 300, height: 300, borderRadius: "50%", background: "radial-gradient(circle, rgba(16,185,129,0.12) 0%, transparent 70%)", pointerEvents: "none", zIndex: 0 }} />
+              </div>
+            </div>
+          </div>
+        </C>
+      </section>
 
-      {/* ===== HERO ===== */}
-      <section id="hero" className="relative overflow-hidden pt-6 pb-16 scroll-mt-32">
-        <div className="mx-auto flex max-w-7xl flex-col items-center gap-12 px-4 lg:flex-row lg:items-center">
-          
-          {/* LEFT COPY */}
-          <FadeInSection className="w-full lg:w-1/2 lg:pr-8">
-            
-            <h1 className="text-4xl font-semibold tracking-tight text-slate-900 sm:text-5xl lg:text-6xl lg:leading-[1.1]">
-              Track weekly deals.
-              <br />
-              <span className="text-emerald-600">Auto-build smart carts.</span>
-            </h1>
-
-            <p className="mt-6 max-w-xl text-lg text-slate-600 leading-relaxed">
-              Cookwise.ai scans your local grocery deals, your pantry, and your
-              meal plan to build an optimized shopping list in minutes.
+      {/* ═══════════ FEATURES ═══════════ */}
+      <section id="features" className="section-dark" style={{ padding: "4rem 0" }}>
+        <C>
+          <div style={{ textAlign: "center", marginBottom: "2.5rem" }}>
+            <h2 style={{ fontSize: "clamp(1.75rem, 4vw, 2.75rem)", fontWeight: 800, letterSpacing: "-0.02em" }}>
+              Everything you need to<br />
+              <span className="gradient-text">eat well for less</span>
+            </h2>
+            <p style={{ marginTop: "0.75rem", fontSize: "1rem", color: "rgba(255,255,255,0.75)", maxWidth: "36rem", margin: "0.75rem auto 0" }}>
+              From deal scanning to meal planning to cooking — Cookwise handles it all.
             </p>
+          </div>
 
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
-              <button className="inline-flex items-center justify-center rounded-full bg-slate-900 px-8 py-3.5 text-sm font-semibold text-white shadow-xl shadow-emerald-500/20 hover:bg-slate-800 hover:scale-105 transition-all">
-                Get Started
-              </button>
-            </div>
-
-            {/* Stats */}
-            <div className="mt-10 flex gap-8 text-slate-600 border-t border-slate-200/60 pt-6">
-              <div>
-                <div className="text-2xl font-bold text-emerald-600">$18.60</div>
-                <div className="text-xs font-medium text-slate-500 uppercase tracking-wide">Avg. Weekly Savings</div>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "1rem" }}>
+            {features.map((f) => (
+              <div key={f.title} className="glass-card glass-card-hover" style={{ padding: "1.5rem 1.75rem" }}>
+                <div style={{ width: 44, height: 44, borderRadius: "0.75rem", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: "1rem", background: f.bg, border: `1px solid ${f.border}` }}>
+                  <f.icon style={{ width: 22, height: 22, color: f.color }} />
+                </div>
+                <h3 style={{ fontSize: "1.0625rem", fontWeight: 700, color: "white", marginBottom: "0.375rem" }}>{f.title}</h3>
+                <p style={{ fontSize: "0.875rem", lineHeight: 1.65, color: "rgba(255,255,255,0.75)" }}>{f.desc}</p>
               </div>
-              <div className="w-px bg-slate-200/60" />
-              <div>
-                <div className="text-2xl font-bold text-slate-900">2–3 hrs</div>
-                <div className="text-xs font-medium text-slate-500 uppercase tracking-wide">Time Saved</div>
-              </div>
-            </div>
-          </FadeInSection>
-
-          {/* RIGHT SIDE - HERO IMAGE */}
-          <FadeInSection delay={200} className="relative w-full lg:w-1/2 flex justify-center lg:justify-end mt-12 lg:mt-0">
-            <div className="relative w-full max-w-[700px] h-[500px] sm:h-[600px] lg:h-[700px]">
-              {/* Replaced next/image with standard img tag for compatibility */}
-              <img
-                src="/photo1.png"
-                alt="Cookwise app interface showing smart savings list"
-                className="absolute inset-0 w-full h-full object-contain"
-              />
-            </div>
-          </FadeInSection>
-        </div>
+            ))}
+          </div>
+        </C>
       </section>
 
-      {/* ===== HOW IT WORKS ===== */}
-      <section id="how-it-works" className="mx-auto max-w-6xl px-4 py-24 scroll-mt-32">
-        <FadeInSection className="text-center mb-16">
-          <h2 className="text-3xl font-bold tracking-tight text-slate-900">How Cookwise.ai works</h2>
-          <p className="mt-4 text-lg text-slate-600 max-w-2xl mx-auto">
-            Your personal grocery assistant that optimizes for price and nutrition.
-          </p>
-        </FadeInSection>
+      {/* ═══════════ INTERACTIVE SHOWCASE ═══════════ */}
+      <section style={{ padding: "4rem 0" }}>
+        <C>
+          <div style={{ textAlign: "center", marginBottom: "2.5rem" }}>
+            <h2 style={{ fontSize: "clamp(1.75rem, 4vw, 2.75rem)", fontWeight: 800, letterSpacing: "-0.02em" }}>
+              See it in <span className="gradient-text-emerald">action</span>
+            </h2>
+            <p style={{ marginTop: "0.75rem", fontSize: "1rem", color: "rgba(255,255,255,0.75)" }}>
+              Watch how Cookwise transforms your weekly grocery routine.
+            </p>
+          </div>
 
-        <div className="grid gap-12 md:grid-cols-3">
-          {[1,2,3].map((step, i) => (
-            <FadeInSection delay={100 * i} key={i}>
-              <div className="group relative flex flex-col items-center text-center">
-                <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-emerald-50 to-white shadow-lg shadow-emerald-100/50 text-xl font-bold text-emerald-600 ring-1 ring-emerald-100">
-                  {step}
+          <div style={{ display: "grid", gridTemplateColumns: "1fr", gap: "2.5rem", alignItems: "center" }} className="lg:!grid-cols-[auto_1fr]">
+            {/* Phone */}
+            <div style={{ display: "flex", justifyContent: "center" }}>
+              <div style={{ position: "relative" }}>
+                <div style={{ position: "absolute", inset: "-2rem", borderRadius: "50%", background: "rgba(16,185,129,0.06)", filter: "blur(50px)", zIndex: -1 }} />
+                <div className="phone-frame">
+                  <div className="phone-notch" />
+                  <video key={showcaseItems[activeShowcase].videoSrc} src={showcaseItems[activeShowcase].videoSrc} autoPlay loop muted playsInline />
                 </div>
-                
-                <h3 className="text-lg font-bold text-slate-900 mb-3">
-                  {step === 1 && "Connect your stores"}
-                  {step === 2 && "Sync pantry & meals"}
-                  {step === 3 && "Auto-build smart list"}
-                </h3>
-                
-                <p className="text-slate-600 leading-relaxed">
-                  {step === 1 && "Select your local supermarkets to instantly sync weekly flyers and digital coupons."}
-                  {step === 2 && "Scan receipts to update your pantry and pick recipes that use what you have."}
-                  {step === 3 && "We bundle ingredients and compare prices across stores to maximize savings."}
-                </p>
               </div>
-            </FadeInSection>
-          ))}
-        </div>
-      </section>
+            </div>
 
-      {/* ===== FEATURES (INTERACTIVE) ===== */}
-      <InteractiveShowcase />
-
-      {/* ===== PRICING ===== */}
-      <section id="pricing" className="mx-auto max-w-5xl px-4 py-24 scroll-mt-32">
-        <FadeInSection>
-          <div className="relative rounded-[3rem] bg-slate-900 p-8 md:p-12 overflow-hidden shadow-2xl">
-            <div className="absolute top-0 right-0 -mt-20 -mr-20 h-[300px] w-[300px] rounded-full bg-emerald-500/20 blur-3xl" />
-            <div className="absolute bottom-0 left-0 -mb-20 -ml-20 h-[300px] w-[300px] rounded-full bg-purple-500/20 blur-3xl" />
-
-            <div className="relative z-10 flex flex-col md:flex-row md:items-center md:justify-between gap-8">
-              <div className="md:w-1/2">
-                
-                <h2 className="text-3xl font-bold text-white sm:text-4xl">
-                  Start saving today.
-                </h2>
-                <p className="mt-4 text-slate-300">
-                  Lock in our early-adopter pricing for life. 
-                  Cheaper than a single fancy coffee.
-                </p>
-              </div>
-
-              <div className="md:w-[40%] bg-white/5 backdrop-blur-sm rounded-3xl border border-white/10 p-6">
-                <div className="flex items-baseline gap-1">
-                  <span className="text-4xl font-bold text-white">$2.99</span>
-                  <span className="text-slate-400">/week</span>
-                </div>
-                <p className="text-xs text-slate-400 mt-2 mb-6">Billed monthly. Cancel anytime.</p>
-                
-                <button className="w-full rounded-xl bg-emerald-500 py-3 text-sm font-bold text-slate-900 hover:bg-emerald-400 transition-colors">
-                  Subscribe Now
+            {/* Feature pills */}
+            <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
+              {showcaseItems.map((item, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => setActiveShowcase(idx)}
+                  className={activeShowcase === idx ? "feature-pill-active" : ""}
+                  style={{
+                    width: "100%", textAlign: "left", padding: "1.25rem 1.5rem", borderRadius: "1rem",
+                    border: `1px solid ${activeShowcase === idx ? "rgba(16,185,129,0.35)" : "rgba(255,255,255,0.05)"}`,
+                    background: activeShowcase === idx ? "rgba(16,185,129,0.08)" : "rgba(255,255,255,0.02)",
+                    transition: "all 0.3s", cursor: "pointer",
+                  }}
+                >
+                  <div style={{ display: "flex", alignItems: "center", gap: "0.75rem", marginBottom: "0.375rem" }}>
+                    <h3 style={{ fontSize: "1rem", fontWeight: 700, color: activeShowcase === idx ? "#6ee7b7" : "white" }}>{item.title}</h3>
+                    <span style={{ fontSize: "0.6875rem", fontWeight: 600, padding: "0.125rem 0.625rem", borderRadius: "9999px", background: item.badgeColor, color: item.badgeText, border: `1px solid ${item.badgeBorder}` }}>{item.badge}</span>
+                  </div>
+                  <p style={{ fontSize: "0.875rem", lineHeight: 1.55, color: "rgba(255,255,255,0.75)" }}>{item.desc}</p>
+                  {activeShowcase === idx && (
+                    <div style={{ marginTop: "1rem", height: 3, borderRadius: 4, background: "rgba(255,255,255,0.05)", overflow: "hidden" }}>
+                      <motion.div style={{ height: "100%", borderRadius: 4, background: "rgba(16,185,129,0.5)" }} initial={{ width: "0%" }} animate={{ width: "100%" }} transition={{ duration: 5, ease: "linear" }} key={`prog-${idx}-${activeShowcase}`} />
+                    </div>
+                  )}
                 </button>
-              </div>
+              ))}
             </div>
           </div>
-        </FadeInSection>
+        </C>
       </section>
 
-      {/* ===== FOOTER ===== */}
-      <footer className="bg-[#FDFBF6] py-8 border-t border-slate-200/50">
-        <div className="mx-auto max-w-7xl px-6">
-          
-          <div className="flex flex-col lg:flex-row lg:justify-between gap-8 lg:gap-20">
-            
-            {/* Column 1: Brand & Downloads */}
-            <div className="flex flex-col items-start max-w-sm">
-              <div className="mb-2">
-                <img src="/logo.png" alt="Cookwise Logo" width={150} height={50} className="object-contain h-20 w-auto" />
-              </div>
-              
-              <div className="flex flex-row gap-2 mt-2">
-                <a href="#" className="hover:opacity-80 transition-opacity">
-                  <img src="/appstore.png" alt="Download on App Store" width={110} height={34} className="h-8 w-auto" />
-                </a>
-                <a href="#" className="hover:opacity-80 transition-opacity">
-                  <img src="/googleplay.png" alt="Get it on Google Play" width={110} height={34} className="h-8 w-auto" />
-                </a>
-              </div>
-            </div>
-
-            {/* Links Columns - Compacted */}
-            <div className="grid grid-cols-2 gap-10 sm:gap-24 w-full lg:w-auto">
-              <div>
-                <h3 className="font-bold text-slate-900 mb-3 text-sm">Legal</h3>
-                <ul className="space-y-1 text-xs font-medium text-slate-500">
-                  <li><a href="/privacy" className="hover:text-emerald-600 transition-colors">Privacy Policy</a></li>
-                  <li><a href="/terms" className="hover:text-emerald-600 transition-colors">Terms of use</a></li>
-                  <li><a href="/cookies" className="hover:text-emerald-600 transition-colors">Cookies Policy</a></li>
-                  <li><a href="/dpa" className="hover:text-emerald-600 transition-colors">DPA</a></li>
-                  <li><a href="/api-terms" className="hover:text-emerald-600 transition-colors">API Terms</a></li>
-                </ul>
-              </div>
-
-              <div>
-                <h3 className="font-bold text-slate-900 mb-3 text-sm">Company</h3>
-                <ul className="space-y-1 text-xs font-medium text-slate-500">
-                  <li><a href="/contact" className="hover:text-emerald-600 transition-colors">Contact</a></li>
-                  <li><a href="/partners" className="hover:text-emerald-600 transition-colors">Partners</a></li>
-                  <li><a href="/affiliates" className="hover:text-emerald-600 transition-colors">Affiliates</a></li>
-                  <li><a href="/branding" className="hover:text-emerald-600 transition-colors">Branding</a></li>
-                  <li><a href="/developers" className="hover:text-emerald-600 transition-colors">Developers</a></li>
-                </ul>
-              </div>
-            </div>
+      {/* ═══════════ RECIPE CAROUSEL ═══════════ */}
+      <section id="recipes" className="section-dark" style={{ padding: "4rem 0" }}>
+        <C max="72rem">
+          <div style={{ textAlign: "center", marginBottom: "2rem" }}>
+            <h2 style={{ fontSize: "clamp(1.75rem, 4vw, 2.75rem)", fontWeight: 800, letterSpacing: "-0.02em" }}>
+              1,500+ recipes that <span className="gradient-text-emerald">save you money</span>
+            </h2>
+            <p style={{ marginTop: "0.75rem", fontSize: "1rem", color: "rgba(255,255,255,0.75)" }}>
+              Every recipe shows real-time savings based on your local store deals.
+            </p>
           </div>
 
-          {/* Bottom Section - Compacted margin */}
-          <div className="mt-6 border-t border-slate-200 pt-4 flex flex-row justify-between items-center">
-            <p className="text-[10px] sm:text-xs text-slate-400">
-              © {new Date().getFullYear()} Cookwise.ai. All rights reserved.
+          {/* Spotlight card */}
+          <div style={{ position: "relative", borderRadius: "1.5rem", overflow: "hidden", border: "1px solid rgba(255,255,255,0.06)", height: 400 }}>
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={activeRecipe}
+                initial={{ opacity: 0, scale: 1.02 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.98 }}
+                transition={{ duration: 0.5 }}
+                style={{ position: "absolute", inset: 0 }}
+              >
+                <img src={recipeCards[activeRecipe].img} alt={recipeCards[activeRecipe].title} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to right, rgba(6,11,24,0.92) 0%, rgba(6,11,24,0.65) 45%, rgba(6,11,24,0.2) 100%)" }} />
+                <div style={{ position: "absolute", inset: 0, display: "flex", alignItems: "center", padding: "0 3rem" }}>
+                  <div style={{ maxWidth: 420 }}>
+                    <span style={{ display: "inline-block", fontSize: "0.75rem", fontWeight: 700, padding: "0.25rem 0.75rem", borderRadius: "9999px", background: "rgba(16,185,129,0.2)", color: "#6ee7b7", border: "1px solid rgba(16,185,129,0.3)", marginBottom: "0.75rem" }}>
+                      ~{recipeCards[activeRecipe].savings} savings
+                    </span>
+                    <div style={{ fontSize: "0.75rem", fontWeight: 600, color: "#34d399", textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: "0.375rem" }}>{recipeCards[activeRecipe].cuisine}</div>
+                    <h3 style={{ fontSize: "clamp(1.75rem, 3vw, 2.5rem)", fontWeight: 800, color: "white", marginBottom: "0.5rem" }}>{recipeCards[activeRecipe].title}</h3>
+                    <div style={{ display: "flex", gap: "1.25rem", fontSize: "0.875rem", color: "rgba(255,255,255,0.75)" }}>
+                      <span style={{ display: "flex", alignItems: "center", gap: "0.375rem" }}><Clock style={{ width: 16, height: 16 }} /> {recipeCards[activeRecipe].time}</span>
+                      <span style={{ display: "flex", alignItems: "center", gap: "0.375rem" }}><Flame style={{ width: 16, height: 16 }} /> {recipeCards[activeRecipe].cal} cal</span>
+                    </div>
+                    <a href="#download" style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", marginTop: "1.25rem", borderRadius: "9999px", background: "#10b981", padding: "0.75rem 1.5rem", fontSize: "0.875rem", fontWeight: 600, color: "white", textDecoration: "none", boxShadow: "0 6px 20px rgba(16,185,129,0.25)" }}>
+                      View Recipe <ArrowRight style={{ width: 14, height: 14 }} />
+                    </a>
+                  </div>
+                </div>
+              </motion.div>
+            </AnimatePresence>
+
+            {/* Nav arrows */}
+            <button onClick={() => setActiveRecipe((p) => (p - 1 + recipeCards.length) % recipeCards.length)} style={{ position: "absolute", left: 12, top: "50%", transform: "translateY(-50%)", width: 40, height: 40, borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center", background: "rgba(0,0,0,0.4)", backdropFilter: "blur(8px)", border: "1px solid rgba(255,255,255,0.1)", cursor: "pointer", zIndex: 5, color: "white" }}>
+              <ChevronLeft style={{ width: 20, height: 20 }} />
+            </button>
+            <button onClick={() => setActiveRecipe((p) => (p + 1) % recipeCards.length)} style={{ position: "absolute", right: 12, top: "50%", transform: "translateY(-50%)", width: 40, height: 40, borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center", background: "rgba(0,0,0,0.4)", backdropFilter: "blur(8px)", border: "1px solid rgba(255,255,255,0.1)", cursor: "pointer", zIndex: 5, color: "white" }}>
+              <ChevronRight style={{ width: 20, height: 20 }} />
+            </button>
+          </div>
+
+          {/* Thumbnail strip */}
+          <div style={{ display: "flex", gap: "0.75rem", marginTop: "1rem", justifyContent: "center" }}>
+            {recipeCards.map((r, i) => (
+              <button
+                key={i}
+                onClick={() => setActiveRecipe(i)}
+                style={{
+                  width: 80, height: 56, borderRadius: "0.625rem", overflow: "hidden", cursor: "pointer",
+                  border: activeRecipe === i ? "2px solid #10b981" : "2px solid transparent",
+                  opacity: activeRecipe === i ? 1 : 0.5,
+                  transition: "all 0.3s",
+                }}
+              >
+                <img src={r.img} alt={r.title} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+              </button>
+            ))}
+          </div>
+        </C>
+      </section>
+
+      {/* ═══════════ HOW IT WORKS ═══════════ */}
+      <section id="how-it-works" style={{ padding: "4rem 0" }}>
+        <C max="72rem">
+          <div style={{ textAlign: "center", marginBottom: "3rem" }}>
+            <h2 style={{ fontSize: "clamp(1.75rem, 4vw, 2.75rem)", fontWeight: 800, letterSpacing: "-0.02em" }}>
+              Three steps to <span className="gradient-text">smarter meals</span>
+            </h2>
+          </div>
+
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: "2rem", position: "relative" }}>
+            {[
+              { step: 1, title: "Connect Your Stores", desc: "Select your local supermarkets to sync weekly flyers, digital coupons, and cashback offers.", color: "#34d399", bg: "rgba(16,185,129,0.08)", border: "rgba(16,185,129,0.2)" },
+              { step: 2, title: "Browse & Plan", desc: "Swipe through deal-aware recipes. Add to your weekly meal plan with a single tap.", color: "#60a5fa", bg: "rgba(59,130,246,0.08)", border: "rgba(59,130,246,0.2)" },
+              { step: 3, title: "Shop & Save", desc: "Auto-generated smart shopping list grouped by aisle. Check off items as you go.", color: "#a78bfa", bg: "rgba(139,92,246,0.08)", border: "rgba(139,92,246,0.2)" },
+            ].map((s) => (
+              <div key={s.step} style={{ textAlign: "center" }}>
+                <div style={{ width: 80, height: 80, borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 1.25rem", background: s.bg, border: `1px solid ${s.border}` }}>
+                  <span style={{ fontSize: "2rem", fontWeight: 800, color: s.color }}>{s.step}</span>
+                </div>
+                <h3 style={{ fontSize: "1.125rem", fontWeight: 700, color: "white", marginBottom: "0.5rem" }}>{s.title}</h3>
+                <p style={{ fontSize: "0.875rem", lineHeight: 1.6, color: "rgba(255,255,255,0.75)", maxWidth: 260, margin: "0 auto" }}>{s.desc}</p>
+              </div>
+            ))}
+          </div>
+        </C>
+      </section>
+
+      {/* ═══════════ TESTIMONIALS ═══════════ */}
+      <section className="section-dark" style={{ padding: "4rem 0", overflow: "hidden" }}>
+        <C style={{ marginBottom: "2rem" }}>
+          <div style={{ textAlign: "center" }}>
+            <h2 style={{ fontSize: "clamp(1.75rem, 4vw, 2.75rem)", fontWeight: 800 }}>
+              Loved by <span className="gradient-text-emerald">home cooks</span>
+            </h2>
+            <p style={{ marginTop: "0.75rem", fontSize: "1rem", color: "rgba(255,255,255,0.75)" }}>
+              See why families trust Cookwise for smarter grocery shopping.
             </p>
-            
-            <div className="flex gap-4">
-              <a href="#" className="text-slate-400 hover:text-slate-900 transition-colors">
-                <LinkedinIcon className="w-4 h-4" />
-              </a>
-              <a href="#" className="text-slate-400 hover:text-slate-900 transition-colors">
-                <InstagramIcon className="w-4 h-4" />
-              </a>
-              <a href="#" className="text-slate-400 hover:text-slate-900 transition-colors">
-                <TwitterIcon className="w-4 h-4" />
-              </a>
-            </div>
+          </div>
+        </C>
+
+        <div className="relative marquee-container">
+          <div className="fade-left" />
+          <div className="fade-right" />
+          <div className="marquee-track">
+            {[...testimonials, ...testimonials].map((t, i) => (
+              <div key={i} className="glass-card" style={{ padding: "1.5rem", width: 320, flexShrink: 0, display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
+                <div>
+                  <div style={{ display: "flex", gap: 2, marginBottom: "0.75rem" }}>{[1, 2, 3, 4, 5].map((s) => <Star key={s} style={{ width: 14, height: 14, fill: "#fbbf24", color: "#fbbf24" }} />)}</div>
+                  <p style={{ fontSize: "0.875rem", lineHeight: 1.6, color: "rgba(255,255,255,0.55)", marginBottom: "1rem" }}>&ldquo;{t.text}&rdquo;</p>
+                </div>
+                <div>
+                  <div style={{ fontSize: "0.875rem", fontWeight: 600, color: "white" }}>{t.author}</div>
+                  <div style={{ fontSize: "0.6875rem", color: "rgba(255,255,255,0.25)" }}>{t.role}</div>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
-      </footer>
+      </section>
 
+      {/* ═══════════ PRICING ═══════════ */}
+      <section id="pricing" style={{ padding: "4rem 0" }}>
+        <C max="64rem">
+          <div style={{ position: "relative", borderRadius: "1.5rem", overflow: "hidden", border: "1px solid rgba(255,255,255,0.06)" }}>
+            <div style={{ position: "absolute", inset: 0, background: "linear-gradient(135deg, rgba(16,185,129,0.08), rgba(15,23,42,0.95), rgba(59,130,246,0.06))" }} />
+            <div style={{ position: "absolute", top: -80, right: -80, width: 300, height: 300, borderRadius: "50%", background: "rgba(16,185,129,0.08)", filter: "blur(100px)", pointerEvents: "none" }} />
+
+            <div style={{ position: "relative", padding: "2.5rem", display: "flex", flexWrap: "wrap", alignItems: "center", justifyContent: "space-between", gap: "2.5rem" }}>
+              <div style={{ flex: "1 1 300px" }}>
+                <div style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", color: "#34d399", fontSize: "0.875rem", fontWeight: 500, marginBottom: "1rem" }}><Flame style={{ width: 16, height: 16 }} /> 100% Free</div>
+                <h2 style={{ fontSize: "clamp(1.75rem, 3vw, 2.5rem)", fontWeight: 800, color: "white", lineHeight: 1.15 }}>Start saving<br />today.</h2>
+                <p style={{ marginTop: "1rem", lineHeight: 1.6, color: "rgba(255,255,255,0.75)" }}>No subscriptions, no hidden fees, no paywalls. Every feature is completely free — forever.</p>
+              </div>
+
+              <div className="glass-card" style={{ flex: "1 1 300px", padding: "2rem" }}>
+                <div style={{ display: "flex", alignItems: "baseline", gap: "0.5rem" }}>
+                  <span style={{ fontSize: "3rem", fontWeight: 800, color: "white" }}>Free</span>
+                  <span style={{ color: "rgba(255,255,255,0.75)" }}>forever</span>
+                </div>
+                <p style={{ fontSize: "0.75rem", marginTop: "0.25rem", marginBottom: "1.5rem", color: "rgba(255,255,255,0.25)" }}>No credit card required. Download and start saving.</p>
+                <ul style={{ listStyle: "none", padding: 0, marginBottom: "1.5rem" }}>
+                  {["Unlimited recipes", "Weekly deal scanning", "Smart shopping lists", "Family meal planning", "Full nutrition data"].map((f) => (
+                    <li key={f} style={{ display: "flex", alignItems: "center", gap: "0.75rem", fontSize: "0.875rem", color: "rgba(255,255,255,0.55)", marginBottom: "0.625rem" }}>
+                      <div style={{ width: 5, height: 5, borderRadius: "50%", background: "#10b981", flexShrink: 0 }} />{f}
+                    </li>
+                  ))}
+                </ul>
+                <button style={{ width: "100%", borderRadius: "0.75rem", background: "#10b981", padding: "0.875rem", fontSize: "0.875rem", fontWeight: 700, color: "white", border: "none", cursor: "pointer", boxShadow: "0 8px 24px rgba(16,185,129,0.2)" }}>Download Free</button>
+              </div>
+            </div>
+          </div>
+        </C>
+      </section>
+
+      {/* ═══════════ FINAL CTA ═══════════ */}
+      <section id="download" className="cta-gradient" style={{ padding: "4rem 0" }}>
+        <C max="56rem" style={{ textAlign: "center" }}>
+          <h2 style={{ fontSize: "clamp(2rem, 5vw, 3.5rem)", fontWeight: 800 }}>
+            Ready to <span className="gradient-text-emerald">save?</span>
+          </h2>
+          <p style={{ marginTop: "1rem", fontSize: "1.0625rem", color: "rgba(255,255,255,0.75)", maxWidth: 480, margin: "1rem auto 0" }}>
+            Join thousands of families who cook better meals for less. Download Cookwise free today.
+          </p>
+          <div style={{ marginTop: "2rem", display: "flex", flexWrap: "wrap", justifyContent: "center", gap: "1rem" }}>
+            <a href="#"><img src="/appstore.png" alt="App Store" style={{ height: 52, width: "auto" }} /></a>
+            <a href="#"><img src="/googleplay.png" alt="Google Play" style={{ height: 52, width: "auto" }} /></a>
+          </div>
+        </C>
+      </section>
+
+      {/* ═══════════ FOOTER ═══════════ */}
+      <footer style={{ borderTop: "1px solid rgba(255,255,255,0.05)", padding: "3rem 0 2rem" }}>
+        <C>
+          <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "space-between", gap: "2.5rem" }}>
+            <div style={{ maxWidth: 260 }}>
+              <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", marginBottom: "0.75rem" }}>
+                <img src="/cookwise-owl.png" alt="Cookwise" style={{ height: 36, width: "auto" }} />
+                <span style={{ fontSize: "1.125rem", fontWeight: 700, color: "white" }}>Cookwise</span>
+              </div>
+              <p style={{ fontSize: "0.875rem", lineHeight: 1.6, color: "rgba(255,255,255,0.25)" }}>Your AI-powered kitchen partner. Track deals, discover recipes, and auto-build smart shopping lists.</p>
+              <div style={{ display: "flex", gap: "0.5rem", marginTop: "1rem" }}>
+                <a href="#"><img src="/appstore.png" alt="App Store" style={{ height: 30, width: "auto" }} /></a>
+                <a href="#"><img src="/googleplay.png" alt="Google Play" style={{ height: 30, width: "auto" }} /></a>
+              </div>
+            </div>
+            <div style={{ display: "flex", flexWrap: "wrap", gap: "3rem" }}>
+              {[
+                { title: "Product", links: [{ label: "Features", href: "#features" }, { label: "Pricing", href: "#pricing" }, { label: "Recipes", href: "#recipes" }] },
+                { title: "Legal", links: [{ label: "Privacy Policy", href: "/privacy" }, { label: "Terms of Use", href: "/terms" }] },
+                { title: "Company", links: [{ label: "Contact", href: "/contact" }, { label: "Partners", href: "/partners" }] },
+              ].map((col) => (
+                <div key={col.title}>
+                  <h3 style={{ fontSize: "0.875rem", fontWeight: 600, color: "rgba(255,255,255,0.5)", marginBottom: "0.75rem" }}>{col.title}</h3>
+                  <ul style={{ listStyle: "none", padding: 0 }}>
+                    {col.links.map((l) => (
+                      <li key={l.label} style={{ marginBottom: "0.5rem" }}>
+                        <a href={l.href} style={{ fontSize: "0.875rem", color: "rgba(255,255,255,0.25)", textDecoration: "none", transition: "color 0.2s" }}
+                          onMouseEnter={(e) => (e.currentTarget.style.color = "rgba(255,255,255,0.6)")}
+                          onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(255,255,255,0.25)")}>{l.label}</a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div style={{ marginTop: "2.5rem", paddingTop: "1.25rem", borderTop: "1px solid rgba(255,255,255,0.04)", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "1rem" }}>
+            <p style={{ fontSize: "0.75rem", color: "rgba(255,255,255,0.15)" }}>© {new Date().getFullYear()} Cookwise. All rights reserved.</p>
+          </div>
+        </C>
+      </footer>
     </div>
   );
 }

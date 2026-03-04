@@ -1,208 +1,96 @@
-export default function TermsPage() {
+export default function PrivacyPage() {
+  const h2Style = { fontSize: "1.5rem", fontWeight: 700, color: "white", marginTop: "2.5rem", marginBottom: "1rem" };
+  const pStyle = { marginBottom: "1rem", lineHeight: 1.7 };
+
   return (
-    <main className="min-h-screen bg-slate-950 text-slate-50">
-      <section className="max-w-3xl mx-auto px-6 py-16 md:py-20">
-        <h1 className="text-3xl md:text-4xl font-semibold mb-6">
-          Terms of Service
-        </h1>
+    <div style={{ maxWidth: "48rem", margin: "0 auto", padding: "4rem 1.5rem", color: "rgba(255,255,255,0.8)" }}>
+      <h1 style={{ fontSize: "2.25rem", fontWeight: 800, color: "white", marginBottom: "1.5rem" }}>Privacy Policy</h1>
+      <p style={{ fontSize: "0.875rem", color: "rgba(255,255,255,0.4)", marginBottom: "3rem" }}>Last updated: February 27, 2026</p>
 
-        <p className="text-sm text-slate-300 mb-6">Last updated: February 27, 2026</p>
+      <h2 style={h2Style}>1. Introduction</h2>
+      <p style={pStyle}>
+        At Cookwise.ai (&ldquo;Cookwise&rdquo;, &ldquo;we&rdquo;, &ldquo;us&rdquo;, or &ldquo;our&rdquo;), your privacy is important to us. This Privacy Policy describes how we collect, use, and protect your personal information when you use our websites, mobile applications, and related services (collectively, the &ldquo;Services&rdquo;).
+      </p>
 
-        <div className="space-y-6 text-sm leading-relaxed text-slate-200">
-          <h2 className="text-xl font-semibold">1. Acceptance of Terms</h2>
-          <p>
-            By accessing or using Cookwise.ai (&quot;Cookwise&quot;, &quot;we&quot;,
-            &quot;us&quot;, or &quot;our&quot;) websites, mobile applications,
-            and related services (collectively, the &quot;Services&quot;), you
-            agree to be bound by these Terms of Service (&quot;Terms&quot;).
-            If you do not agree to these Terms, you may not use the Services.
-          </p>
+      <h2 style={h2Style}>2. Information We Collect</h2>
+      <p style={{ ...pStyle, marginBottom: "0.5rem" }}>We may collect the following types of information:</p>
+      <ul style={{ paddingLeft: "1.5rem", marginBottom: "1rem", lineHeight: 1.8 }}>
+        <li><strong style={{ color: "white" }}>Account information:</strong> Name, email address, and authentication credentials when you create an account.</li>
+        <li><strong style={{ color: "white" }}>Pantry and preference data:</strong> Items you add to your pantry, dietary preferences, and saved recipes.</li>
+        <li><strong style={{ color: "white" }}>Location data:</strong> Your ZIP code to match local store deals and flyer availability.</li>
+        <li><strong style={{ color: "white" }}>Usage data:</strong> How you interact with the Services, including pages visited, features used, and actions taken.</li>
+        <li><strong style={{ color: "white" }}>Device information:</strong> Device type, operating system, browser type, and unique device identifiers.</li>
+      </ul>
 
-          <h2 className="text-xl font-semibold">2. Eligibility</h2>
-          <p>
-            You must be at least 13 years old to use the Services. If you are
-            under 18, you represent that your parent or legal guardian has
-            reviewed and agreed to these Terms on your behalf. By using the
-            Services, you represent that you meet this requirement.
-          </p>
+      <h2 style={h2Style}>3. How We Use Your Information</h2>
+      <p style={{ ...pStyle, marginBottom: "0.5rem" }}>We use your information to:</p>
+      <ul style={{ paddingLeft: "1.5rem", marginBottom: "1rem", lineHeight: 1.8 }}>
+        <li>Provide, maintain, and improve the Services</li>
+        <li>Match recipes to your local grocery deals and pantry items</li>
+        <li>Generate personalized shopping lists and meal plans</li>
+        <li>Send important service updates and notifications</li>
+        <li>Analyze usage trends to enhance user experience</li>
+        <li>Comply with legal obligations</li>
+      </ul>
 
-          <h2 className="text-xl font-semibold">3. Description of Service</h2>
-          <p>
-            Cookwise provides tools to help you discover recipes, plan meals,
-            generate shopping lists, and cook with guided assistance using store
-            deals, pantry data, nutrition information, and other inputs. Cookwise
-            may also provide links or deep links to third-party retailers,
-            delivery platforms, or affiliate partners for online ordering and
-            checkout. We do not sell groceries, alcohol, or fulfill orders
-            ourselves.
-          </p>
+      <h2 style={h2Style}>4. Data Sharing</h2>
+      <p style={pStyle}>
+        We do not sell your personal information. We may share data with trusted third-party service providers (such as hosting, analytics, and authentication providers) who assist us in operating the Services. These providers are contractually required to keep your data secure and use it only for the purposes we specify.
+      </p>
+      <p style={pStyle}>
+        We may also share information when required by law, to protect our rights, or in connection with a merger, acquisition, or sale of assets.
+      </p>
 
-          <h2 className="text-xl font-semibold">4. Accounts and Security</h2>
-          <p>
-            You are responsible for maintaining the confidentiality of your
-            account credentials and for all activities that occur under your
-            account. You agree to notify us immediately if you suspect any
-            unauthorized access or use of your account.
-          </p>
+      <h2 style={h2Style}>5. Affiliate and Third-Party Links</h2>
+      <p style={pStyle}>
+        The Services may contain links to third-party retailers, delivery platforms, and affiliate partners. When you click these links, those third parties may collect information about you according to their own privacy policies. We encourage you to review the privacy policies of any third-party sites you visit through Cookwise.
+      </p>
 
-          <h2 className="text-xl font-semibold">5. Fees and Future Premium Features</h2>
-          <p>
-            The Services are currently offered at no charge. We may introduce
-            optional premium features or subscriptions in the future. If we do,
-            we will clearly disclose pricing before you are charged. Unless
-            otherwise stated, subscriptions will automatically renew at the end
-            of each billing period until canceled.
-          </p>
-          <p>
-            You may cancel any future subscription at any time through your
-            account settings or by contacting support. Fees paid are generally
-            non-refundable except where required by law.
-          </p>
+      <h2 style={h2Style}>6. Cookies and Tracking</h2>
+      <p style={pStyle}>
+        We use cookies and similar technologies to improve your experience, remember your preferences, and analyze how you use our Services. You can manage cookie preferences through your browser settings. For more details, see our Cookie Policy.
+      </p>
 
-          <h2 className="text-xl font-semibold">6. Affiliate Links and Third-Party Services</h2>
-          <p>
-            The Services may include links or integrations with third-party
-            services such as supermarkets, delivery platforms, coupon providers,
-            affiliate networks, or payment processors. Some links within the
-            Services are affiliate links, and Cookwise may earn a commission
-            from qualifying purchases at no additional cost to you. Cookwise is
-            a participant in the Amazon Services LLC Associates Program, an
-            affiliate advertising program designed to provide a means for sites
-            to earn advertising fees by advertising and linking to Amazon.com.
-          </p>
-          <p>
-            These third parties are not controlled by Cookwise, and we are not
-            responsible for their content, policies, or practices. Your use of
-            third-party services is subject to their own terms and privacy
-            policies.
-          </p>
+      <h2 style={h2Style}>7. Data Security</h2>
+      <p style={pStyle}>
+        We implement industry-standard security measures to protect your personal information, including encryption in transit and at rest, secure authentication, and regular security audits. However, no method of transmission or storage is 100% secure, and we cannot guarantee absolute security.
+      </p>
 
-          <h2 className="text-xl font-semibold">7. Drink Pairing Recommendations</h2>
-          <p>
-            The Services may suggest alcoholic and non-alcoholic drink pairings
-            with recipes. Cookwise does not sell, distribute, or deliver alcohol.
-            All drink recommendations are for informational and entertainment
-            purposes only. You must be of legal drinking age in your jurisdiction
-            to purchase or consume alcoholic beverages. Please drink responsibly.
-          </p>
+      <h2 style={h2Style}>8. Data Retention</h2>
+      <p style={pStyle}>
+        We retain your personal information for as long as your account is active or as needed to provide you with the Services. You can request deletion of your account and associated data at any time by contacting us.
+      </p>
 
-          <h2 className="text-xl font-semibold">8. User Content</h2>
-          <p>
-            You may submit or store content through the Services, such as saved
-            recipes, notes, preferences, reviews, photos, and pantry items
-            (&quot;User Content&quot;). You retain ownership of your User
-            Content, but grant Cookwise a worldwide, non-exclusive, royalty-free
-            license to use, host, store, reproduce, and display your User
-            Content as reasonably necessary to operate and improve the Services.
-          </p>
+      <h2 style={h2Style}>9. Your Rights</h2>
+      <p style={{ ...pStyle, marginBottom: "0.5rem" }}>Depending on your location, you may have the right to:</p>
+      <ul style={{ paddingLeft: "1.5rem", marginBottom: "1rem", lineHeight: 1.8 }}>
+        <li>Access the personal information we hold about you</li>
+        <li>Request correction of inaccurate data</li>
+        <li>Request deletion of your data</li>
+        <li>Object to or restrict certain data processing</li>
+        <li>Data portability (receive your data in a structured format)</li>
+        <li>Withdraw consent at any time</li>
+      </ul>
+      <p style={pStyle}>
+        To exercise any of these rights, contact us at <strong style={{ color: "#34d399" }}>privacy@cookwise.ai</strong>.
+      </p>
 
-          <h2 className="text-xl font-semibold">9. Acceptable Use</h2>
-          <p>You agree not to:</p>
-          <ul className="list-disc list-inside space-y-2 text-slate-300">
-            <li>Use the Services for any illegal or unauthorized purpose.</li>
-            <li>
-              Reverse engineer, decompile, or attempt to access the source code
-              of the Services except to the extent allowed by law.
-            </li>
-            <li>
-              Interfere with or disrupt the security, integrity, or performance
-              of the Services.
-            </li>
-            <li>
-              Use automated scripts or scraping tools to access or collect data
-              from the Services in a way that violates our technical controls or
-              partner terms.
-            </li>
-            <li>
-              Misrepresent your affiliation with Cookwise or use the Services to
-              send spam or unsolicited communications.
-            </li>
-          </ul>
+      <h2 style={h2Style}>10. Children&apos;s Privacy</h2>
+      <p style={pStyle}>
+        The Services are not directed to children under 13. We do not knowingly collect personal information from children under 13. If we learn that we have collected such information, we will take steps to delete it promptly.
+      </p>
 
-          <h2 className="text-xl font-semibold">10. Intellectual Property</h2>
-          <p>
-            Cookwise and its licensors own all rights, title, and interest in
-            and to the Services, including all software, designs, text, graphics,
-            logos, and trademarks, except for User Content and third-party
-            content. Except as expressly permitted in these Terms, you may not
-            reproduce, modify, or create derivative works of the Services.
-          </p>
+      <h2 style={h2Style}>11. Changes to This Policy</h2>
+      <p style={pStyle}>
+        We may update this Privacy Policy from time to time. When we make material changes, we will update the &ldquo;Last updated&rdquo; date above and may provide additional notice as required by law. Your continued use of the Services after any changes constitutes your acceptance of the updated policy.
+      </p>
 
-          <h2 className="text-xl font-semibold">11. Health and Nutrition Disclaimer</h2>
-          <p>
-            The Services provide nutritional information, calorie tracking, and
-            meal planning tools for informational purposes only. This
-            information is not intended as medical advice, diagnosis, or
-            treatment. Always consult a qualified healthcare professional before
-            making significant changes to your diet or exercise routine,
-            especially if you have allergies, dietary restrictions, or medical
-            conditions.
-          </p>
-
-          <h2 className="text-xl font-semibold">
-            12. Disclaimers and Limitation of Liability
-          </h2>
-          <p>
-            The Services are provided on an &quot;AS IS&quot; and &quot;AS
-            AVAILABLE&quot; basis without warranties of any kind, whether
-            express or implied, including warranties of merchantability, fitness
-            for a particular purpose, and non-infringement.
-          </p>
-          <p>
-            To the maximum extent permitted by law, Cookwise will not be liable
-            for any indirect, incidental, special, consequential, or punitive
-            damages, or for any loss of profits or revenues, whether incurred
-            directly or indirectly, arising from your use of the Services.
-          </p>
-
-          <h2 className="text-xl font-semibold">13. Indemnification</h2>
-          <p>
-            You agree to indemnify and hold harmless Cookwise and its officers,
-            directors, employees, and agents from and against any claims,
-            liabilities, damages, losses, and expenses (including reasonable
-            attorneys&apos; fees) arising out of or related to your use of the
-            Services or violation of these Terms.
-          </p>
-
-          <h2 className="text-xl font-semibold">14. Termination</h2>
-          <p>
-            We may suspend or terminate your access to the Services at any time
-            if we believe you have violated these Terms or engaged in conduct
-            that may harm Cookwise, our users, or partners. You may stop using
-            the Services at any time. Certain sections of these Terms will
-            survive termination, including those relating to intellectual
-            property, disclaimers, limitation of liability, and indemnification.
-          </p>
-
-          <h2 className="text-xl font-semibold">15. Governing Law</h2>
-          <p>
-            These Terms are governed by the laws of the State of Florida, United
-            States, without regard to its conflict of law principles. Any
-            disputes arising out of or related to these Terms or the Services
-            will be resolved in the state or federal courts located in Miami-Dade
-            County, Florida, and you consent to the jurisdiction of such courts.
-          </p>
-
-          <h2 className="text-xl font-semibold">16. Changes to These Terms</h2>
-          <p>
-            We may update these Terms from time to time. When we make material
-            changes, we will update the &quot;Last updated&quot; date above and
-            may provide additional notice as required by law. Your continued use
-            of the Services after any changes constitutes your acceptance of the
-            updated Terms.
-          </p>
-
-          <h2 className="text-xl font-semibold">17. Contact</h2>
-          <p>
-            If you have questions about these Terms, please contact us at:
-          </p>
-          <p className="text-slate-300">
-            Email: <span className="font-semibold">support@cookwise.ai</span>
-            <br />
-            Subject line: &quot;Terms of Service&quot;
-          </p>
-        </div>
-      </section>
-    </main>
+      <h2 style={h2Style}>12. Contact</h2>
+      <p style={pStyle}>
+        If you have questions about this Privacy Policy, contact us at:
+        <br />
+        <strong style={{ color: "#34d399" }}>privacy@cookwise.ai</strong>
+      </p>
+    </div>
   );
 }

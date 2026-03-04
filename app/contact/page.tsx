@@ -2,62 +2,42 @@ import Link from "next/link";
 
 export default function ContactPage() {
   return (
-    <main className="min-h-screen bg-slate-950 text-slate-50">
-      <section className="max-w-3xl mx-auto px-6 py-16 md:py-20">
-        <h1 className="text-3xl md:text-4xl font-semibold mb-4">
-          Contact Cookwise.ai
-        </h1>
-        <p className="text-sm text-slate-300 mb-8">
-          Have questions, feedback, or partnership ideas? We&apos;d love to hear
-          from you.
-        </p>
+    <div style={{ maxWidth: "48rem", margin: "0 auto", padding: "4rem 1.5rem", color: "rgba(255,255,255,0.8)" }}>
+      <h1 style={{ fontSize: "2.25rem", fontWeight: 800, color: "white", marginBottom: "0.75rem" }}>Contact Cookwise.ai</h1>
+      <p style={{ fontSize: "0.9375rem", color: "rgba(255,255,255,0.5)", marginBottom: "2.5rem" }}>
+        Have questions, feedback, or partnership ideas? We&apos;d love to hear from you.
+      </p>
 
-        <div className="space-y-6 text-sm text-slate-200">
-          <div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-6">
-            <h2 className="text-lg font-semibold mb-2">General Support</h2>
-            <p className="text-slate-300">
-              For help with the app, billing, or account questions:
-            </p>
-            <p className="mt-2">
-              Email:{" "}
-              <span className="font-semibold">support@cookwise.ai</span>
-            </p>
-          </div>
-
-          <div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-6">
-            <h2 className="text-lg font-semibold mb-2">Partnerships</h2>
-            <p className="text-slate-300">
-              For retailers, delivery platforms, or affiliate networks:
-            </p>
-            <p className="mt-2">
-              Email:{" "}
-              <span className="font-semibold">partners@cookwise.ai</span>
-            </p>
-            <p className="mt-2 text-slate-400 text-xs">
-              You can also learn more on our{" "}
-              <Link href="/partners" className="underline">
-                Partners page
-              </Link>
-              .
-            </p>
-          </div>
-
-          <div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-6">
-            <h2 className="text-lg font-semibold mb-2">Privacy</h2>
-            <p className="text-slate-300">
-              For privacy or data-protection questions:
-            </p>
-            <p className="mt-2">
-              Email:{" "}
-              <span className="font-semibold">privacy@cookwise.ai</span>
-            </p>
-          </div>
+      <div style={{ display: "flex", flexDirection: "column", gap: "1.25rem" }}>
+        {/* General Support */}
+        <div style={{ borderRadius: "1rem", border: "1px solid rgba(255,255,255,0.08)", background: "rgba(255,255,255,0.03)", padding: "1.5rem" }}>
+          <h2 style={{ fontSize: "1.125rem", fontWeight: 700, color: "white", marginBottom: "0.5rem" }}>General Support</h2>
+          <p style={{ lineHeight: 1.7 }}>For help with the app, billing, or account questions:</p>
+          <p style={{ marginTop: "0.5rem" }}>Email: <strong style={{ color: "#34d399" }}>support@cookwise.ai</strong></p>
         </div>
 
-        <p className="mt-10 text-xs text-slate-500">
-          We aim to respond to most messages within 1–2 business days.
-        </p>
-      </section>
-    </main>
+        {/* Partnerships */}
+        <div style={{ borderRadius: "1rem", border: "1px solid rgba(255,255,255,0.08)", background: "rgba(255,255,255,0.03)", padding: "1.5rem" }}>
+          <h2 style={{ fontSize: "1.125rem", fontWeight: 700, color: "white", marginBottom: "0.5rem" }}>Partnerships</h2>
+          <p style={{ lineHeight: 1.7 }}>For retailers, delivery platforms, or affiliate networks:</p>
+          <p style={{ marginTop: "0.5rem" }}>Email: <strong style={{ color: "#34d399" }}>partners@cookwise.ai</strong></p>
+          <p style={{ marginTop: "0.5rem", fontSize: "0.8125rem", color: "rgba(255,255,255,0.4)" }}>
+            You can also learn more on our{" "}
+            <Link href="/partners" style={{ color: "#6ee7b7", textDecoration: "underline" }}>Partners page</Link>.
+          </p>
+        </div>
+
+        {/* Privacy */}
+        <div style={{ borderRadius: "1rem", border: "1px solid rgba(255,255,255,0.08)", background: "rgba(255,255,255,0.03)", padding: "1.5rem" }}>
+          <h2 style={{ fontSize: "1.125rem", fontWeight: 700, color: "white", marginBottom: "0.5rem" }}>Privacy</h2>
+          <p style={{ lineHeight: 1.7 }}>For privacy or data-protection questions:</p>
+          <p style={{ marginTop: "0.5rem" }}>Email: <strong style={{ color: "#34d399" }}>privacy@cookwise.ai</strong></p>
+        </div>
+      </div>
+
+      <p style={{ marginTop: "2.5rem", fontSize: "0.8125rem", color: "rgba(255,255,255,0.35)" }}>
+        We aim to respond to most messages within 1–2 business days.
+      </p>
+    </div>
   );
 }
