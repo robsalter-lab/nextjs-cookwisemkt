@@ -59,8 +59,8 @@ export default function RootLayout({
             </nav>
 
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-              <a href="#download"><img src="/appstore.png" alt="App Store" style={{ height: 36, width: 'auto' }} /></a>
-              <a href="#download"><img src="/googleplay.png" alt="Google Play" style={{ height: 36, width: 'auto' }} /></a>
+              <a href="https://apps.apple.com/us/app/cookwise-meal-planner/id6759641268" target="_blank" rel="noopener noreferrer"><img src="/appstore.png" alt="App Store" style={{ height: 36, width: 'auto' }} /></a>
+              <a href="#download" style={{ opacity: 0.5, cursor: 'default' }}><img src="/googleplay.png" alt="Google Play — Coming Soon" style={{ height: 36, width: 'auto' }} /></a>
             </div>
           </div>
         </header>
