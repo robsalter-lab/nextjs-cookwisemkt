@@ -409,7 +409,7 @@ export default function HomePage() {
           </p>
           <div style={{ marginTop: "2rem", display: "flex", flexWrap: "wrap", justifyContent: "center", gap: "1rem" }}>
             <a href="https://apps.apple.com/us/app/cookwise-meal-planner/id6759641268" target="_blank" rel="noopener noreferrer"><img src="/appstore.png" alt="App Store" style={{ height: 52, width: "auto" }} /></a>
-            <a href="#" onClick={(e) => e.preventDefault()} style={{ position: "relative", opacity: 0.5 }}><img src="/googleplay.png" alt="Google Play" style={{ height: 52, width: "auto" }} /><span style={{ position: "absolute", bottom: -18, left: "50%", transform: "translateX(-50%)", fontSize: "0.6875rem", color: "rgba(255,255,255,0.4)", whiteSpace: "nowrap" }}>Coming Soon</span></a>
+            <a href="https://play.google.com/store/apps/details?id=com.cookwisellc.cookwise" target="_blank" rel="noopener noreferrer"><img src="/googleplay.png" alt="Google Play" style={{ height: 52, width: "auto" }} /></a>
           </div>
         </C>
       </section>
@@ -426,7 +426,7 @@ export default function HomePage() {
               <p style={{ fontSize: "0.875rem", lineHeight: 1.6, color: "rgba(255,255,255,0.25)" }}>Your AI-powered kitchen partner. Track deals, discover recipes, and auto-build smart shopping lists.</p>
               <div style={{ display: "flex", gap: "0.5rem", marginTop: "1rem" }}>
                 <a href="https://apps.apple.com/us/app/cookwise-meal-planner/id6759641268" target="_blank" rel="noopener noreferrer"><img src="/appstore.png" alt="App Store" style={{ height: 30, width: "auto" }} /></a>
-                <a href="#" onClick={(e) => e.preventDefault()} style={{ opacity: 0.5 }}><img src="/googleplay.png" alt="Google Play — Coming Soon" style={{ height: 30, width: "auto" }} /></a>
+                <a href="https://play.google.com/store/apps/details?id=com.cookwisellc.cookwise" target="_blank" rel="noopener noreferrer"><img src="/googleplay.png" alt="Get it on Google Play" style={{ height: 30, width: "auto" }} /></a>
               </div>
             </div>
             <div style={{ display: "flex", flexWrap: "wrap", gap: "3rem" }}>
