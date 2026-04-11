@@ -3,7 +3,7 @@ import Stripe from 'stripe';
 import { getServiceClient } from '../../lib/supabase';
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || '', {
-  apiVersion: '2024-12-18.acacia',
+  apiVersion: '2026-03-25.dahlia',
 });
 
 export async function GET(req: NextRequest) {
