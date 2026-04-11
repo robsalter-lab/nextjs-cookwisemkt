@@ -41,9 +41,9 @@ export default function CreatorLayout({
             <img
               src="/cookwise-owl.png"
               alt="Cookwise"
-              style={{ height: '28px', width: 'auto', objectFit: 'contain' }}
+              style={{ height: '36px', width: 'auto', objectFit: 'contain' }}
             />
-            <span style={{ fontSize: '0.9rem', fontWeight: 700, color: 'white', letterSpacing: '-0.02em' }}>
+            <span style={{ fontSize: '1.1rem', fontWeight: 700, color: 'white', letterSpacing: '-0.02em' }}>
               Cookwise
             </span>
           </Link>

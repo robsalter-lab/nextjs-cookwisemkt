@@ -76,7 +76,7 @@ export default function CreatorProfileClient({ data }: { data: CreatorData }) {
       {/* ── Banner ── */}
       <div style={{
         position: 'relative',
-        height: '180px',
+        height: '140px',
         background: creator.bannerUrl
           ? `url(${creator.bannerUrl}) center/cover no-repeat`
           : 'linear-gradient(135deg, #064e3b 0%, #0f172a 50%, #1e1b4b 100%)',
