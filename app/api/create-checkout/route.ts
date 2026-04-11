@@ -6,8 +6,8 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || '', {
   apiVersion: '2026-03-25.dahlia',
 });
 
-/** Platform fee percentage (e.g., 20 = 20%, creator keeps 80%) */
-const PLATFORM_FEE_PERCENT = 20;
+/** Platform fee percentage — 0 means creator keeps 100% */
+const PLATFORM_FEE_PERCENT = 0;
 
 export async function POST(req: NextRequest) {
   try {
