@@ -72,11 +72,11 @@ export default function CreatorProfileClient({ data }: { data: CreatorData }) {
     : circle?.priceLabel || '';
 
   return (
-    <div style={{ minHeight: '100vh', paddingTop: '72px' }}>
+    <div style={{ minHeight: '100vh', paddingTop: '48px' }}>
       {/* ── Banner ── */}
       <div style={{
         position: 'relative',
-        height: '220px',
+        height: '180px',
         background: creator.bannerUrl
           ? `url(${creator.bannerUrl}) center/cover no-repeat`
           : 'linear-gradient(135deg, #064e3b 0%, #0f172a 50%, #1e1b4b 100%)',

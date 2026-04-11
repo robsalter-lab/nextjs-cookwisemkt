@@ -55,6 +55,8 @@ const testimonials = [
   { text: "The cooking steps with tips and timers are incredible. Like having a professional chef guiding you in real time.", author: "Alex W.", role: "Aspiring Chef" },
 ];
 
+import MarketingNav from "./components/MarketingNav";
+
 /* ─── PAGE ─── */
 export default function HomePage() {
   const [activeShowcase, setActiveShowcase] = useState(0);
@@ -72,6 +74,7 @@ export default function HomePage() {
 
   return (
     <div style={{ overflow: "hidden" }}>
+      <MarketingNav />
 
       {/* ═══════════ HERO ═══════════ */}
       <section className="hero-gradient" style={{ paddingTop: "6rem", paddingBottom: "3rem" }}>
