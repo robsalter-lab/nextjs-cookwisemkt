@@ -3,7 +3,7 @@ import Stripe from 'stripe';
 import { getServiceClient } from '../../lib/supabase';
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || '', {
-  apiVersion: '2026-03-25.dahlia',
+  apiVersion: '2024-12-18.acacia',
 });
 
 /** Platform fee percentage — 0 means creator keeps 100% */
@@ -45,8 +45,14 @@ export async function POST(req: NextRequest) {
       creatorProfile?.stripe_account_id && creatorProfile?.stripe_onboarding_complete;
 
     // Build the checkout session config
+    // Create a Stripe customer (required for Accounts V2 in test mode)
+    const customer = await stripe.customers.create({
+      metadata: { circle_id, creator_id, source: 'cookwise_checkout' },
+    });
+
     const sessionConfig: Stripe.Checkout.SessionCreateParams = {
       mode: 'subscription',
+      customer: customer.id,
       line_items: [
         {
           price: circle.stripe_price_id,
