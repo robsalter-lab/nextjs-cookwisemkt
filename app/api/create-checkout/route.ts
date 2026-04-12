@@ -64,10 +64,6 @@ export async function POST(req: NextRequest) {
         creator_id,
         source: 'cookwise_creator_profile',
       },
-      // Enable Stripe to collect email + send receipts
-      payment_intent_data: {
-        description: `Premium membership for ${circle.name} on Cookwise`,
-      },
       success_url: `${process.env.NEXT_PUBLIC_SITE_URL || 'https://www.cookwise.ai'}/c/${creator_slug || 'test-creator'}/success?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${process.env.NEXT_PUBLIC_SITE_URL || 'https://www.cookwise.ai'}/c/${creator_slug || 'test-creator'}`,
       allow_promotion_codes: true,
