@@ -184,8 +184,8 @@ export default function CreatorProfileClient({ data }: { data: CreatorData }) {
           style={{
             display: 'flex',
             justifyContent: 'center',
-            gap: '2.5rem',
-            padding: '1rem 1.5rem',
+            gap: '1.25rem',
+            padding: '1rem 1rem',
             marginBottom: '1.5rem',
           }}
         >
