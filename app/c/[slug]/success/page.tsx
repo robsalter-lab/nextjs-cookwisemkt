@@ -52,10 +52,30 @@ export default function CheckoutSuccessPage() {
   }, [sessionId]);
 
   const handleCopy = () => {
-    if (claimCode) {
-      navigator.clipboard.writeText(claimCode);
+    if (!claimCode) return;
+    // Fallback for mobile Safari / in-app browsers where navigator.clipboard is blocked
+    try {
+      const textarea = document.createElement('textarea');
+      textarea.value = claimCode;
+      textarea.setAttribute('readonly', '');
+      textarea.style.position = 'fixed';
+      textarea.style.left = '-9999px';
+      textarea.style.top = '-9999px';
+      textarea.style.opacity = '0';
+      document.body.appendChild(textarea);
+      textarea.focus();
+      textarea.select();
+      textarea.setSelectionRange(0, claimCode.length);
+      document.execCommand('copy');
+      document.body.removeChild(textarea);
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
+    } catch {
+      // Last resort: try clipboard API
+      navigator.clipboard?.writeText(claimCode).then(() => {
+        setCopied(true);
+        setTimeout(() => setCopied(false), 2000);
+      });
     }
   };
 
