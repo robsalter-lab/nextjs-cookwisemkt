@@ -25,7 +25,7 @@ const C = ({ children, max = "80rem", className = "", style = {} }: { children: 
 /* ─── DATA ─── */
 const features = [
   { icon: ShoppingCart, title: "Shop Smarter", desc: "Weekly flyer scanning across 10+ stores. See every deal at a glance and never miss a sale.", color: "#34d399", bg: "rgba(16,185,129,0.06)", border: "rgba(16,185,129,0.15)" },
-  { icon: UtensilsCrossed, title: "Cook What's On Sale", desc: "1,500+ recipes ranked by savings. Every dish shows real-time deals from your local stores.", color: "#60a5fa", bg: "rgba(59,130,246,0.06)", border: "rgba(59,130,246,0.15)" },
+  { icon: UtensilsCrossed, title: "Cook What's On Sale", desc: "4,000+ recipes ranked by savings. Every dish shows real-time deals from your local stores.", color: "#60a5fa", bg: "rgba(59,130,246,0.06)", border: "rgba(59,130,246,0.15)" },
   { icon: Heart, title: "Swipe to Discover", desc: "Card-based recipe discovery. Swipe right to save, left to skip. Find your next favorite meal in seconds.", color: "#f472b6", bg: "rgba(236,72,153,0.06)", border: "rgba(236,72,153,0.15)" },
   { icon: Salad, title: "Eat Healthier", desc: "Nutrition tracking, dietary filters, calorie-aware meal planning, and macro breakdowns for your family.", color: "#fbbf24", bg: "rgba(251,191,36,0.06)", border: "rgba(251,191,36,0.15)" },
   { icon: ListChecks, title: "Auto-Build Your List", desc: "One tap: ingredients grouped by aisle, prices compared across stores, pantry items automatically excluded.", color: "#a78bfa", bg: "rgba(139,92,246,0.06)", border: "rgba(139,92,246,0.15)" },
@@ -89,7 +89,7 @@ export default function HomePage() {
               </h1>
 
               <p style={{ marginTop: "1.25rem", fontSize: "1.125rem", lineHeight: 1.7, color: "rgba(255,255,255,0.75)", maxWidth: "32rem" }}>
-                Cookwise scans local grocery deals, matches them to 1,500+ chef-quality recipes, and auto-builds your shopping list — saving you time and money every week.
+                Cookwise scans local grocery deals, matches them to 4,000+ chef-quality recipes, and auto-builds your shopping list — saving you time and money every week.
               </p>
 
               <div style={{ marginTop: "1.75rem", display: "flex", flexWrap: "wrap", gap: "0.75rem", alignItems: "center" }}>
@@ -104,7 +104,7 @@ export default function HomePage() {
               <div style={{ marginTop: "2rem", paddingTop: "1.25rem", borderTop: "1px solid rgba(255,255,255,0.06)", display: "flex", gap: "2rem", flexWrap: "wrap" }}>
                 {[
                   { val: "$18.60", label: "Avg. Weekly Savings", accent: true },
-                  { val: "1,500+", label: "Chef Recipes" },
+                  { val: "4,000+", label: "Chef Recipes" },
                   { val: "10+", label: "Stores Tracked" },
                 ].map((s, i) => (
                   <React.Fragment key={s.label}>
@@ -239,7 +239,7 @@ export default function HomePage() {
         <C max="72rem">
           <div style={{ textAlign: "center", marginBottom: "2rem" }}>
             <h2 style={{ fontSize: "clamp(1.75rem, 4vw, 2.75rem)", fontWeight: 800, letterSpacing: "-0.02em" }}>
-              1,500+ recipes that <span className="gradient-text-emerald">save you money</span>
+              4,000+ recipes that <span className="gradient-text-emerald">save you money</span>
             </h2>
             <p style={{ marginTop: "0.75rem", fontSize: "1rem", color: "rgba(255,255,255,0.75)" }}>
               Every recipe shows real-time savings based on your local store deals.

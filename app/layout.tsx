@@ -5,7 +5,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Cookwise — Save Money. Eat Better. Cook Smarter.",
   description:
-    "Cookwise scans local grocery deals, matches them to 1,500+ recipes, and builds your smart shopping list — automatically. Download free on iOS.",
+    "Cookwise scans local grocery deals, matches them to 4,000+ recipes, and builds your smart shopping list — automatically. Download free on iOS.",
   openGraph: {
     title: "Cookwise — Save Money. Eat Better. Cook Smarter.",
     description:
