@@ -165,7 +165,7 @@ export default function HomePage() {
             </p>
           </div>
 
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "1rem" }}>
+          <div className="features-grid">
             {features.map((f) => (
               <div key={f.title} className="glass-card glass-card-hover" style={{ padding: "1.5rem 1.75rem" }}>
                 <div style={{ width: 44, height: 44, borderRadius: "0.75rem", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: "1rem", background: f.bg, border: `1px solid ${f.border}` }}>
