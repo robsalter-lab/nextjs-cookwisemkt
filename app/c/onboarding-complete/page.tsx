@@ -69,8 +69,8 @@ export default function OnboardingCompletePage() {
             {[
               'Subscribers pay directly through your circle page',
               'Payouts go straight to your connected bank account',
-              'Track earnings anytime in the Cookwise app',
-              'Manage your Stripe account from Settings',
+              'Track earnings anytime at dashboard.stripe.com',
+              'Manage payouts & tax info from your Stripe dashboard',
             ].map((step, i) => (
               <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
                 <span style={{
